@@ -1830,8 +1830,8 @@ stock void MapFinishedMsgs(int client, int rankThisRun = 0)
 				{
 					if (g_bMapFirstRecord[client]) // 1st time finishing
 					{
-						PrintToChat(i, "%t", "MapFinished1", MOSSGREEN, WHITE, LIMEGREEN, szName, GRAY, DARKBLUE, GRAY, LIMEGREEN, g_szFinalTime[client], GRAY, WHITE, LIMEGREEN, g_MapRank[client], WHITE, count, g_szSRTimeDifference[client], WHITE);
-						PrintToConsole(i, "%s finished the map with a time of (%s). [Rank #%i/%i | SR: %s]", szName, g_szFinalTime[client], g_MapRank[client], count, g_szSRTimeDifference[client]);
+						PrintToChat(i, "%t", "MapFinished1", MOSSGREEN, WHITE, LIMEGREEN, szName, WHITE, LIMEGREEN, g_szFinalTime[client], WHITE, LIMEGREEN, g_MapRank[client], WHITE, count, g_szSRTimeDifference[client]);
+						PrintToConsole(i, "%s finished in %s | Rank #%i/%i | SR: %s", szName, g_szFinalTime[client], g_MapRank[client], count, g_szSRTimeDifference[client]);
 					}
 					else
 						if (g_bMapPBRecord[client]) // Own record
@@ -1861,8 +1861,8 @@ stock void MapFinishedMsgs(int client, int rankThisRun = 0)
 			{
 				if (g_bMapFirstRecord[client])
 				{
-					PrintToChat(client, "%t", "MapFinished1", MOSSGREEN, WHITE, LIMEGREEN, szName, GRAY, DARKBLUE, GRAY, LIMEGREEN, g_szFinalTime[client], GRAY, WHITE, LIMEGREEN, g_MapRank[client], WHITE, count, g_szSRTimeDifference[client], WHITE);
-					PrintToConsole(client, "%s finished the map with a time of (%s). [Rank #%i/%i | SR: %s]", szName, g_szFinalTime[client], g_MapRank[client], count, g_szSRTimeDifference[client]);
+						PrintToChat(i, "%t", "MapFinished1", MOSSGREEN, WHITE, LIMEGREEN, szName, WHITE, LIMEGREEN, g_szFinalTime[client], WHITE, LIMEGREEN, g_MapRank[client], WHITE, count, g_szSRTimeDifference[client]);
+						PrintToConsole(i, "%s finished in %s | Rank #%i/%i | SR: %s", szName, g_szFinalTime[client], g_MapRank[client], count, g_szSRTimeDifference[client]);
 				}
 				else
 				{
