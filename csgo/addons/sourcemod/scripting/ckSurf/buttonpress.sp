@@ -200,7 +200,9 @@ public void CL_OnEndTimerPress(int client)
 					if (Target == client && g_RecordBot == Target)
 					{
 						if (g_CurrentReplay == 0)
+							PrintToChat(i, "%t", "ReplayFinishingMsg", LIMEGREEN, WHITE, LIMEGREEN, g_szReplayName, WHITE, LIMEGREEN, g_szReplayTime);
 						else if (g_CurrentReplay > 0)
+							PrintToChat(i, "%t", "ReplayFinishingMsgBonus", LIMEGREEN, WHITE, LIMEGREEN, g_szBonusName, WHITE, YELLOW, g_szZoneGroupName[g_iClientInZone[Target][2]], WHITE, LIMEGREEN, g_szBonusTime);
 					}
 				}
 			}
