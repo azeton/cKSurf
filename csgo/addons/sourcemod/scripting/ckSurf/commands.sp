@@ -298,7 +298,7 @@ public void StartVoteExtend(int client)
 {
 	char szPlayerName[MAX_NAME_LENGTH];
 	GetClientName(client, szPlayerName, MAX_NAME_LENGTH);
-	CPrintToChatAll("[{olive}CK{default}] Vote to Extend started by {green}%s{default}", szPlayerName);
+	CPrintToChatAll("[{olive}Surf Timer{default}] Vote to Extend started by {green}%s{default}", szPlayerName);
 
 	g_szUsedVoteExtend[g_VoteExtends] = g_szSteamID[client];	// Add the user's steam ID to the list
 	g_VoteExtends++;	// Increment the total number of vote extends so far
@@ -351,12 +351,12 @@ public void H_VoteExtendCallback(Menu menu, int num_votes, int num_clients, cons
 
 	if (votesYes > votesNo) // A tie is a failure
 	{
-		CPrintToChatAll("[{olive}CK{default}] Vote to Extend succeeded - Votes Yes: %i | Votes No: %i", votesYes, votesNo);
+		CPrintToChatAll("[{olive}Surf Timer{default}] Vote to Extend succeeded - Votes Yes: %i | Votes No: %i", votesYes, votesNo);
 		ExtendMapTimeLimit(RoundToFloor(GetConVarFloat(g_hVoteExtendTime)*60));
 	}
 	else
 	{
-		CPrintToChatAll("[{olive}CK{default}] Vote to Extend failed - Votes Yes: %i | Votes No: %i", votesYes, votesNo);
+		CPrintToChatAll("[{olive}Surf Timer{default}] Vote to Extend failed - Votes Yes: %i | Votes No: %i", votesYes, votesNo);
 	}
 }
 
@@ -1528,9 +1528,9 @@ public void SpecPlayer(int client, int args)
 		Menu menu = CreateMenu(SpecMenuHandler);
 
 		if (g_bSpectate[client])
-			SetMenuTitle(menu, "ckSurf - Spec menu (press 'm' to rejoin a team!)");
+			SetMenuTitle(menu, "Spectate menu (press 'm' to rejoin a team!)");
 		else
-			SetMenuTitle(menu, "ckSurf - Spec menu");
+			SetMenuTitle(menu, "Spectate menu");
 		int playerCount = 0;
 
 		//add replay bots
@@ -1792,7 +1792,7 @@ public void ProfileMenu(int client, int args)
 	{
 		char szPlayerName[MAX_NAME_LENGTH];
 		Menu menu = CreateMenu(ProfileSelectMenuHandler);
-		SetMenuTitle(menu, "ckSurf - Profile menu");
+		SetMenuTitle(menu, "Profile menu");
 		GetClientName(client, szPlayerName, MAX_NAME_LENGTH);
 		AddMenuItem(menu, szPlayerName, szPlayerName);
 		int playerCount = 1;
@@ -2311,7 +2311,7 @@ public void ckTopMenu(int client)
 {
 	g_MenuLevel[client] = -1;
 	Menu cktopmenu = CreateMenu(TopMenuHandler);
-	SetMenuTitle(cktopmenu, "ckSurf - Top Menu");
+	SetMenuTitle(cktopmenu, "Stats Menu");
 	if (GetConVarBool(g_hPointSystem))
 		AddMenuItem(cktopmenu, "Top 100 Players", "Top 100 Players");
 	AddMenuItem(cktopmenu, "Top 5 Challengers", "Top 5 Challengers");
@@ -2429,16 +2429,15 @@ public void HelpPanel(int client)
 	PrintConsoleInfo(client);
 	Handle panel = CreatePanel();
 	char title[64];
-	Format(title, 64, "ckSurf Help (1/4) - v%s\nby Elzi", VERSION);
+	Format(title, 64, "Surf Timer Help (1/4) - v%s\nby Elzi", VERSION);
 	DrawPanelText(panel, title);
 	DrawPanelText(panel, " ");
-	DrawPanelText(panel, "!help - opens this menu");
-	DrawPanelText(panel, "!help2 - explanation of the ranking system");
-	DrawPanelText(panel, "!menu - checkpoint menu");
-	DrawPanelText(panel, "!options - player options menu");
-	DrawPanelText(panel, "!top - top menu");
-	DrawPanelText(panel, "!latest - prints in console the last map records");
-	DrawPanelText(panel, "!profile/!ranks - opens your profile");
+	DrawPanelText(panel, "!options - Player options menu");
+	DrawPanelText(panel, "!top - Stats menu");
+	DrawPanelText(panel, "!profile - opens a Player profile");
+	DrawPanelText(panel, "!latest - prints latest records in console");
+	DrawPanelText(panel, "!start/!r - go back to start");
+	DrawPanelText(panel, "!stuck - go back to stage start");
 	DrawPanelText(panel, " ");
 	DrawPanelItem(panel, "next page");
 	DrawPanelItem(panel, "exit");
@@ -2459,18 +2458,17 @@ public int HelpPanel2(int client)
 {
 	Handle panel = CreatePanel();
 	char szTmp[64];
-	Format(szTmp, 64, "ckSurf Help (2/4) - v%s\nby Elzi", VERSION);
+	Format(szTmp, 64, "Surf Timer Help (2/4) - v%s\nby Elzi", VERSION);
 	DrawPanelText(panel, szTmp);
 	DrawPanelText(panel, " ");
-	DrawPanelText(panel, "!start/!r - go back to start");
-	DrawPanelText(panel, "!stop - stops the timer");
-	DrawPanelText(panel, "!pause - on/off pause");
-	DrawPanelText(panel, "!usp - spawns a usp silencer");
-	DrawPanelText(panel, "!challenge - allows you to start a race against others");
+	DrawPanelText(panel, "!saveloc - Saves your current Location and Speed");
+	DrawPanelText(panel, "!loadloc [<number>] - Loads a Saveloc");
+	DrawPanelText(panel, "!usp / !knife - spawns a usp / knife");
 	DrawPanelText(panel, "!spec [<name>] - select a player you want to watch");
 	DrawPanelText(panel, "!goto [<name>] - teleports you to a given player");
+	DrawPanelText(panel, "!challenge - allows you to start a race against others");
 	DrawPanelText(panel, "!compare [<name>] - compare your challenge results with a given player");
-	DrawPanelText(panel, "!showsettings - shows ckSurf plugin settings");
+	DrawPanelText(panel, "!showsettings - shows Surf Timer settings");
 	DrawPanelText(panel, " ");
 	DrawPanelItem(panel, "previous page");
 	DrawPanelItem(panel, "next page");
@@ -2495,12 +2493,12 @@ public void HelpPanel3(int client)
 {
 	Handle panel = CreatePanel();
 	char szTmp[64];
-	Format(szTmp, 64, "ckSurf Help (3/4) - v%s\nby Elzi", VERSION);
+	Format(szTmp, 64, "Surf Timer Help (3/4) - v%s\nby Elzi", VERSION);
 	DrawPanelText(panel, szTmp);
 	DrawPanelText(panel, " ");
-	DrawPanelText(panel, "!maptop <mapname> - displays map top for a given map");
-	DrawPanelText(panel, "!flashlight - on/off flashlight");
-	DrawPanelText(panel, "!ranks - prints in chat the available ranks");
+	DrawPanelText(panel, "!maptop [<mapname>] - displays map top for any given map");
+	DrawPanelText(panel, "!repeat - teleports Player to Stage Startzone again if Stage is finished");
+	DrawPanelText(panel, "!showzones - toggles Zone Display for Player");
 	DrawPanelText(panel, "!measure - allows you to measure the distance between 2 points");
 	DrawPanelText(panel, "!language - opens the language menu");
 	DrawPanelText(panel, "!wr - prints in chat the record of the current map");
@@ -2513,6 +2511,7 @@ public void HelpPanel3(int client)
 	SendPanelToClient(panel, client, HelpPanel3Handler, 10000);
 	CloseHandle(panel);
 }
+
 public int HelpPanel3Handler(Menu menu, MenuAction action, int param1, int param2)
 {
 	if (action == MenuAction_Select)
@@ -2525,16 +2524,16 @@ public int HelpPanel3Handler(Menu menu, MenuAction action, int param1, int param
 	}
 }
 
-public void HelpPanel4(int client)
+ppublic void HelpPanel4(int client)
 {
 	Handle panel = CreatePanel();
 	char szTmp[64];
-	Format(szTmp, 64, "ckSurf Help (4/4) - v%s\nby Elzi", VERSION);
+	Format(szTmp, 64, "Surf Timer Help (4/4) - v%s\nby Elzi", VERSION);
 	DrawPanelText(panel, szTmp);
 	DrawPanelText(panel, " ");
-	DrawPanelText(panel, "!cp - Creates a checkpoint to use in practice mode.");
-	DrawPanelText(panel, "!tele / !teleport / !practice / !prac - Starts practice mode");
-	DrawPanelText(panel, "!undo - Undoes your latest checkpoint");
+	DrawPanelText(panel, "!cp - Deprecated (use saveloc)");
+	DrawPanelText(panel, "!tele / !teleport / !practice / !prac - Deprecated (use saveloc)");
+	DrawPanelText(panel, "!undo - Deprecated (use saveloc)");
 	DrawPanelText(panel, " ");
 	DrawPanelItem(panel, "previous page");
 	DrawPanelItem(panel, "exit");
@@ -2627,7 +2626,7 @@ public void ShowSrvSettings(int client)
 public void OptionMenu(int client)
 {
 	Menu optionmenu = CreateMenu(OptionMenuHandler);
-	SetMenuTitle(optionmenu, "ckSurf - Options Menu");
+	SetMenuTitle(optionmenu, "Surf Timer - Options Menu")
 	// #0
 	if (g_bHide[client])
 		AddMenuItem(optionmenu, "Hide Players  -  Enabled", "Hide other players  -  Enabled");

@@ -607,13 +607,13 @@ public void StartStageTimer(int client)
 
 	if (g_fLastSpeed[client] > g_fStageMaxVelocity[stage] && g_fStageMaxVelocity[stage] > 0)
 	{
-		PrintToChat(client, "[%cSurf Timer%c] %cMax velocity exceeded to start stage %d.", MOSSGREEN, WHITE, LIGHTRED, g_Stage[0][client]);
+		PrintToChat(client, "[%cSurf Timer%c] %cMax start velocity exceeded on stage %d.", MOSSGREEN, WHITE, LIGHTRED, g_Stage[0][client]);
 		return;
 	}
 
 	if (g_PlayerJumpsInStage[client] > 1 && !g_bStageIgnorePrehop[stage])
 	{
-		PrintToChat(client, "[%cSurf Timer%c] %cPrehopping is not allowed on the stage records.", MOSSGREEN, WHITE, LIGHTRED);
+		PrintToChat(client, "[%cSurf Timer%c] %cNo Prehop allowed for stage records", MOSSGREEN, WHITE, LIGHTRED);
 		return;
 	}
 
@@ -742,7 +742,7 @@ public void EndStageTimer(int client)
 		// Check if the stage records were loaded before sending the message
 		if (!g_bLoadingStages) {
 			// Send message to all players
-			PrintToChatAll("[%cSurf Timer%c] %c%N %chas beaten the %cstage %d record %cin %c%s %c(PB: %s) (SR: %s) ", MOSSGREEN, WHITE, LIMEGREEN, client, YELLOW, LIMEGREEN, stage, YELLOW, LIMEGREEN, runtime_str, YELLOW, pbdiff_str, srdiff_str);
+			PrintToChatAll("[%cSurf Timer%c] %c%N %cbroke the record on %cstage %d %cin %c%s %c| PB: %s | SR: %s", MOSSGREEN, WHITE, LIMEGREEN, client, WHITE, LIMEGREEN, stage, WHITE, LIMEGREEN, runtime_str, WHITE, pbdiff_str, srdiff_str);
 
 			// Play sound to everyone
 			for (int i = 1; i <= MaxClients; i++)
@@ -775,7 +775,7 @@ public void EndStageTimer(int client)
 	{
 		// Player beaten his own record
 
-		PrintToChat(client, "[%cSurf Timer%c] %cFinished the %cstage %d %cin %c%s %c(PB: %s) (SR: %s) ", MOSSGREEN, WHITE, YELLOW, LIMEGREEN, stage, YELLOW, LIMEGREEN, runtime_str, YELLOW, pbdiff_str, srdiff_str);
+		PrintToChat(client, "[%cSurf Timer%c] Finished %cstage %d %cin %c%s %c| PB: %s | SR: %s", MOSSGREEN, WHITE, LIMEGREEN, stage, WHITE, LIMEGREEN, runtime_str, WHITE, pbdiff_str, srdiff_str);
 
 		if (g_fStagePlayerRecord[client][stage] != 9999999.0)
 			db_updateStageRecord(client, stage, runtime);
@@ -788,7 +788,7 @@ public void EndStageTimer(int client)
 	else
 	{
 		// missed sr and pb
-		PrintToChat(client, "[%cSurf Timer%c] %cFinished the %cstage %d %cin %c%s %c(PB: %s) (SR: %s) ", MOSSGREEN, WHITE, YELLOW, LIMEGREEN, stage, YELLOW, LIMEGREEN, runtime_str, YELLOW, pbdiff_str, srdiff_str);
+		PrintToChat(client, "[%cSurf Timer%c] Finished %cstage %d %cin %c%s %c| PB: %s | SR: %s", MOSSGREEN, WHITE, LIMEGREEN, stage, WHITE, LIMEGREEN, runtime_str, WHITE, pbdiff_str, srdiff_str);
 		return;
 	}
 
