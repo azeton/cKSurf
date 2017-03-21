@@ -1994,7 +1994,7 @@ stock void PrintChatBonus (int client, int zGroup, int rank = 0)
 		}
 		if (g_bBonusFirstRecord[client] && !g_bBonusSRVRecord[client])
 		{
-			PrintToChat("%t", "BonusFinished7", MOSSGREEN, WHITE, LIMEGREEN, szName, WHITE, YELLOW, g_szZoneGroupName[zGroup], WHITE, LIMEGREEN, g_szFinalTime[client], WHITE, LIMEGREEN, g_MapRankBonus[zGroup][client], WHITE, g_iBonusCount[zGroup], g_szBonusSRTimeDifference[client]);
+			PrintToChat(client, "%t", "BonusFinished7", MOSSGREEN, WHITE, LIMEGREEN, szName, WHITE, YELLOW, g_szZoneGroupName[zGroup], WHITE, LIMEGREEN, g_szFinalTime[client], WHITE, LIMEGREEN, g_MapRankBonus[zGroup][client], WHITE, g_iBonusCount[zGroup], g_szBonusSRTimeDifference[client]);
 		}
 		if (!g_bBonusSRVRecord[client] && !g_bBonusFirstRecord[client] && !g_bBonusPBRecord[client])
 		{
