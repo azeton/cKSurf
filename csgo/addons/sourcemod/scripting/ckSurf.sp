@@ -1214,7 +1214,7 @@ public void OnClientAuthorized(int client)
 		{
 			for (int i = 1; i <= MaxClients; i++)
 				if (IsValidClient(i) && i != client)
-					PrintToChat(i, "%t", "Connected2", WHITE, LIMEGREEN, s_clientName, WHITE, GREEN, s_Country);
+					PrintToChat(i, "%t", "Connected2", WHITE, LIMEGREEN, s_clientName, WHITE, LIMEGREEN, s_Country);
 		}
 	}
 }

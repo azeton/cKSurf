@@ -2317,7 +2317,7 @@ public void ckTopMenu(int client)
 	SetMenuTitle(cktopmenu, "Stats Menu");
 	if (GetConVarBool(g_hPointSystem))
 		AddMenuItem(cktopmenu, "Top 100 Players", "Top 100 Players");
-	//AddMenuItem(cktopmenu, "Top 5 Challengers", "Top 5 Challengers");
+	AddMenuItem(cktopmenu, "Top 5 Challengers", "Top 5 Challengers");
 	AddMenuItem(cktopmenu, "Map Top", "Map Top");
 
 	AddMenuItem(cktopmenu, "Bonus Top", "Bonus Top", !g_bhasBonus);
@@ -2496,7 +2496,7 @@ public void HelpPanel3(int client)
 {
 	Handle panel = CreatePanel();
 	char szTmp[64];
-	Format(szTmp, 64, "Surf Timer Help (3/4");
+	Format(szTmp, 64, "Surf Timer Help (3/4)");
 	DrawPanelText(panel, szTmp);
 	DrawPanelText(panel, " ");
 	DrawPanelText(panel, "!maptop [<mapname>] - displays map top for any given map");
