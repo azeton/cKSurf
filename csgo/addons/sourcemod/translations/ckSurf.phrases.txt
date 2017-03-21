@@ -77,13 +77,13 @@
 	}
 	"AdvertBonus"
 	{
-		"#format"	"{1:c},{2:c},{3:c},{4:c},{5:c}"
-		"en"		"[{1}Surf Timer{2}] {3}Write {4}!bonus {5}to teleport to the bonus stage."
+		"#format"	"{1:c},{2:c},{3:c},{4:c}"
+		"en"		"[{1}Surf Timer{2}] Write {3}!bonus {4}to teleport to the bonus stage."
 	}
 	"AdvertStage"
 	{
-		"#format"	"{1:c},{2:c},{3:c},{4:c},{5:c},{6:c},{7:c}"
-		"en"		"[{1}Surf Timer{2}] {3}Write {4}!stages {5}or {6}!s {7}to teleport between stages."
+		"#format"	"{1:c},{2:c},{3:c},{4:c},{5:c},{6:c}"
+		"en"		"[{1}Surf Timer{2}] Write {3}!stages {4}or {5}!s {6}to teleport between stages."
 	}
 	"BonusNotFound"
 	{
@@ -122,31 +122,31 @@
 	}
 	"AvgTime"
 	{
-		"#format"   "{1:c},{2:c},{3:c},{4:c},{5:c},{6:s},{7:i}"
-		"en"        "[{1}Surf Timer{2}] {3}Avg. {4}map{5} time: {6} ({7})"
+		"#format"   "{1:c},{2:c},{3:c},{4:s},{5:c},{6:c},{7:i}"
+		"en"        "[{1}Surf Timer{2}] Average Map time: {3}{4}{5} Completions: {6}{7}"
 	}
 	"AvgTimeBonus"
 	{
-		"#format"   "{1:c},{2:c},{3:c},{4:c},{5:c},{6:s},{7:i}"
-		"en"        "[{1}Surf Timer{2}] {3}Avg. {4}bonus{5} time: {6} ({7})"
+		"#format"   "{1:c},{2:c},{3:c},{4:s},{5:c},{6:i},{7:i}"
+		"en"        "[{1}Surf Timer{2}] Average Bonus time: {3}{4}{5} Completions: {6}{7}"
 	}
 	"TimeleftCounter"
 	{
 
-		"#format"   "{1:c},{2:c},{3:i}"
-		"en"        "[{1}MAP{2}] {3}.."
+		"#format"   "{1:c},{2:c},{3:c},{4:i}"
+		"en"        "[{1}Surf Timer{2}] Timeleft {3}{4}..."
 	}
 	"TimeleftMinutes"
 	{
 
 		"#format"   "{1:c},{2:c},{3:i}"
-		"en"        "[{1}MAP{2}] {3} minutes remaining"
+		"en"        "[{1}Surf Timer{2}] {3} minutes remaining on the map"
 	}
 	"TimeleftSeconds"
 	{
 
 		"#format"   "{1:c},{2:c},{3:i}"
-		"en"        "[{1}MAP{2}] {3} seconds remaining"
+		"en"        "[{1}Surf Timer{2}] {3} seconds remaining on the map"
 	}
 	"TimerStopped"
 	{
@@ -157,7 +157,7 @@
 	"MissedMapBest"
 	{
 		"#format"   "{1:c},{2:c},{3:c},{4:c},{5:s},{6:c}"
-		"en"       "[{1}Surf Timer{2}] {3}You have missed your best time of ({4}{5}{6})"
+		"en"       "[{1}Surf Timer{2}] You have missed your PR of {4}{5}"
 	}
 	"KickMsg"
 	{
@@ -282,12 +282,12 @@
 	"SkillGroup"
 	{
 		"#format"   "{1:c},{2:c},{3:c},{4:c},{5:s}"
-		"en"        "[{1}Surf Timer{2}] {3}You are now ranked as {4}{5}"
+		"en"        "[{1}Surf Timer{2}] {3}Congratulations! You are now ranked as {4}{5}"
 	}
 	"Rc_PlayerRankStart"
 	{
 		"#format"   "{1:c},{2:c},{3:c}"
-		"en"        "[{1}Surf Timer{2}] {3}Refreshing profile data.."
+		"en"        "[{1}Surf Timer{2}] {3}Refreshing profile data..."
 	}
 	"Rc_PlayerRankFinished"
 	{
@@ -359,17 +359,17 @@
 	"NewMapRecord"
 	{
 		"#format"   "{1:c},{2:c},{3:c},{4:s},{5:c},{6:c}"
-		"en"        "[{1}Surf Timer{2}] {3}{4}{5} has beaten the {6}MAP RECORD"
+		"en"        "[{1}Surf Timer{2}] {3}{4}{5} broke the {6}Map Record"
 	}
 	"ReplayFinishingMsg"
 	{
 		"#format"   "{1:c},{2:c},{3:c},{4:s},{5:c},{6:c},{7:s},{8:c}"
-		"en"        "[{1}Surf Timer{2}] {3}{4}{5} finished with a time of ({6}{7}{8})."
+		"en"        "[{1}Surf Timer{2}] {3}{4}{5} finished with a time of {6}{7}"
 	}
 	"ReplayFinishingMsgBonus"
 	{
 		"#format"   "{1:c},{2:c},{3:c},{4:s},{5:c},{6:c},{7:s},{8:c},{9:c},{10:s},{11:c}"
-		"en"        "[{1}Surf Timer{2}] {3}{4}{5} finished the {6}{7}{8} with a time of ({9}{10}{11})."
+		"en"        "[{1}Surf Timer{2}] {3}{4}{5} finished the {6}{7}{8} with a time of {9}{10}"
 	}
 	"MapFinished1"
 	{				 
@@ -394,7 +394,7 @@
 	"BonusFinished2"
 	{
 		"#format"	"{1:c},{2:c},{3:c},{4:s},{5:c},{6:s}"
-		"en"		"[{1}Surf Timer{2}] {3}{4} has beaten the {5}{6} RECORD"
+		"en"		"[{1}Surf Timer{2}] {3}{4} broke the {5}{6} Record"
 	}
 	"BonusFinished3"
 	{
@@ -423,43 +423,43 @@
 	}
 	"Checkpoint1"
 	{
-		"#format"	"{1:c},{2:c},{3:c},{4:s},{5:c},{6:c},{7:s},{8:c},{9:s}"
-		"en"		"[{1}Surf Timer{2}] {3}CP: {4} {5}compared to your best run. ({6}{7}{8}).{9}"
+		"#format"	"{1:c},{2:c},{3:c},{4:c},{5:s},{6:c},{7:s}"
+		"en"		"[{1}Surf Timer{2}] {3}CP1{4} PR: {5}{6} | {7}"
 	}
 	"Checkpoint1-spec"
 	{
-		"#format"	"{1:c},{2:c},{3:c},{4:s},{5:c},{6:c},{7:s},{8:c},{9:c},{10:s},{11:c},{12:s}"
-		"en"		"[{1}Surf Timer{2}] {3}Spec-CP: {4} {5}compared to {6}{7}{8}'s best run. ({9}{10}{11}).{12}"
+		"#format"	"{1:c},{2:c},{3:c},{4:s},{5:c},{6:s},{7:c},{8:s}"
+		"en"		"[{1}Surf Timer{2}] {3}{4}-CP1{5} PR: {6}{7} | {8}"
 	}
 	"Checkpoint2"
 	{
-		"#format"	"{1:c},{2:c},{3:c},{4:s},{5:c},{6:s},{7:c},{8:c},{9:s},{10:c},{11:s}"
-		"en"		"[{1}Surf Timer{2}] {3}CP: {4} {5}compared to your PB. {6} {7}({8}{9}{10}).{11}"
+		"#format"	"{1:c},{2:c},{3:c},{4:c},{5:s},{6:c},{7:s}"
+		"en"		"[{1}Surf Timer{2}] {3}CP2{4} PR: {5}{6} | {7}"
 	}
 	"Checkpoint2-spec"
 	{
-		"#format"	"{1:c},{2:c},{3:c},{4:s},{5:c},{6:c},{7:s},{8:c},{9:s},{10:c},{11:c},{12:s},{13:c},{14:s}"
-		"en"		"[{1}Surf Timer{2}] {3}Spec-CP: {4} {5}compared to {6}{7}{8}'s PB. {9} {10}({11}{12}{13}).{14}"
+		"#format"	"{1:c},{2:c},{3:c},{4:s},{5:c},{6:s},{7:c},{8:s}"
+		"en"		"[{1}Surf Timer{2}] {3}{4}-CP2{5} PR: {6}{7} | {8}"
 	}
 	"Checkpoint3"
 	{
-		"#format" 	"{1:c},{2:c},{3:c},{4:c},{5:s},{6:c},{7:c},{8:s},{9:s}"
-		"en"		"[{1}Surf Timer{2}]{3} CP: Completed{4} {5} {6}of the map in {7}{8}.{9}"
+		"#format" 	"{1:c},{2:c},{3:c},{4:c},{5:c},{6:s},{7:c},{8:s}"
+		"en"		"[{1}Surf Timer{2}] {3}CP3{4} Time: {5}{6}{7} | {8}"
 	}
 	"Checkpoint3-spec"
 	{
-		"#format" 	"{1:c},{2:c},{3:c},{4:c},{5:s},{6:c},{7:c},{8:s},{9:c},{10:c},{11:s},{12:s}"
-		"en"		"[{1}Surf Timer{2}]{3} Spec-CP: {4}{5}{6} Completed{7} {8} {9}of the map in {10}{11}.{12}"
+		"#format" 	"{1:c},{2:c},{3:c},{4:s},{5:c},{6:s}"
+		"en"		"[{1}Surf Timer{2}] {3}{4}-CP3{5} {6}"
 	}
 	"Checkpoint4"
 	{
-		"#format" 	"{1:c},{2:c},{3:c},{4:c},{5:i}"
-		"en"	  	"[{1}Surf Timer{2}]{3} CP: Reached checkpoint{4} {5}"
+		"#format" 	"{1:c},{2:c},{3:c},{4:i}"
+		"en"	  	"[{1}Surf Timer{2}] Reached CP:{3} {4}"
 	}
 	"Checkpoint4-spec"
 	{
-		"#format" 	"{1:c},{2:c},{3:c},{4:c}{5:s},{6:c},{7:c},{8:i}"
-		"en"	  	"[{1}Surf Timer{2}]{3} Spec-CP: {4}{5}{6} Reached checkpoint{7} {8}"
+		"#format" 	"{1:c},{2:c},{3:c},{4:s}{5:c},{6:c},{7:i}"
+		"en"	  	"[{1}Surf Timer{2}] {3}{4}{5} reached CP:{6} {7}"
 	}
 	"GrewCheckpoint"
 	{
@@ -490,7 +490,7 @@
 	"ConsoleOutput"
 	{
 		"#format"   "{1:c},{2:c}"
-		"en"        "[{1}Surf Timer{2}] See console for output!"
+		"en"        "[{1}Surf Timer{2}] See console for output"
 	}
 	"PlayerHasNoMapRecords"
 	{
@@ -615,7 +615,7 @@
 	"RadioCommandsDisabled"
 	{
 		"#format"   "{1:c},{2:c}"
-		"en"        "[{1}Surf Timer{2}] Radio commands are disabled."
+		"en"        "[{1}Surf Timer{2}] Radio commands are disabled on this server."
 	}
 	"Hide1"
 	{
@@ -730,7 +730,7 @@
 	"HelpMsg"
 	{
 		"#format"   "{1:c},{2:c},{3:c},{4:c}"
-		"en"        "[{1}Surf Timer{2}] Type {3}!help{4} in chat to get a list of ckSurf commands"
+		"en"        "[{1}Surf Timer{2}] Type {3}!help{4} in chat to get a list of commands"
 	}
 	"Disconnected1"
 	{
@@ -749,13 +749,13 @@
 	}
 	"MapRecord"
 	{
-		"#format"   "{1:c},{2:c},{3:c},{4:c},{5:s},{6:s}"
-		"en"        "[{1}Surf Timer{2}] {3}MAP RECORD{4}: {5} ({6})"
+		"#format"   "{1:c},{2:c},{3:c},{4:s},{5:c},{6:c},{7:s}"
+		"en"        "[{1}Surf Timer{2}] Map Record: {3}{4}{5} by {6}{7}"
 	}
 	"BonusRecord"
 	{
-		"#format"   "{1:c},{2:c},{3:c},{4:s},{5:c},{6:s},{7:s}"
-		"en"        "[{1}Surf Timer{2}] {3}{4} RECORD{5}: {6} ({7})"
+		"#format"   "{1:c},{2:c},{3:s},{4:c},{5:s},{6:c},{7:c},{8:s}"
+		"en"        "[{1}Surf Timer{2}] {3} Record: {4}{5}{6} by {7}{8}"
 	}
 	"LanguageSwitch"
 	{

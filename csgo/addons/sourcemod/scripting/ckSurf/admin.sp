@@ -5,7 +5,7 @@ public Action Admin_giveTitle(int client, int args)
 
 	if (g_iCustomTitleCount == 0)
 	{
-		PrintToChat(client, "[%cSurf Timer%c] No custom titles loaded.", MOSSGREEN, WHITE);
+		PrintToChat(client, "[%cSurf Timer%c] No custom titles loaded.", LIMEGREEN, WHITE);
 		return Plugin_Handled;
 	}
 
@@ -74,7 +74,7 @@ public Action Admin_giveTitle(int client, int args)
 			}
 			if (g_iAdminSelectedClient[client] == -1)
 			{
-				PrintToChat(client, "[%cSurf Timer%c] Couldn't find player %s", MOSSGREEN, WHITE, arg);
+				PrintToChat(client, "[%cSurf Timer%c] Couldn't find player %s", LIMEGREEN, WHITE, arg);
 			}
 			else
 			{
@@ -215,7 +215,7 @@ public Action Admin_deleteTitles(int client, int args)
 			}
 			if (g_iAdminSelectedClient[client] == -1)
 			{
-				PrintToChat(client, "[%cSurf Timer%c] Couldn't find player %s", MOSSGREEN, WHITE, arg);
+				PrintToChat(client, "[%cSurf Timer%c] Couldn't find player %s", LIMEGREEN, WHITE, arg);
 			}
 			else
 			{
@@ -298,7 +298,7 @@ public Action Admin_deleteTitle(int client, int args)
 			}
 			if (g_iAdminSelectedClient[client] == -1)
 			{
-				PrintToChat(client, "[%cSurf Timer%c] Couldn't find player %s", MOSSGREEN, WHITE, arg);
+				PrintToChat(client, "[%cSurf Timer%c] Couldn't find player %s", LIMEGREEN, WHITE, arg);
 			}
 			else
 			{
@@ -320,17 +320,17 @@ public void Admin_renameZone(int client, const char[] name)
 	//avoid unnecessary calls by checking the first cell first. If it's 0 -> \0 then negating it will make the if check pass -> return
 	if (!name[0] || StrEqual(name, " ") || StrEqual(name, ""))
 	{
-		PrintToChat(client, "[%CK%c] Please give the zone a valid name.", MOSSGREEN, WHITE);
+		PrintToChat(client, "[%Surf Timer%c] Please give the zone a valid name.", LIMEGREEN, WHITE);
 		return;
 	}
 	if (strlen(name) > 128)
 	{
-		PrintToChat(client, "[%cSurf Timer%c] Zone name too long. Maximum is 128 characters.", MOSSGREEN, WHITE);
+		PrintToChat(client, "[%cSurf Timer%c] Zone name too long. Maximum is 128 characters.", LIMEGREEN, WHITE);
 		return;
 	}
 	if (StrEqual(name, "!cancel", false)) //false -> non sensitive
 	{
-		PrintToChat(client, "[%cSurf Timer%c] Cancelled bonus renaming.", MOSSGREEN, WHITE);
+		PrintToChat(client, "[%cSurf Timer%c] Cancelled bonus renaming.", LIMEGREEN, WHITE);
 		g_ClientRenamingZone[client] = false;
 		ListBonusSettings(client);
 		return;
@@ -370,7 +370,7 @@ public Action Admin_insertMapTier(int client, int args)
 	if (args < 2)
 	{
 		ReplyToCommand(client, "[Surf Timer] Usage: sm_addmaptier <ZoneGroup> <Tier>");
-		PrintToChat(client, "[%cSurf Timer%c] Zone Groups:", MOSSGREEN, WHITE);
+		PrintToChat(client, "[%cSurf Timer%c] Zone Groups:", LIMEGREEN, WHITE);
 		PrintToChat(client, "[%c0.%c] Map Tier", BLUE, WHITE);
 		for (int i = 1; i < g_mapZoneGroupCount; i++)
 		{
@@ -389,7 +389,7 @@ public Action Admin_insertMapTier(int client, int args)
 		if ((tier < 7 || tier > 0) && (-1 < zonegroup < g_mapZoneGroupCount))
 			db_insertMapTier(tier, zonegroup);
 		else
-			PrintToChat(client, "[%cSurf Timer%c] Invalid tier number or zone group. Please choose a tier number between 1-6 and a valid zone group.", MOSSGREEN, WHITE);
+			PrintToChat(client, "[%cSurf Timer%c] Invalid tier number or zone group. Please choose a tier number between 1-6 and a valid zone group.", LIMEGREEN, WHITE);
 	}
 	return Plugin_Handled;
 }
@@ -410,12 +410,12 @@ public Action Admin_insertSpawnLocation(int client, int args)
 	if (g_bGotSpawnLocation[g_iClientInZone[client][2]])
 	{
 		db_updateSpawnLocations(SpawnLocation, SpawnAngle, g_iClientInZone[client][2]);
-		PrintToChat(client, "[%cSurf Timer%c] Spawnpoint edited", MOSSGREEN, WHITE);
+		PrintToChat(client, "[%cSurf Timer%c] Spawnpoint edited", LIMEGREEN, WHITE);
 	}
 	else
 	{
 		db_insertSpawnLocations(SpawnLocation, SpawnAngle, g_iClientInZone[client][2]);
-		PrintToChat(client, "[%cSurf Timer%c] Spawnpoint added", MOSSGREEN, WHITE);
+		PrintToChat(client, "[%cSurf Timer%c] Spawnpoint added", LIMEGREEN, WHITE);
 	}
 
 	return Plugin_Handled;
@@ -428,10 +428,10 @@ public Action Admin_deleteSpawnLocation(int client, int args)
 	if (g_bGotSpawnLocation[g_iClientInZone[client][2]])
 	{
 		db_deleteSpawnLocations(g_iClientInZone[client][2]);
-		PrintToChat(client, "[%cSurf Timer%c] Spawnpoint deleted", MOSSGREEN, WHITE);
+		PrintToChat(client, "[%cSurf Timer%c] Spawnpoint deleted", LIMEGREEN, WHITE);
 	}
 	else
-		PrintToChat(client, "[%cSurf Timer%c] No spawnpoint to delete!", MOSSGREEN, WHITE);
+		PrintToChat(client, "[%cSurf Timer%c] No spawnpoint to delete!", LIMEGREEN, WHITE);
 
 	return Plugin_Handled;
 }
@@ -474,7 +474,7 @@ public void ckAdminMenu(int client)
 
 	if (!(GetUserFlagBits(client) & g_AdminMenuFlag) && !(GetUserFlagBits(client) & ADMFLAG_ROOT))
 	{
-		PrintToChat(client, "[%cSurf Timer%c] You don't have access to the admin menu.", MOSSGREEN, WHITE);
+		PrintToChat(client, "[%cSurf Timer%c] You don't have access to the admin menu.", LIMEGREEN, WHITE);
 		return;
 	}
 
@@ -698,7 +698,7 @@ public int AdminPanelHandler(Handle menu, MenuAction action, int param1, int par
 			{
 				if (!g_pr_RankingRecalc_InProgress)
 				{
-					PrintToChat(param1, "%t", "PrUpdateStarted", MOSSGREEN, WHITE);
+					PrintToChat(param1, "%t", "PrUpdateStarted", LIMEGREEN, WHITE);
 					g_bManualRecalc = true;
 					g_pr_Recalc_AdminID = param1;
 					RefreshPlayerRankTable(MAX_PR_PLAYERS);
@@ -709,7 +709,7 @@ public int AdminPanelHandler(Handle menu, MenuAction action, int param1, int par
 						g_bProfileRecalc[i] = false;
 					g_bManualRecalc = false;
 					g_pr_RankingRecalc_InProgress = false;
-					PrintToChat(param1, "%t", "StopRecalculation", MOSSGREEN, WHITE);
+					PrintToChat(param1, "%t", "StopRecalculation", LIMEGREEN, WHITE);
 				}
 			}
 
@@ -948,7 +948,7 @@ public Action Admin_InsertMapTiers(int client, int args)
 {
 	if (g_insertingInformation)
 	{
-		PrintToChat(client, "[%cSurf Timer%c] Wait for inserting to finish, before starting it again..", MOSSGREEN, WHITE);
+		PrintToChat(client, "[%cSurf Timer%c] Wait for inserting to finish, before starting it again..", LIMEGREEN, WHITE);
 		return Plugin_Handled;
 	}
 
@@ -972,7 +972,7 @@ public void Admin_InsertMapTierstoDatabase(int client)
 
 	g_insertingInformation = true;
 
-	PrintToChat(client, "[%cSurf Timer%c] Maptier information is being inserted into the database. This might take a while.", MOSSGREEN, WHITE);
+	PrintToChat(client, "[%cSurf Timer%c] Maptier information is being inserted into the database. This might take a while.", LIMEGREEN, WHITE);
 
 	Transaction h_addTiers = SQL_CreateTransaction();
 	SQL_AddQuery(h_addTiers, "INSERT INTO `ck_maptier` (`mapname`, `tier`, `btier1`, `btier2`, `btier3`, `btier4`, `btier5`, `btier6`, `btier7`, `btier8`, `btier9`, `btier10`) VALUES ('surf_004_final1', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_1day', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_2012_beta12', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_3', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_4dimensional', 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_6', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_81st_network_njv', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_abyss_fix', 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_acp', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_acp_fix', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_adtr_njv', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_advanced', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_aether', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_again_njv_rg', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_aircontrol_ksf', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_airflow', 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_akai_final', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_akai_two_rg', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_alternation', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_amateur_v2b', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_amateur_v2b_', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_ambient_njv', 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_amplitude_apex_njv', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_amplitude_encore_nsf_v4', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_amplitude_light', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_and_destroy', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_animals', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_annoyance_njv', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_anonymity', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_anthropomorphic-', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_apollonian', 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_arghmyeyes', 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_artifex', 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_aspiration', 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_asrown', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_asrown-', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_ataque_final', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_atlas_1', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_auroia_njv', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL), ('surf_auroria2', 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL); ");
@@ -997,7 +997,7 @@ public void Admin_InsertMapTierstoDatabase(int client)
 public void SQLTxn_TierInsertFailed(Handle db, any data, int numQueries, const char[] error, int failIndex, any[] queryData)
 {
 	if (IsValidClient(data))
-		PrintToChat(data, "[%cSurf Timer%c] Inserting map tiers %cfailed!%c. Check error logs.", MOSSGREEN, WHITE, RED, WHITE);
+		PrintToChat(data, "[%cSurf Timer%c] Inserting map tiers %cfailed!%c. Check error logs.", LIMEGREEN, WHITE, RED, WHITE);
 
 	g_insertingInformation = false;
 	LogError("[Surf Timer] SQL Tier insertion failed! Index: %i Error: %s", failIndex, error);
@@ -1006,7 +1006,7 @@ public void SQLTxn_TierInsertFailed(Handle db, any data, int numQueries, const c
 public void SQLTxn_TierInsertSuccess(Handle db, any data, int numQueries, Handle[] results, any[] queryData)
 {
 	if (IsValidClient(data))
-		PrintToChat(data, "[%cSurf Timer%c] Successfully inserted map tiers!", MOSSGREEN, WHITE);
+		PrintToChat(data, "[%cSurf Timer%c] Successfully inserted map tiers!", LIMEGREEN, WHITE);
 
 	db_selectMapTier();
 	g_insertingInformation = false;
@@ -1019,7 +1019,7 @@ public void Admin_InsertZonestoDatabase(int client)
 
 	g_insertingInformation = true;
 
-	PrintToChat(client, "[%cSurf Timer%c] Inserting zones to the database, this might take a while... You will get a confirmation after the zones are inserted.", MOSSGREEN, WHITE);
+	PrintToChat(client, "[%cSurf Timer%c] Inserting zones to the database, this might take a while... You will get a confirmation after the zones are inserted.", LIMEGREEN, WHITE);
 
 	Transaction h_addZones = SQL_CreateTransaction();
 	SQL_AddQuery(h_addZones, "INSERT INTO `ck_zones` (`mapname`, `zoneid`, `zonetype`, `zonetypeid`, `pointa_x`, `pointa_y`, `pointa_z`, `pointb_x`, `pointb_y`, `pointb_z`, `vis`, `team`, `zonegroup`, `zonename`) VALUES ('surf_004_final1', 0, 2, 1, -2210.79, -1471.97, 0.03125, -2813.97, 1470.97, 100.031, 0, 0, 0, NULL), ('surf_004_final1', 1, 1, 1, -10240.4, 495.969, 15808, -10593.9, -495.969, 15908, 0, 0, 0, NULL), ('surf_1day', 0, 3, 9, -10656.4, 8545.39, -3649.97, -10721.4, 8478.62, -3547.97, 0, 0, 0, NULL), ('surf_1day', 1, 3, 8, -4614.87, -3654.2, 7870.03, -5629.14, -4143.97, 7972.03, 0, 0, 0, NULL), ('surf_1day', 2, 3, 6, 2867.13, -3631.97, 8126.03, 3304.92, -3306.18, 8228.03, 0, 0, 0, NULL), ('surf_1day', 3, 3, 7, -2858.19, -3971.13, 8126.03, -2305.42, -3683.49, 8228.03, 0, 0, 0, NULL), ('surf_1day', 4, 2, 0, -12609.8, 6976.84, -10896.4, -13232, 7864.49, -10600, 0, 0, 0, NULL), ('surf_1day', 5, 3, 5, -156.182, -4028, 8126.03, 201.998, -3689.19, 8228.03, 0, 0, 0, NULL), ('surf_1day', 6, 2, 1, -13232, 6984.71, -10702, -13221.3, 7878.96, -9959.18, 0, 0, 0, NULL), ('surf_1day', 7, 3, 4, -1483.52, -4333.14, -2625.97, -1034.06, -4818.06, -2523.97, 0, 0, 0, NULL), ('surf_1day', 8, 3, 3, -12467.1, -5467.63, 2494.02, -12054, -5917.16, 2596.03, 0, 0, 0, NULL), ('surf_1day', 9, 3, 2, -12531.1, -13607.2, 3517.95, -12042.9, -14070.7, 3620, 0, 0, 0, NULL), ('surf_1day', 10, 3, 1, -4020.12, -6162.85, -8894.1, -3406.55, -5437.18, -8737.44, 0, 0, 0, NULL), ('surf_1day', 11, 3, 0, 11568, -2217.01, -1761.97, 11467, -1739.43, -1659.97, 0, 0, 0, NULL), ('surf_1day', 12, 5, 0, 2013.15, 148.516, -149.969, 2486.33, -394.254, -47.9688, 0, 0, 0, NULL), ('surf_1day', 13, 1, 0, 5018.86, 9490.21, 4064.03, 4644.03, 9279.98, 4114.29, 0, 0, 1, NULL), ('surf_1day', 14, 2, 0, -10192, 8880.84, 7200.03, -10070.6, 8573.16, 7300.03, 0, 0, 1, NULL), ('surf_2012_beta12', 0, 3, 4, -291.67, 555.205, 11328, -568.846, 865.361, 11428, 0, 0, 0, NULL), ('surf_2012_beta12', 1, 2, 0, -1154.6, 10869.3, 7489.03, -1405.99, 11014.8, 7683.01, 0, 0, 0, NULL), ('surf_2012_beta12', 2, 3, 3, 7989.53, 8113.34, 9187.15, 8287.28, 7994.19, 9287.15, 0, 0, 0, NULL), ('surf_2012_beta12', 3, 3, 2, 7832, -3919.96, 1664.03, 8049.35, -4312.86, 1764.03, 0, 0, 0, NULL), ('surf_2012_beta12', 4, 1, 0, 4927.03, -3325.56, 1296.03, 5313.04, -3570.61, 1380.03, 0, 0, 0, NULL), ('surf_2012_beta12', 5, 3, 0, 13372.8, -668.424, 15360, 13593.2, -1042.87, 15460, 0, 0, 0, NULL), ('surf_2012_beta12', 6, 3, 1, -1457.81, -2968.9, 4484.03, -1153.5, -2645.08, 4580.03, 0, 0, 0, NULL), ('surf_2012_beta12', 7, 1, 0, 2464.03, -5491.55, 4194.21, 2567.71, -5574.63, 4064.03, 0, 0, 1, NULL), ('surf_2012_beta12', 8, 2, 0, 7263.84, -5506.87, -5918.97, 7169.44, -5566.97, -5731.47, 0, 0, 1, NULL), ('surf_3', 0, 2, 0, 2696.61, -6294.64, -10978, 3484, -5478.25, -10876, 0, 0, 0, NULL), ('surf_3', 1, 1, 0, -2999.05, 125.759, 7614.03, -3223.79, -130.836, 7716.03, 0, 0, 0, NULL), ('surf_3', 2, 4, 0, -2607.33, 671.969, 5497.17, -3303.19, -668.399, 4032.03, 0, 0, 0, NULL), ('surf_3', 3, 4, 1, 2448.03, -948.35, 3893.11, 3764.93, -279.609, 2424.03, 0, 0, 0, NULL), ('surf_3', 4, 4, 2, 2832.91, -6174.93, -1696.03, 3333.32, -5632.03, -2216.97, 0, 0, 0, NULL), ('surf_3', 5, 4, 3, 1385.72, -7639.93, -6400.03, 4874.62, -4141.72, -7919.97, 0, 0, 0, NULL), ('surf_4dimensional', 0, 3, 1, -815.969, -903.357, -6657.97, -559.993, -1154.98, -6612.5, 0, 0, 0, NULL), ('surf_4dimensional', 1, 2, 1, -3056, 335.969, 7534.03, -3754.43, -2431.97, 7636.03, 0, 0, 0, NULL);");
@@ -1151,7 +1151,7 @@ public void Admin_InsertZonestoDatabase(int client)
 public void SQLTxn_ZoneInsertFailed(Handle db, any data, int numQueries, const char[] error, int failIndex, any[] queryData)
 {
 	if (IsValidClient(data))
-		PrintToChat(data, "[%cSurf Timer%c] Inserting zones %cfailed!%c. Check error logs.", MOSSGREEN, WHITE, RED, WHITE);
+		PrintToChat(data, "[%cSurf Timer%c] Inserting zones %cfailed!%c. Check error logs.", LIMEGREEN, WHITE, RED, WHITE);
 
 	g_insertingInformation = false;
 	LogError("[Surf Timer] SQL Zone insertion failed! Index: %i Error: %s", failIndex, error);
@@ -1160,7 +1160,7 @@ public void SQLTxn_ZoneInsertFailed(Handle db, any data, int numQueries, const c
 public void SQLTxn_ZoneInsertSuccess(Handle db, any data, int numQueries, Handle[] results, any[] queryData)
 {
 	if (IsValidClient(data))
-		PrintToChat(data, "[%cSurf Timer%c] Successfully inserted map zones!", MOSSGREEN, WHITE);
+		PrintToChat(data, "[%cSurf Timer%c] Successfully inserted map zones!", LIMEGREEN, WHITE);
 
 	db_selectMapZones();
 	g_insertingInformation = false;
@@ -1170,7 +1170,7 @@ public Action Admin_InsertMapZones(int client, int args)
 {
 	if (g_insertingInformation)
 	{
-		PrintToChat(client, "[%cSurf Timer%c] Wait for inserting to finish, before starting it again..", MOSSGREEN, WHITE);
+		PrintToChat(client, "[%cSurf Timer%c] Wait for inserting to finish, before starting it again..", LIMEGREEN, WHITE);
 		return Plugin_Handled;
 	}
 
@@ -1400,7 +1400,7 @@ public Action Admin_ReloadChatTags(int client, int args)
 		db_getChatTags(targets[i]);
 	}
 
-	PrintToChat(client, "[%cSurf Timer%c] Reloading custom chat tags to %s.", MOSSGREEN, WHITE, target_name);
+	PrintToChat(client, "[%cSurf Timer%c] Reloading custom chat tags to %s.", LIMEGREEN, WHITE, target_name);
 	return Plugin_Handled;
 }
 
@@ -1435,7 +1435,7 @@ public Action Admin_SetTag(int client, int args)
 		db_setPlayerTag(targets[i], tag);
 	}
 
-	PrintToChat(client, "[%cSurf Timer%c] Setting custom chat tag to %s.", MOSSGREEN, WHITE, target_name);
+	PrintToChat(client, "[%cSurf Timer%c] Setting custom chat tag to %s.", LIMEGREEN, WHITE, target_name);
 	return Plugin_Handled;
 }
 
@@ -1470,6 +1470,6 @@ public Action Admin_SetName(int client, int args)
 		db_setPlayerName(targets[i], name);
 	}
 
-	PrintToChat(client, "[%cSurf Timer%c] Setting custom name to %s.", MOSSGREEN, WHITE, target_name);
+	PrintToChat(client, "[%cSurf Timer%c] Setting custom name to %s.", LIMEGREEN, WHITE, target_name);
 	return Plugin_Handled;
 }

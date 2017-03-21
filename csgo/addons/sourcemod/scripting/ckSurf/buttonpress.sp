@@ -9,8 +9,8 @@ public void CL_OnStartTimerPress(int client)
 			{
 				if (GetGameTime() - g_fErrorMessage[client] > 1.0)
 				{
-					PrintToChat(client, "[%cSurf Timer%c] The server hasn't finished loading it's settings, please wait.", MOSSGREEN, WHITE);
-					ClientCommand(client, "play buttons\\button10.wav");
+					PrintToChat(client, "[%cSurf Timer%c] The server hasn't finished loading it's settings, please wait.", LIMEGREEN, WHITE);
+					//ClientCommand(client, "play buttons\\button10.wav");
 					g_fErrorMessage[client] = GetGameTime();
 				}
 				return;
@@ -19,8 +19,8 @@ public void CL_OnStartTimerPress(int client)
 			{
 				if (GetGameTime() - g_fErrorMessage[client] > 1.0)
 				{
-					PrintToChat(client, "[%cSurf Timer%c] Your settings are currently being loaded, please wait.", MOSSGREEN, WHITE);
-					ClientCommand(client, "play buttons\\button10.wav");
+					PrintToChat(client, "[%cSurf Timer%c] Your settings are currently being loaded, please wait.", LIMEGREEN, WHITE);
+					//ClientCommand(client, "play buttons\\button10.wav");
 					g_fErrorMessage[client] = GetGameTime();
 				}
 				return;
@@ -29,8 +29,8 @@ public void CL_OnStartTimerPress(int client)
 			{
 				if (GetGameTime() - g_fErrorMessage[client] > 1.0)
 				{
-					PrintToChat(client, "[%cSurf Timer%c] The server hasn't finished loading your settings, please wait.", MOSSGREEN, WHITE);
-					ClientCommand(client, "play buttons\\button10.wav");
+					PrintToChat(client, "[%cSurf Timer%c] The server hasn't finished loading your settings, please wait.", LIMEGREEN, WHITE);
+					//ClientCommand(client, "play buttons\\button10.wav");
 					g_fErrorMessage[client] = GetGameTime();
 				}
 				return;
@@ -84,7 +84,7 @@ public void CL_OnStartTimerPress(int client)
 
 		// Build Speed difference message
 		char speedDiffMsg[128];
-		Format(speedDiffMsg, sizeof(speedDiffMsg), "[%cSurf Timer%c] Start: %c%d %cu/s", MOSSGREEN, WHITE, YELLOW, RoundToCeil(fPlayerVelocity), WHITE);
+		Format(speedDiffMsg, sizeof(speedDiffMsg), "[%cSurf Timer%c] Start: %c%d %cu/s", LIMEGREEN, WHITE, LIMEGREEN, RoundToCeil(fPlayerVelocity), WHITE);
 
 
 		if (g_fPlayerRectStartSpeed[client][zgroup] != -1)
@@ -116,6 +116,17 @@ public void CL_OnStartTimerPress(int client)
 			Format(speedDiffMsg, sizeof(speedDiffMsg), "%s | SR: %s", speedDiffMsg, srDiff);
 		}
 
+		//for (int i = 1; i <= MaxClients; i++)
+		//{
+		//	if (GetClientTeam(i) != CS_TEAM_SPECTATOR)
+			//	continue;
+			//
+		//		int ObserverMode = GetEntProp(i, Prop_Send, "m_iObserverMode");
+		//	if (ObserverMode != 4 && ObserverMode != 5)
+			//	continue;
+
+			//PrintToChat(client, speedDiffMsg);
+//		}
 		PrintToChat(client, speedDiffMsg);
 
 
@@ -189,9 +200,7 @@ public void CL_OnEndTimerPress(int client)
 					if (Target == client && g_RecordBot == Target)
 					{
 						if (g_CurrentReplay == 0)
-							PrintToChat(i, "%t", "ReplayFinishingMsg", MOSSGREEN, WHITE, LIMEGREEN, g_szReplayName, GRAY, LIMEGREEN, g_szReplayTime, GRAY);
 						else if (g_CurrentReplay > 0)
-							PrintToChat(i, "%t", "ReplayFinishingMsgBonus", MOSSGREEN, WHITE, LIMEGREEN, g_szBonusName, GRAY, YELLOW, g_szZoneGroupName[g_iClientInZone[Target][2]], GRAY, LIMEGREEN, g_szBonusTime, GRAY);
 					}
 				}
 			}
@@ -228,9 +237,9 @@ public void CL_OnEndTimerPress(int client)
 	if (g_bPracticeMode[client])
 	{
 		if (g_iClientInZone[client][2] > 0)
-			PrintToChat(client, "[%cSurf Timer%c] %c%s %cfinished the bonus with a time of [%c%s%c] in practice mode!", MOSSGREEN, WHITE, MOSSGREEN, szName, WHITE, LIGHTBLUE, g_szFinalTime[client], WHITE);
+			PrintToChat(client, "[%cSurf Timer%c] %c%s %cfinished the bonus with a time of %c%s%c in practice mode!", LIMEGREEN, WHITE, LIMEGREEN, szName, WHITE, LIGHTBLUE, g_szFinalTime[client], WHITE);
 		else
-			PrintToChat(client, "[%cSurf Timer%c] %c%s %cfinished the map with a time of [%c%s%c] in practice mode!", MOSSGREEN, WHITE, MOSSGREEN, szName, WHITE, LIGHTBLUE, g_szFinalTime[client], WHITE);
+			PrintToChat(client, "[%cSurf Timer%c] %c%s %cfinished the map with a time of %c%s%c in practice mode!", LIMEGREEN, WHITE, LIMEGREEN, szName, WHITE, LIGHTBLUE, g_szFinalTime[client], WHITE);
 
 		/* Start function call */
 		Call_StartForward(g_PracticeFinishForward);
@@ -296,7 +305,7 @@ public void CL_OnEndTimerPress(int client)
 		FormatTimeFloat(client, srdiff, 3, szSRDiff, sizeof(szSRDiff));
 
 		if (srdiff > 0.0)
-			Format(g_szSRTimeDifference[client], sizeof(szSRDiff), "%c-%s", GREEN, szSRDiff);
+			Format(g_szSRTimeDifference[client], sizeof(szSRDiff), "%c-%s", LIMEGREEN, szSRDiff);
 		else
 			Format(g_szSRTimeDifference[client], sizeof(szSRDiff), "%c+%s", RED, szSRDiff);
 
@@ -418,14 +427,14 @@ public void CL_OnEndTimerPress(int client)
 						GetClientName(i, szNameOpponent, MAX_NAME_LENGTH);
 						for (int k = 1; k <= MaxClients; k++)
 							if (IsValidClient(k))
-								PrintToChat(k, "%t", "ChallengeW", RED, WHITE, MOSSGREEN, szName, WHITE, MOSSGREEN, szNameOpponent, WHITE);
+								PrintToChat(k, "%t", "ChallengeW", RED, WHITE, LIMEGREEN, szName, WHITE, LIMEGREEN, szNameOpponent, WHITE);
 
 						if (g_Challenge_Bet[client] > 0)
 						{
 							int lostpoints = g_Challenge_Bet[client] * g_pr_PointUnit;
 							for (int j = 1; j <= MaxClients; j++)
 								if (IsValidClient(j))
-									PrintToChat(j, "%t", "ChallengeL", MOSSGREEN, WHITE, PURPLE, szNameOpponent, GRAY, RED, lostpoints, GRAY);
+									PrintToChat(j, "%t", "ChallengeL", LIMEGREEN, WHITE, PURPLE, szNameOpponent, WHITE, RED, lostpoints, WHITE);
 							CreateTimer(0.5, UpdatePlayerProfile, i, TIMER_FLAG_NO_MAPCHANGE);
 							g_pr_showmsg[client] = true;
 						}
@@ -470,7 +479,7 @@ public void CL_OnEndTimerPress(int client)
 		FormatTimeFloat(client, srdiff, 3, szSRDiff, sizeof(szSRDiff));
 
 		if (srdiff > 0.0)
-			Format(g_szBonusSRTimeDifference[client], sizeof(szSRDiff), "%c-%s", GREEN, szSRDiff);
+			Format(g_szBonusSRTimeDifference[client], sizeof(szSRDiff), "%c-%s", LIMEGREEN, szSRDiff);
 		else
 			Format(g_szBonusSRTimeDifference[client], sizeof(szSRDiff), "%c+%s", RED, szSRDiff);
 
@@ -567,11 +576,11 @@ public void CL_OnEndTimerPress(int client)
 			db_currentBonusRunRank(client, zGroup);
 			/*// Not any kind of a record
 			if (GetConVarInt(g_hAnnounceRecord) == 0 && (g_MapRankBonus[zGroup][client] <= GetConVarInt(g_hAnnounceRank) || GetConVarInt(g_hAnnounceRank) == 0))
-	 			PrintToChatAll("%t", "BonusFinished1", MOSSGREEN, WHITE, LIMEGREEN, szName, GRAY, YELLOW, g_szZoneGroupName[zGroup], GRAY, RED, szTime, GRAY, RED, szDiff, GRAY, LIMEGREEN, g_MapRankBonus[zGroup][client], GRAY, g_iBonusCount[zGroup], LIMEGREEN, g_szBonusFastestTime[zGroup], GRAY);
+	 			PrintToChatAll("%t", "BonusFinished1", LIMEGREEN, WHITE, LIMEGREEN, szName, WHITE, YELLOW, g_szZoneGroupName[zGroup], WHITE, RED, szTime, WHITE, RED, szDiff, WHITE, LIMEGREEN, g_MapRankBonus[zGroup][client], WHITE, g_iBonusCount[zGroup], LIMEGREEN, g_szBonusFastestTime[zGroup], WHITE);
 			else
 			{
 				if (IsValidClient(client))
-		 			PrintToChat(client, "%t", "BonusFinished1", MOSSGREEN, WHITE, LIMEGREEN, szName, GRAY, YELLOW, g_szZoneGroupName[zGroup], GRAY, RED, szTime, GRAY, RED, szDiff, GRAY, LIMEGREEN, g_MapRankBonus[zGroup][client], GRAY, g_iBonusCount[zGroup], LIMEGREEN, g_szBonusFastestTime[zGroup], GRAY);
+		 			PrintToChat(client, "%t", "BonusFinished1", LIMEGREEN, WHITE, LIMEGREEN, szName, WHITE, YELLOW, g_szZoneGroupName[zGroup], WHITE, RED, szTime, WHITE, RED, szDiff, WHITE, LIMEGREEN, g_MapRankBonus[zGroup][client], WHITE, g_iBonusCount[zGroup], LIMEGREEN, g_szBonusFastestTime[zGroup], WHITE);
 			}*/
 		}
 	}
@@ -593,7 +602,7 @@ public void StartStageTimer(int client)
 
 	if (g_bNoClip[client] || (!g_bNoClip[client] && (GetGameTime() - g_fLastTimeNoClipUsed[client]) < 3.0))
 	{
-		PrintToChat(client, "[%cSurf Timer%c] %cYou are noclipping or have noclipped recently%c, stage timer disabled.", MOSSGREEN, WHITE, LIGHTRED, WHITE);
+		PrintToChat(client, "[%cSurf Timer%c] %cYou are noclipping or have noclipped recently%c, stage timer disabled.", LIMEGREEN, WHITE, LIGHTRED, WHITE);
 		return;
 	}
 
@@ -607,13 +616,13 @@ public void StartStageTimer(int client)
 
 	if (g_fLastSpeed[client] > g_fStageMaxVelocity[stage] && g_fStageMaxVelocity[stage] > 0)
 	{
-		PrintToChat(client, "[%cSurf Timer%c] %cMax start velocity exceeded on stage %d.", MOSSGREEN, WHITE, LIGHTRED, g_Stage[0][client]);
+		PrintToChat(client, "[%cSurf Timer%c] %cMax start velocity exceeded on stage %d.", LIMEGREEN, WHITE, LIGHTRED, g_Stage[0][client]);
 		return;
 	}
 
 	if (g_PlayerJumpsInStage[client] > 1 && !g_bStageIgnorePrehop[stage])
 	{
-		PrintToChat(client, "[%cSurf Timer%c] %cNo Prehop allowed for stage records", MOSSGREEN, WHITE, LIGHTRED);
+		PrintToChat(client, "[%cSurf Timer%c] %cNo Prehop allowed for stage records", LIMEGREEN, WHITE, LIGHTRED);
 		return;
 	}
 
@@ -641,7 +650,7 @@ public void StartStageTimer(int client)
 	// Build Speed difference message
 	char speedDiffMsg[128];
 
-	Format(speedDiffMsg, sizeof(speedDiffMsg), "[%cSurf Timer%c] Stage: %c%d %cu/s", MOSSGREEN, WHITE, YELLOW, RoundToCeil(fPlayerVelocity), WHITE);
+	Format(speedDiffMsg, sizeof(speedDiffMsg), "[%cSurf Timer%c] Stage: %c%d %cu/s", LIMEGREEN, WHITE, LIMEGREEN, RoundToCeil(fPlayerVelocity), WHITE);
 
 	if (g_fPlayerStageRecStartSpeed[client][stage] != -1)
 	{
@@ -669,6 +678,18 @@ public void StartStageTimer(int client)
 
 		Format(speedDiffMsg, sizeof(speedDiffMsg), "%s | SR: %s", speedDiffMsg, srDiff);
 	}
+
+	//for (int i = 1; i <= MaxClients; i++)
+	//{
+	//	if (GetClientTeam(i) != CS_TEAM_SPECTATOR)
+	//		continue;
+
+	//	int ObserverMode = GetEntProp(i, Prop_Send, "m_iObserverMode");
+	//	if (ObserverMode != 4 && ObserverMode != 5)
+	//		continue;
+
+	//	PrintToChat(client, speedDiffMsg);
+	//}
 
 	PrintToChat(client, speedDiffMsg);
 }
@@ -742,7 +763,7 @@ public void EndStageTimer(int client)
 		// Check if the stage records were loaded before sending the message
 		if (!g_bLoadingStages) {
 			// Send message to all players
-			PrintToChatAll("[%cSurf Timer%c] %c%N %cbroke the record on %cstage %d %cin %c%s %c| PB: %s | SR: %s", MOSSGREEN, WHITE, LIMEGREEN, client, WHITE, LIMEGREEN, stage, WHITE, LIMEGREEN, runtime_str, WHITE, pbdiff_str, srdiff_str);
+			PrintToChatAll("[%cSurf Timer%c] %c%N %cbroke the record on %cstage %d %cin %c%s %c| PB: %c%s%c | SR: %c%s", LIMEGREEN, WHITE, LIMEGREEN, client, WHITE, LIMEGREEN, stage, WHITE, LIMEGREEN, runtime_str, WHITE, LIMEGREEN, pbdiff_str, WHITE, LIMEGREEN, srdiff_str);
 
 			// Play sound to everyone
 			for (int i = 1; i <= MaxClients; i++)
@@ -775,7 +796,7 @@ public void EndStageTimer(int client)
 	{
 		// Player beaten his own record
 
-		PrintToChat(client, "[%cSurf Timer%c] Finished %cstage %d %cin %c%s %c| PB: %s | SR: %s", MOSSGREEN, WHITE, LIMEGREEN, stage, WHITE, LIMEGREEN, runtime_str, WHITE, pbdiff_str, srdiff_str);
+		PrintToChat(client, "[%cSurf Timer%c] Finished %cstage %d %cin %c%s %c| PB: %c%s%c | SR: %c%s", LIMEGREEN, WHITE, LIMEGREEN, stage, WHITE, LIMEGREEN, runtime_str, WHITE, LIMEGREEN, pbdiff_str, WHITE, RED, srdiff_str);
 
 		if (g_fStagePlayerRecord[client][stage] != 9999999.0)
 			db_updateStageRecord(client, stage, runtime);
@@ -788,7 +809,7 @@ public void EndStageTimer(int client)
 	else
 	{
 		// missed sr and pb
-		PrintToChat(client, "[%cSurf Timer%c] Finished %cstage %d %cin %c%s %c| PB: %s | SR: %s", MOSSGREEN, WHITE, LIMEGREEN, stage, WHITE, LIMEGREEN, runtime_str, WHITE, pbdiff_str, srdiff_str);
+		PrintToChat(client, "[%cSurf Timer%c] Finished %cstage %d %cin %c%s %c| PB: %c%s%c | SR: %c%s", LIMEGREEN, WHITE, LIMEGREEN, stage, WHITE, LIMEGREEN, runtime_str, WHITE, RED, pbdiff_str, WHITE, RED, srdiff_str);
 		return;
 	}
 

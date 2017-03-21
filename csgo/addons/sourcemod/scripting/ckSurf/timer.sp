@@ -195,23 +195,23 @@ public Action CKTimer2(Handle timer)
 			GetMapTimeLeft(timeleft);
 			switch (timeleft)
 			{
-				case 1800:PrintToChatAll("%t", "TimeleftMinutes", LIGHTRED, WHITE, timeleft / 60);
-				case 1200:PrintToChatAll("%t", "TimeleftMinutes", LIGHTRED, WHITE, timeleft / 60);
-				case 600:PrintToChatAll("%t", "TimeleftMinutes", LIGHTRED, WHITE, timeleft / 60);
-				case 300:PrintToChatAll("%t", "TimeleftMinutes", LIGHTRED, WHITE, timeleft / 60);
-				case 120:PrintToChatAll("%t", "TimeleftMinutes", LIGHTRED, WHITE, timeleft / 60);
-				case 60:PrintToChatAll("%t", "TimeleftSeconds", LIGHTRED, WHITE, timeleft);
-				case 30:PrintToChatAll("%t", "TimeleftSeconds", LIGHTRED, WHITE, timeleft);
-				case 15:PrintToChatAll("%t", "TimeleftSeconds", LIGHTRED, WHITE, timeleft);
-				case  - 1:PrintToChatAll("%t", "TimeleftCounter", LIGHTRED, WHITE, 3);
-				case  - 2:PrintToChatAll("%t", "TimeleftCounter", LIGHTRED, WHITE, 2);
+				case 1800:PrintToChatAll("%t", "TimeleftMinutes", LIMEGREEN, WHITE, timeleft / 60);
+				case 1200:PrintToChatAll("%t", "TimeleftMinutes", LIMEGREEN, WHITE, timeleft / 60);
+				case 600:PrintToChatAll("%t", "TimeleftMinutes", LIMEGREEN, WHITE, timeleft / 60);
+				case 300:PrintToChatAll("%t", "TimeleftMinutes", LIMEGREEN, WHITE, timeleft / 60);
+				case 120:PrintToChatAll("%t", "TimeleftMinutes", LIMEGREEN, WHITE, timeleft / 60);
+				case 60:PrintToChatAll("%t", "TimeleftSeconds", LIMEGREEN, WHITE, timeleft);
+				case 30:PrintToChatAll("%t", "TimeleftSeconds", LIMEGREEN, WHITE, timeleft);
+				case 15:PrintToChatAll("%t", "TimeleftSeconds", LIMEGREEN, WHITE, timeleft);
+				case  - 1:PrintToChatAll("%t", "TimeleftCounter", LIMEGREEN, WHITE, LIMEGREEN, 3);
+				case  - 2:PrintToChatAll("%t", "TimeleftCounter", LIMEGREEN, WHITE, LIMEGREEN, 2);
 				case  - 3:
 				{
 					if (!g_bRoundEnd)
 					{
 						g_bRoundEnd = true;
 						ServerCommand("mp_ignore_round_win_conditions 0");
-						PrintToChatAll("%t", "TimeleftCounter", LIGHTRED, WHITE, 1);
+						PrintToChatAll("%t", "TimeleftCounter", LIMEGREEN, WHITE, 1);
 						CreateTimer(1.0, TerminateRoundTimer, INVALID_HANDLE, TIMER_FLAG_NO_MAPCHANGE);
 					}
 				}
@@ -423,7 +423,7 @@ public Action SetClanTag(Handle timer, any client)
 	//new rank
 	if (oldrank && GetConVarBool(g_hPointSystem))
 		if (!StrEqual(g_pr_rankname[client], old_pr_rankname, false) && IsValidClient(client))
-			CPrintToChat(client, "%t", "SkillGroup", MOSSGREEN, WHITE, GRAY, GRAY, g_pr_chat_coloredrank[client]);
+			CPrintToChat(client, "%t", "SkillGroup", LIMEGREEN, WHITE, WHITE, WHITE, g_pr_chat_coloredrank[client]);
 
 	return Plugin_Handled;
 }
@@ -447,7 +447,7 @@ public Action WelcomeMsgTimer(Handle timer, any client)
 public Action HelpMsgTimer(Handle timer, any client)
 {
 	if (IsValidClient(client) && !IsFakeClient(client))
-		PrintToChat(client, "%t", "HelpMsg", MOSSGREEN, WHITE, GREEN, WHITE);
+		PrintToChat(client, "%t", "HelpMsg", LIMEGREEN, WHITE, LIMEGREEN, WHITE);
 
 	return Plugin_Handled;
 }
@@ -460,22 +460,22 @@ public Action AdvertTimer(Handle timer)
 	{
 		if (g_bhasBonus)
 		{
-			PrintToChatAll("%t", "AdvertBonus", MOSSGREEN, WHITE, MOSSGREEN, WHITE, MOSSGREEN);
+			PrintToChatAll("%t", "AdvertBonus", LIMEGREEN, WHITE, LIMEGREEN, WHITE);
 		}
 		else if (g_bhasStages)
 		{
-			PrintToChatAll("%t", "AdvertStage", MOSSGREEN, WHITE, MOSSGREEN, WHITE, MOSSGREEN, WHITE, MOSSGREEN);
+			PrintToChatAll("%t", "AdvertStage", LIMEGREEN, WHITE, LIMEGREEN, WHITE, LIMEGREEN, WHITE);
 		}
 	}
 	else
 	{
 		if (g_bhasStages)
 		{
-			PrintToChatAll("%t", "AdvertStage", MOSSGREEN, WHITE, MOSSGREEN, WHITE, MOSSGREEN, WHITE, MOSSGREEN);
+			PrintToChatAll("%t", "AdvertStage", LIMEGREEN, WHITE, LIMEGREEN, WHITE, LIMEGREEN, WHITE);
 		}
 		else if (g_bhasBonus)
 		{
-			PrintToChatAll("%t", "AdvertBonus", MOSSGREEN, WHITE, MOSSGREEN, WHITE, MOSSGREEN);
+			PrintToChatAll("%t", "AdvertBonus", LIMEGREEN, WHITE, LIMEGREEN, WHITE);
 		}
 	}
 	return Plugin_Continue;

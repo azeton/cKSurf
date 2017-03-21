@@ -918,7 +918,7 @@ public void db_checkChangesInTitleCallback(Handle owner, Handle hndl, const char
 				{
 					g_bflagTitles_orig[client][i] = g_bflagTitles[client][i];
 					if (g_bflagTitles[client][i])
-						PrintToChat(client, "[%cSurf Timer%c] Congratulations! You have gained the VIP privileges!", MOSSGREEN, WHITE);
+						PrintToChat(client, "[%cSurf Timer%c] Congratulations! You have gained the VIP privileges!", LIMEGREEN, WHITE);
 					else
 					{
 						if (g_iTitleInUse[client] == i)
@@ -928,7 +928,7 @@ public void db_checkChangesInTitleCallback(Handle owner, Handle hndl, const char
 						}
 
 						g_bTrailOn[client] = false;
-						PrintToChat(client, "[%cSurf Timer%c] You have lost your VIP privileges!", MOSSGREEN, WHITE);
+						PrintToChat(client, "[%cSurf Timer%c] You have lost your VIP privileges!", LIMEGREEN, WHITE);
 					}
 					break;
 				}
@@ -937,7 +937,7 @@ public void db_checkChangesInTitleCallback(Handle owner, Handle hndl, const char
 
 					g_bflagTitles_orig[client][i] = g_bflagTitles[client][i];
 					if (g_bflagTitles[client][i])
-						PrintToChat(client, "[%cSurf Timer%c] Congratulations! You have gained the custom title \"%s\"!", MOSSGREEN, WHITE, g_szflagTitle_Colored[i]);
+						PrintToChat(client, "[%cSurf Timer%c] Congratulations! You have gained the custom title \"%s\"!", LIMEGREEN, WHITE, g_szflagTitle_Colored[i]);
 					else
 					{
 						if (g_iTitleInUse[client] == i)
@@ -946,7 +946,7 @@ public void db_checkChangesInTitleCallback(Handle owner, Handle hndl, const char
 							db_updatePlayerTitleInUse(-1, steamid);
 						}
 
-						PrintToChat(client, "[%cSurf Timer%c] You have lost your custom title \"%s\"!", MOSSGREEN, WHITE, g_szflagTitle_Colored[i]);
+						PrintToChat(client, "[%cSurf Timer%c] You have lost your custom title \"%s\"!", LIMEGREEN, WHITE, g_szflagTitle_Colored[i]);
 					}
 					break;
 				}
@@ -971,7 +971,7 @@ public void SQL_insertFlagCallback(Handle owner, Handle hndl, const char[] error
 	}
 
 	if (IsValidClient(data))
-		PrintToChat(data, "[%cSurf Timer%c] Succesfully granted title to a player", MOSSGREEN, WHITE);
+		PrintToChat(data, "[%cSurf Timer%c] Succesfully granted title to a player", LIMEGREEN, WHITE);
 
 	db_checkChangesInTitle(g_iAdminSelectedClient[data], g_szAdminSelectedSteamID[data]);
 }
@@ -992,7 +992,7 @@ public void SQL_updatePlayerFlagsCallback(Handle owner, Handle hndl, const char[
 	}
 
 	if (IsValidClient(data))
-		PrintToChat(data, "[%cSurf Timer%c] Succesfully updated player's titles", MOSSGREEN, WHITE);
+		PrintToChat(data, "[%cSurf Timer%c] Succesfully updated player's titles", LIMEGREEN, WHITE);
 
 	if (g_iAdminSelectedClient[data] != -1)
 		db_checkChangesInTitle(g_iAdminSelectedClient[data], g_szAdminSelectedSteamID[data]);
@@ -1027,7 +1027,7 @@ public void SQL_deletePlayerTitlesCallback(Handle owner, Handle hndl, const char
 		return;
 	}
 
-	PrintToChat(data, "[%cSurf Timer%c] Succesfully deleted player's titles.", MOSSGREEN, WHITE);
+	PrintToChat(data, "[%cSurf Timer%c] Succesfully deleted player's titles.", LIMEGREEN, WHITE);
 	db_checkChangesInTitle(g_iAdminSelectedClient[data], g_szAdminSelectedSteamID[data]);
 }
 
@@ -1631,7 +1631,7 @@ public void sql_updatePlayerRankPointsCallback(Handle owner, Handle hndl, const 
 					if (1 <= i <= MaxClients && IsValidEntity(i) && IsValidClient(i))
 					{
 						if (g_bManualRecalc)
-							PrintToChat(i, "%t", "PrUpdateFinished", MOSSGREEN, WHITE, LIMEGREEN);
+							PrintToChat(i, "%t", "PrUpdateFinished", LIMEGREEN, WHITE, LIMEGREEN);
 					}
 				g_bManualRecalc = false;
 				g_pr_RankingRecalc_InProgress = false;
@@ -1649,7 +1649,7 @@ public void sql_updatePlayerRankPointsCallback(Handle owner, Handle hndl, const 
 		{
 			ProfileMenu(data, -1);
 			if (IsValidClient(data))
-				PrintToChat(data, "%t", "Rc_PlayerRankFinished", MOSSGREEN, WHITE, GRAY, PURPLE, g_pr_points[data], GRAY);
+				PrintToChat(data, "%t", "Rc_PlayerRankFinished", LIMEGREEN, WHITE, GRAY, PURPLE, g_pr_points[data], GRAY);
 			g_bRecalcRankInProgess[data] = false;
 		}
 		if (IsValidClient(data) && g_pr_showmsg[data]) // Player gained points
@@ -1659,7 +1659,7 @@ public void sql_updatePlayerRankPointsCallback(Handle owner, Handle hndl, const 
 			int diff = g_pr_points[data] - g_pr_oldpoints[data];
 			
 			if (diff > 0) // if player earned points -> Announce
-				PrintToChat(data, "[%cSurf Timer%c] You earned %c%d %cpoints (%c%d %cTotal)", MOSSGREEN, WHITE, ORANGE, diff, WHITE, ORANGE, g_pr_points[data], WHITE);
+				PrintToChat(data, "[%cSurf Timer%c] You earned %c%d %cpoints | %c%d %cTotal", LIMEGREEN, WHITE, ORANGE, diff, WHITE, ORANGE, g_pr_points[data], WHITE);
 
 			g_pr_showmsg[data] = false;
 			db_CalculatePlayersCountGreater0();
@@ -2156,7 +2156,7 @@ public void SQL_ViewPlayerAll2Callback(Handle owner, Handle hndl, const char[] e
 			db_viewPlayerRank2(client, szSteamId2);
 	}
 	else
-		PrintToChat(client, "%t", "PlayerNotFound", MOSSGREEN, WHITE, szName);
+		PrintToChat(client, "%t", "PlayerNotFound", LIMEGREEN, WHITE, szName);
 	CloseHandle(data);
 }
 
@@ -2187,7 +2187,7 @@ public void SQL_ViewPlayerAllCallback(Handle owner, Handle hndl, const char[] er
 	}
 	else
 		if (IsClientInGame(data))
-		PrintToChat(data, "%t", "PlayerNotFound", MOSSGREEN, WHITE, g_szProfileName[data]);
+		PrintToChat(data, "%t", "PlayerNotFound", LIMEGREEN, WHITE, g_szProfileName[data]);
 }
 
 public void ContinueRecalc(int client)
@@ -2297,7 +2297,7 @@ public void sql_selectTopChallengersCallback(Handle owner, Handle hndl, const ch
 		}
 		if (i == 1)
 		{
-			PrintToChat(data, "%t", "NoPlayerTop", MOSSGREEN, WHITE);
+			PrintToChat(data, "%t", "NoPlayerTop", LIMEGREEN, WHITE);
 			ckTopMenu(data);
 		}
 		else
@@ -2308,7 +2308,7 @@ public void sql_selectTopChallengersCallback(Handle owner, Handle hndl, const ch
 	}
 	else
 	{
-		PrintToChat(data, "%t", "NoPlayerTop", MOSSGREEN, WHITE);
+		PrintToChat(data, "%t", "NoPlayerTop", LIMEGREEN, WHITE);
 		ckTopMenu(data);
 	}
 }
@@ -2500,7 +2500,7 @@ public void sql_selectChallengesCallback(Handle owner, Handle hndl, const char[]
 	if (!bHeader)
 	{
 		ProfileMenu(client, -1);
-		PrintToChat(client, "[%cSurf Timer%c] No challenges found.", MOSSGREEN, WHITE);
+		PrintToChat(client, "[%cSurf Timer%c] No challenges found.", LIMEGREEN, WHITE);
 	}
 }
 
@@ -2617,35 +2617,35 @@ public void sql_selectChallengesCompareCallback(Handle owner, Handle hndl, const
 		if (winratio > 0)
 		{
 			if (pointratio > 0)
-				PrintToChat(client, "[%cSurf Timer%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", MOSSGREEN, WHITE, GRAY, PURPLE, challenges, GRAY, PURPLE, szName, GRAY, GREEN, szWinRatio, GRAY, GREEN, szPointsRatio, GRAY);
+				PrintToChat(client, "[%cSurf Timer%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", LIMEGREEN, WHITE, GRAY, PURPLE, challenges, GRAY, PURPLE, szName, GRAY, LIMEGREEN, szWinRatio, GRAY, LIMEGREEN, szPointsRatio, GRAY);
 			else
 				if (pointratio < 0)
-					PrintToChat(client, "[%cSurf Timer%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", MOSSGREEN, WHITE, GRAY, PURPLE, challenges, GRAY, PURPLE, szName, GRAY, GREEN, szWinRatio, GRAY, RED, szPointsRatio, GRAY);
+					PrintToChat(client, "[%cSurf Timer%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", LIMEGREEN, WHITE, GRAY, PURPLE, challenges, GRAY, PURPLE, szName, GRAY, LIMEGREEN, szWinRatio, GRAY, RED, szPointsRatio, GRAY);
 				else
-					PrintToChat(client, "[%cSurf Timer%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", MOSSGREEN, WHITE, GRAY, PURPLE, challenges, GRAY, PURPLE, szName, GRAY, GREEN, szWinRatio, GRAY, YELLOW, szPointsRatio, GRAY);
+					PrintToChat(client, "[%cSurf Timer%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", LIMEGREEN, WHITE, GRAY, PURPLE, challenges, GRAY, PURPLE, szName, GRAY, LIMEGREEN, szWinRatio, GRAY, YELLOW, szPointsRatio, GRAY);
 		}
 		else
 		{
 			if (winratio < 0)
 			{
 				if (pointratio > 0)
-					PrintToChat(client, "[%cSurf Timer%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", MOSSGREEN, WHITE, GRAY, PURPLE, challenges, GRAY, PURPLE, szName, GRAY, RED, szWinRatio, GRAY, GREEN, szPointsRatio, GRAY);
+					PrintToChat(client, "[%cSurf Timer%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", LIMEGREEN, WHITE, GRAY, PURPLE, challenges, GRAY, PURPLE, szName, GRAY, RED, szWinRatio, GRAY, LIMEGREEN, szPointsRatio, GRAY);
 				else
 					if (pointratio < 0)
-						PrintToChat(client, "[%cSurf Timer%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", MOSSGREEN, WHITE, GRAY, PURPLE, challenges, GRAY, PURPLE, szName, GRAY, RED, szWinRatio, GRAY, RED, szPointsRatio, GRAY);
+						PrintToChat(client, "[%cSurf Timer%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", LIMEGREEN, WHITE, GRAY, PURPLE, challenges, GRAY, PURPLE, szName, GRAY, RED, szWinRatio, GRAY, RED, szPointsRatio, GRAY);
 					else
-						PrintToChat(client, "[%cSurf Timer%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", MOSSGREEN, WHITE, GRAY, PURPLE, challenges, GRAY, PURPLE, szName, GRAY, RED, szWinRatio, GRAY, YELLOW, szPointsRatio, GRAY);
+						PrintToChat(client, "[%cSurf Timer%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", LIMEGREEN, WHITE, GRAY, PURPLE, challenges, GRAY, PURPLE, szName, GRAY, RED, szWinRatio, GRAY, YELLOW, szPointsRatio, GRAY);
 
 			}
 			else
 			{
 				if (pointratio > 0)
-					PrintToChat(client, "[%cSurf Timer%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", MOSSGREEN, WHITE, GRAY, PURPLE, challenges, GRAY, PURPLE, szName, GRAY, YELLOW, szWinRatio, GRAY, GREEN, szPointsRatio, GRAY);
+					PrintToChat(client, "[%cSurf Timer%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", LIMEGREEN, WHITE, GRAY, PURPLE, challenges, GRAY, PURPLE, szName, GRAY, YELLOW, szWinRatio, GRAY, LIMEGREEN, szPointsRatio, GRAY);
 				else
 					if (pointratio < 0)
-						PrintToChat(client, "[%cSurf Timer%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", MOSSGREEN, WHITE, GRAY, PURPLE, challenges, GRAY, PURPLE, szName, GRAY, YELLOW, szWinRatio, GRAY, RED, szPointsRatio, GRAY);
+						PrintToChat(client, "[%cSurf Timer%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", LIMEGREEN, WHITE, GRAY, PURPLE, challenges, GRAY, PURPLE, szName, GRAY, YELLOW, szWinRatio, GRAY, RED, szPointsRatio, GRAY);
 					else
-						PrintToChat(client, "[%cSurf Timer%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", MOSSGREEN, WHITE, GRAY, PURPLE, challenges, GRAY, PURPLE, szName, GRAY, YELLOW, szWinRatio, GRAY, YELLOW, szPointsRatio, GRAY);
+						PrintToChat(client, "[%cSurf Timer%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", LIMEGREEN, WHITE, GRAY, PURPLE, challenges, GRAY, PURPLE, szName, GRAY, YELLOW, szWinRatio, GRAY, YELLOW, szPointsRatio, GRAY);
 			}
 		}
 	}
@@ -2843,7 +2843,7 @@ public void sql_selectProSurfersCallback(Handle owner, Handle hndl, const char[]
 		}
 		if (i == 1)
 		{
-			PrintToChat(data, "%t", "NoMapRecords", MOSSGREEN, WHITE, g_szMapName);
+			PrintToChat(data, "%t", "NoMapRecords", LIMEGREEN, WHITE, g_szMapName);
 		}
 	}
 	topSurfersMenu.OptionFlags = MENUFLAG_BUTTON_EXIT;
@@ -2935,7 +2935,7 @@ public void db_selectBonusesInMapCallback(Handle owner, Handle hndl, const char[
 	}
 	else
 	{
-		PrintToChat(client, "[%cSurf Timer%c] No bonuses found.", MOSSGREEN, WHITE);
+		PrintToChat(client, "[%cSurf Timer%c] No bonuses found.", LIMEGREEN, WHITE);
 		return;
 	}
 }
@@ -3042,11 +3042,11 @@ public void sql_selectTopBonusSurfersCallback(Handle owner, Handle hndl, const c
 		}
 		if (i == 1)
 		{
-			PrintToChat(client, "%t", "NoTopRecords", MOSSGREEN, WHITE, szMap);
+			PrintToChat(client, "%t", "NoTopRecords", LIMEGREEN, WHITE, szMap);
 		}
 	}
 	else
-		PrintToChat(client, "%t", "NoTopRecords", MOSSGREEN, WHITE, szMap);
+		PrintToChat(client, "%t", "NoTopRecords", LIMEGREEN, WHITE, szMap);
 	Format(title, 256, "Top 50 Times on %s (B %i) \n    Rank    Time               Player", szFirstMap, zGrp);
 	topMenu.SetTitle(title);
 	topMenu.OptionFlags = MENUFLAG_BUTTON_EXIT;
@@ -3124,11 +3124,11 @@ public void sql_selectTopSurfersCallback(Handle owner, Handle hndl, const char[]
 		}
 		if (i == 1)
 		{
-			PrintToChat(client, "%t", "NoTopRecords", MOSSGREEN, WHITE, szMap);
+			PrintToChat(client, "%t", "NoTopRecords", LIMEGREEN, WHITE, szMap);
 		}
 	}
 	else
-		PrintToChat(client, "%t", "NoTopRecords", MOSSGREEN, WHITE, szMap);
+		PrintToChat(client, "%t", "NoTopRecords", LIMEGREEN, WHITE, szMap);
 	Format(title, 256, "Top 50 Times on %s \n    Rank    Time               Player", szFirstMap);
 	SetMenuTitle(menu, title);
 	SetMenuOptionFlags(menu, MENUFLAG_BUTTON_EXIT);
@@ -4171,38 +4171,38 @@ public void SQL_selectMapTierCallback(Handle owner, Handle hndl, const char[] er
 				g_bTierFound[i] = true;
 				if (i == 0)
 				{
-					Format(g_sTierString[0], 512, " [%cSurf Timer%c] %cMap: %c%s %c| ", MOSSGREEN, WHITE, GREEN, LIMEGREEN, g_szMapName, GREEN);
+					Format(g_sTierString[0], 512, " [%cSurf Timer%c] Map: %c%s %c| ", LIMEGREEN, WHITE, LIMEGREEN, g_szMapName, WHITE);
 					switch (tier)
 					{
-						case 1:Format(g_sTierString[0], 512, "%s%cTier %i %c| ", g_sTierString[0], GRAY, tier, GREEN);
-						case 2:Format(g_sTierString[0], 512, "%s%cTier %i %c| ", g_sTierString[0], LIGHTBLUE, tier, GREEN);
-						case 3:Format(g_sTierString[0], 512, "%s%cTier %i %c| ", g_sTierString[0], BLUE, tier, GREEN);
-						case 4:Format(g_sTierString[0], 512, "%s%cTier %i %c| ", g_sTierString[0], DARKBLUE, tier, GREEN);
-						case 5:Format(g_sTierString[0], 512, "%s%cTier %i %c| ", g_sTierString[0], RED, tier, GREEN);
-						case 6:Format(g_sTierString[0], 512, "%s%cTier %i %c| ", g_sTierString[0], DARKRED, tier, GREEN);
-						default:Format(g_sTierString[0], 512, "%s%cTier %i %c| ", g_sTierString[0], GRAY, tier, GREEN);
+						case 1:Format(g_sTierString[0], 512, "%s%cTier %i %c| ", g_sTierString[0], GRAY, tier, WHITE);
+						case 2:Format(g_sTierString[0], 512, "%s%cTier %i %c| ", g_sTierString[0], LIGHTBLUE, tier, WHITE);
+						case 3:Format(g_sTierString[0], 512, "%s%cTier %i %c| ", g_sTierString[0], BLUE, tier, WHITE);
+						case 4:Format(g_sTierString[0], 512, "%s%cTier %i %c| ", g_sTierString[0], DARKBLUE, tier, WHITE);
+						case 5:Format(g_sTierString[0], 512, "%s%cTier %i %c| ", g_sTierString[0], RED, tier, WHITE);
+						case 6:Format(g_sTierString[0], 512, "%s%cTier %i %c| ", g_sTierString[0], DARKRED, tier, WHITE);
+						default:Format(g_sTierString[0], 512, "%s%cTier %i %c| ", g_sTierString[0], GRAY, tier, WHITE);
 					}
 					if (g_bhasStages)
-						Format(g_sTierString[0], 512, "%s%c%i Stages", g_sTierString[0], MOSSGREEN, (g_mapZonesTypeCount[0][3] + 1));
+						Format(g_sTierString[0], 512, "%s%c%i Stages", g_sTierString[0], LIMEGREEN, (g_mapZonesTypeCount[0][3] + 1));
 					else
 						Format(g_sTierString[0], 512, "%s%cLinear", g_sTierString[0], LIMEGREEN);
 
 					if (g_bhasBonus)
 						if (g_mapZoneGroupCount > 2)
-							Format(g_sTierString[0], 512, "%s %c|%c %i Bonuses", g_sTierString[0], GREEN, YELLOW, (g_mapZoneGroupCount - 1));
+							Format(g_sTierString[0], 512, "%s %c|%c %i Bonuses", g_sTierString[0], WHITE, YELLOW, (g_mapZoneGroupCount - 1));
 						else
-							Format(g_sTierString[0], 512, "%s %c|%c Bonus", g_sTierString[0], GREEN, YELLOW, (g_mapZoneGroupCount - 1));
+							Format(g_sTierString[0], 512, "%s %c|%c Bonus", g_sTierString[0], WHITE, YELLOW, (g_mapZoneGroupCount - 1));
 				}
 				else
 				{
 					switch (tier)
 					{
-						case 1:Format(g_sTierString[i], 512, "[%cSurf Timer%c] &c%s Tier: %i", MOSSGREEN, WHITE, GRAY, g_szZoneGroupName[i], tier);
-						case 2:Format(g_sTierString[i], 512, "[%cSurf Timer%c] &c%s Tier: %i", MOSSGREEN, WHITE, LIGHTBLUE, g_szZoneGroupName[i], tier);
-						case 3:Format(g_sTierString[i], 512, "[%cSurf Timer%c] &c%s Tier: %i", MOSSGREEN, WHITE, BLUE, g_szZoneGroupName[i], tier);
-						case 4:Format(g_sTierString[i], 512, "[%cSurf Timer%c] &c%s Tier: %i", MOSSGREEN, WHITE, DARKBLUE, g_szZoneGroupName[i], tier);
-						case 5:Format(g_sTierString[i], 512, "[%cSurf Timer%c] &c%s Tier: %i", MOSSGREEN, WHITE, RED, g_szZoneGroupName[i], tier);
-						case 6:Format(g_sTierString[i], 512, "[%cSurf Timer%c] &c%s Tier: %i", MOSSGREEN, WHITE, DARKRED, g_szZoneGroupName[i], tier);
+						case 1:Format(g_sTierString[i], 512, "[%cSurf Timer%c] &c%s Tier: %i", LIMEGREEN, WHITE, GRAY, g_szZoneGroupName[i], tier);
+						case 2:Format(g_sTierString[i], 512, "[%cSurf Timer%c] &c%s Tier: %i", LIMEGREEN, WHITE, LIGHTBLUE, g_szZoneGroupName[i], tier);
+						case 3:Format(g_sTierString[i], 512, "[%cSurf Timer%c] &c%s Tier: %i", LIMEGREEN, WHITE, BLUE, g_szZoneGroupName[i], tier);
+						case 4:Format(g_sTierString[i], 512, "[%cSurf Timer%c] &c%s Tier: %i", LIMEGREEN, WHITE, DARKBLUE, g_szZoneGroupName[i], tier);
+						case 5:Format(g_sTierString[i], 512, "[%cSurf Timer%c] &c%s Tier: %i", LIMEGREEN, WHITE, RED, g_szZoneGroupName[i], tier);
+						case 6:Format(g_sTierString[i], 512, "[%cSurf Timer%c] &c%s Tier: %i", LIMEGREEN, WHITE, DARKRED, g_szZoneGroupName[i], tier);
 					}
 				}
 			}
@@ -4648,7 +4648,7 @@ public void sql_setZoneNamesCallback(Handle owner, Handle hndl, const char[] err
 
 	if (IsValidClient(client))
 	{
-		PrintToChat(client, "[%cSurf Timer%c] Bonus name succesfully changed.", MOSSGREEN, WHITE);
+		PrintToChat(client, "[%cSurf Timer%c] Bonus name succesfully changed.", LIMEGREEN, WHITE);
 		ListBonusSettings(client);
 	}
 	db_selectMapZones();
@@ -4760,7 +4760,7 @@ public void SQL_insertZonesCheapCallback(Handle owner, Handle hndl, const char[]
 {
 	if (hndl == null)
 	{
-		PrintToChatAll("[%cSurf Timer%c] Failed to create a zone, attempting a fix... Recreate the zone, please.", MOSSGREEN, WHITE);
+		PrintToChatAll("[%cSurf Timer%c] Failed to create a zone, attempting a fix... Recreate the zone, please.", LIMEGREEN, WHITE);
 		db_checkAndFixZoneIds();
 		return;
 	}
@@ -4788,7 +4788,7 @@ public void SQL_insertZonesCallback(Handle owner, Handle hndl, const char[] erro
 	if (hndl == null)
 	{
 
-		PrintToChatAll("[%cSurf Timer%c] Failed to create a zone, attempting a fix... Recreate the zone, please.", MOSSGREEN, WHITE);
+		PrintToChatAll("[%cSurf Timer%c] Failed to create a zone, attempting a fix... Recreate the zone, please.", LIMEGREEN, WHITE);
 		db_checkAndFixZoneIds();
 		return;
 	}
@@ -4844,7 +4844,7 @@ public int db_deleteZonesInGroup(int client)
 	if (g_CurrentSelectedZoneGroup[client] < 1)
 	{
 		if(IsValidClient(client))
-			PrintToChat(client, "[%cSurf Timerc%] Invalid zonegroup index selected, aborting. (%i)", MOSSGREEN, WHITE, g_CurrentSelectedZoneGroup[client]);
+			PrintToChat(client, "[%cSurf Timerc%] Invalid zonegroup index selected, aborting. (%i)", LIMEGREEN, WHITE, g_CurrentSelectedZoneGroup[client]);
 
 		PrintToServer("[Surf Timer] Invalid zonegroup index selected, aborting. (%i)", g_CurrentSelectedZoneGroup[client]);
 	}
@@ -4879,7 +4879,7 @@ public void SQLTxn_ZoneGroupRemovalSuccess(Handle db, any client, int numQueries
 	if (IsValidClient(client))
 	{
 		ZoneMenu(client);
-		PrintToChat(client, "[%cSurf Timer%c] Zone group deleted.", MOSSGREEN, WHITE);
+		PrintToChat(client, "[%cSurf Timer%c] Zone group deleted.", LIMEGREEN, WHITE);
 	}
 	return;
 }
@@ -4887,7 +4887,7 @@ public void SQLTxn_ZoneGroupRemovalSuccess(Handle db, any client, int numQueries
 public void SQLTxn_ZoneGroupRemovalFailed(Handle db, any client, int numQueries, const char[] error, int failIndex, any[] queryData)
 {
 	if(IsValidClient(client))
-		PrintToChat(client, "[%cSurf Timer%c] Zonegroup removal failed! (Error: %s)", MOSSGREEN, WHITE, error);
+		PrintToChat(client, "[%cSurf Timer%c] Zonegroup removal failed! (Error: %s)", LIMEGREEN, WHITE, error);
 
 	PrintToServer("[Surf Timer] Zonegroup removal failed (Error: %s)", error);
 	return;
@@ -5437,14 +5437,14 @@ public void db_deleteZone(int client, int zoneid)
 public void SQLTxn_ZoneRemovalSuccess(Handle db, any client, int numQueries, Handle[] results, any[] queryData)
 {
 	if (IsValidClient(client))
-		PrintToChat(client, "[%cSurf Timer%c] Zone Removed Succesfully", MOSSGREEN, WHITE);
+		PrintToChat(client, "[%cSurf Timer%c] Zone Removed Succesfully", LIMEGREEN, WHITE);
 	PrintToServer("[Surf Timer] Zone Removed Succesfully");
 }
 
 public void SQLTxn_ZoneRemovalFailed(Handle db, any client, int numQueries, const char[] error, int failIndex, any[] queryData)
 {
 	if (IsValidClient(client))
-		PrintToChat(client, "[%cSurf Timer%c] %cZone Removal Failed! Error:%c %s", MOSSGREEN, WHITE, RED, WHITE, error);
+		PrintToChat(client, "[%cSurf Timer%c] %cZone Removal Failed! Error:%c %s", LIMEGREEN, WHITE, RED, WHITE, error);
 	PrintToServer("[Surf Timer] Zone Removal Failed. Error: %s", error);
 	return;
 }
@@ -5565,7 +5565,7 @@ public void sql_selectLatestRecordsCallback(Handle owner, Handle hndl, const cha
 	else
 		PrintToConsole(data, "No records found.");
 	PrintToConsole(data, "----------------------------------------------------------------------------------------------------");
-	PrintToChat(data, "[%cSurf Timer%c] See console for output!", MOSSGREEN, WHITE);
+	PrintToChat(data, "[%cSurf Timer%c] See console for output!", LIMEGREEN, WHITE);
 }
 
 
@@ -6094,7 +6094,7 @@ public void sql_selectRankedPlayersCallback(Handle owner, Handle hndl, const cha
 				if (1 <= c <= MaxClients && IsValidEntity(c) && IsValidClient(c))
 				{
 					if (g_bManualRecalc)
-						PrintToChat(c, "%t", "PrUpdateFinished", MOSSGREEN, WHITE, LIMEGREEN);
+						PrintToChat(c, "%t", "PrUpdateFinished", LIMEGREEN, WHITE, LIMEGREEN);
 				}
 			g_bManualRecalc = false;
 			g_pr_RankingRecalc_InProgress = false;
@@ -6431,13 +6431,13 @@ public void db_sql_selectMapRecordHoldersCallback(Handle owner, Handle hndl, con
 		}
 		if (x == 0)
 		{
-			PrintToChat(data, "%t", "NoRecordTop", MOSSGREEN, WHITE);
+			PrintToChat(data, "%t", "NoRecordTop", LIMEGREEN, WHITE);
 			ckTopMenu(data);
 		}
 	}
 	else
 	{
-		PrintToChat(data, "%t", "NoRecordTop", MOSSGREEN, WHITE);
+		PrintToChat(data, "%t", "NoRecordTop", LIMEGREEN, WHITE);
 		ckTopMenu(data);
 	}
 }
@@ -6552,7 +6552,7 @@ public void db_selectTop100PlayersCallback(Handle owner, Handle hndl, const char
 		}
 		if (i == 1)
 		{
-			PrintToChat(data, "%t", "NoPlayerTop", MOSSGREEN, WHITE);
+			PrintToChat(data, "%t", "NoPlayerTop", LIMEGREEN, WHITE);
 		}
 		else
 		{
@@ -6562,7 +6562,7 @@ public void db_selectTop100PlayersCallback(Handle owner, Handle hndl, const char
 	}
 	else
 	{
-		PrintToChat(data, "%t", "NoPlayerTop", MOSSGREEN, WHITE);
+		PrintToChat(data, "%t", "NoPlayerTop", LIMEGREEN, WHITE);
 	}
 }
 
@@ -6581,7 +6581,7 @@ public void SQL_ViewPlayerProfile2Callback(Handle owner, Handle hndl, const char
 	}
 	else
 		if (IsClientInGame(data))
-		PrintToChat(data, "%t", "PlayerNotFound", MOSSGREEN, WHITE, g_szProfileName[data]);
+		PrintToChat(data, "%t", "PlayerNotFound", LIMEGREEN, WHITE, g_szProfileName[data]);
 }
 
 public int ProfileMenuHandler(Handle menu, MenuAction action, int client, int item)
@@ -6603,13 +6603,13 @@ public int ProfileMenuHandler(Handle menu, MenuAction action, int client, int it
 			{
 				if (g_bRecalcRankInProgess[client])
 				{
-					PrintToChat(client, "[%cSurf Timer%c] %cRecalculation in progress. Please wait!", MOSSGREEN, WHITE, GRAY);
+					PrintToChat(client, "[%cSurf Timer%c] %cRecalculation in progress. Please wait!", LIMEGREEN, WHITE, GRAY);
 				}
 				else
 				{
 
 					g_bRecalcRankInProgess[client] = true;
-					PrintToChat(client, "%t", "Rc_PlayerRankStart", MOSSGREEN, WHITE, GRAY);
+					PrintToChat(client, "%t", "Rc_PlayerRankStart", LIMEGREEN, WHITE, GRAY);
 					CalculatePlayerRank(client);
 				}
 			}
@@ -7020,7 +7020,7 @@ public void SQL_updateStageRankCallback(Handle owner, Handle hndl, const char[] 
 
 		// Check if the player improved his time
 		if (rank != -1 && rank < g_StagePlayerRank[client][stage])
-			PrintToChat(client, "[%cSurf Timer%c] %cYou improved your time, your rank is now %c%d/%d", MOSSGREEN, WHITE, YELLOW, LIMEGREEN, rank, g_StageRecords[stage][srCompletions]);
+			PrintToChat(client, "[%cSurf Timer%c] %cYou improved your time, your rank is now %c%d/%d", LIMEGREEN, WHITE, YELLOW, LIMEGREEN, rank, g_StageRecords[stage][srCompletions]);
 			
 		g_StagePlayerRank[client][stage] = rank;
 

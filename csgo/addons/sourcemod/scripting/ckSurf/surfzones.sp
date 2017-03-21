@@ -320,12 +320,12 @@ public void EndTouch(int client, int action[4])
 					// NoClip check
 					if (g_bNoclipped[client] || g_bNoClip[client] || (!g_bNoClip[client] && (GetGameTime() - g_fLastTimeNoClipUsed[client]) < 3.0))
 					{
-						PrintToChat(client, "[%cSurf Timer%c] %cYou are noclipping or have noclipped recently%c, please type !r first.", MOSSGREEN, WHITE, LIGHTRED, WHITE);
+						PrintToChat(client, "[%cSurf Timer%c] %cYou are noclipping or have noclipped recently%c, please type !r first.", LIMEGREEN, WHITE, LIGHTRED, WHITE);
 						ClientCommand(client, "play buttons\\button10.wav");
 					}
 					else if (pauseDelay < 5.0)
 					{
-						PrintToChat(client, "[%cSurf Timer%c] %cYou used the !pause command recently%c, please wait %c%d %cseconds.", MOSSGREEN, WHITE, LIGHTRED, WHITE, GREEN, RoundToCeil(5.0 - pauseDelay), WHITE);
+						PrintToChat(client, "[%cSurf Timer%c] %cYou used the !pause command recently%c, please wait %c%d %cseconds.", LIMEGREEN, WHITE, LIGHTRED, WHITE, GREEN, RoundToCeil(5.0 - pauseDelay), WHITE);
 						ClientCommand(client, "play buttons\\button10.wav");
 					}
 					else
@@ -359,7 +359,7 @@ public void EndTouch(int client, int action[4])
 
 			// Check if the player jumped from an high platform
 			if (g_vLastGroundTouch[client][2] > (vLowestCorner[2] + 25.0) &&  !g_bStageAllowHighJumps[g_Stage[0][client]]) 
-				PrintToChat(client, "[%cSurf Timer%c] %cYou jumped from way too high.", MOSSGREEN, WHITE, LIGHTRED); 
+				PrintToChat(client, "[%cSurf Timer%c] %cMaximum Z velocity exceeded", LIMEGREEN, WHITE, LIGHTRED); 
 
 			else
 				StartStageTimer(client);
@@ -693,7 +693,7 @@ public void ZoneMenu(int client)
 
 	if (!(GetUserFlagBits(client) & g_ZoneMenuFlag) && !(GetUserFlagBits(client) & ADMFLAG_ROOT))
 	{
-		PrintToChat(client, "[%cSurf Timer%c] You don't have access to the zones menu.", MOSSGREEN, WHITE);
+		PrintToChat(client, "[%cSurf Timer%c] You don't have access to the zones menu.", LIMEGREEN, WHITE);
 		return;
 	}
 
@@ -1006,7 +1006,7 @@ public void renameBonusGroup(int client)
 	if (!IsValidClient(client))
 		return;
 
-	PrintToChat(client, "[%cSurf Timer%c] Please write the bonus name in chat or use %c!cancel%c to stop.", MOSSGREEN, WHITE, MOSSGREEN, WHITE);
+	PrintToChat(client, "[%cSurf Timer%c] Please write the bonus name in chat or use %c!cancel%c to stop.", LIMEGREEN, WHITE, LIMEGREEN, WHITE);
 	g_ClientRenamingZone[client] = true;
 }
 // Types: Start(1), End(2), Stage(3), Checkpoint(4), Speed(5), TeleToStart(6), Validator(7), Chekcer(8), Stop(0)
@@ -1144,7 +1144,7 @@ public int H_CreateBonusFirst(Handle tMenu, MenuAction action, int client, int i
 						return;
 
 					g_Editing[client] = 2;
-					PrintToChat(client, "[%cSurf Timer%c] Bonus Start Zone Created", MOSSGREEN, WHITE);
+					PrintToChat(client, "[%cSurf Timer%c] Bonus Start Zone Created", LIMEGREEN, WHITE);
 					EndBonusZoneCreation(client);
 				}
 			}
@@ -1222,10 +1222,10 @@ public void SaveBonusZones(int client)
 		int id2 = g_mapZonesCount + 1;
 		db_insertZone(g_mapZonesCount, 1, 0, g_fBonusStartPos[client][0][0], g_fBonusStartPos[client][0][1], g_fBonusStartPos[client][0][2], g_fBonusStartPos[client][1][0], g_fBonusStartPos[client][1][1], g_fBonusStartPos[client][1][2], 0, 0, g_mapZoneGroupCount);
 		db_insertZone(id2, 2, 0, g_fBonusEndPos[client][0][0], g_fBonusEndPos[client][0][1], g_fBonusEndPos[client][0][2], g_fBonusEndPos[client][1][0], g_fBonusEndPos[client][1][1], g_fBonusEndPos[client][1][2], 0, 0, g_mapZoneGroupCount);
-		PrintToChat(client, "[%cSurf Timer%c] Bonus Saved!", MOSSGREEN, WHITE);
+		PrintToChat(client, "[%cSurf Timer%c] Bonus Saved!", LIMEGREEN, WHITE);
 	}
 	else
-		PrintToChat(client, "[%cSurf Timer%c] Failed to Save Bonus, error in coordinates", MOSSGREEN, WHITE);
+		PrintToChat(client, "[%cSurf Timer%c] Failed to Save Bonus, error in coordinates", LIMEGREEN, WHITE);
 
 	resetSelection(client);
 	ZoneMenu(client);
@@ -1691,20 +1691,20 @@ public int MenuHandler_Editor(Handle tMenu, MenuAction action, int client, int i
 					{
 						case 1:
 						{
-							PrintToChat(client, "%t", "ZoneVisAll", MOSSGREEN, WHITE);
+							PrintToChat(client, "%t", "ZoneVisAll", LIMEGREEN, WHITE);
 						}
 						case 2:
 						{
-							PrintToChat(client, "%t", "ZoneVisT", MOSSGREEN, WHITE);
+							PrintToChat(client, "%t", "ZoneVisT", LIMEGREEN, WHITE);
 						}
 						case 3:
 						{
-							PrintToChat(client, "%t", "ZoneVisCT", MOSSGREEN, WHITE);
+							PrintToChat(client, "%t", "ZoneVisCT", LIMEGREEN, WHITE);
 						}
 						case 4:
 						{
 							g_CurrentZoneVis[client] = 0;
-							PrintToChat(client, "%t", "ZoneVisInv", MOSSGREEN, WHITE);
+							PrintToChat(client, "%t", "ZoneVisInv", LIMEGREEN, WHITE);
 						}
 					}
 					EditorMenu(client);

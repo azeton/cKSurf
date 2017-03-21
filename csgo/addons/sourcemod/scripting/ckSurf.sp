@@ -1208,13 +1208,13 @@ public void OnClientAuthorized(int client)
 		{
 			for (int i = 1; i <= MaxClients; i++)
 				if (IsValidClient(i) && i != client)
-					PrintToChat(i, "%t", "Connected1", WHITE, MOSSGREEN, s_clientName, WHITE);
+					PrintToChat(i, "%t", "Connected1", WHITE, LIMEGREEN, s_clientName, WHITE);
 		}
 		else
 		{
 			for (int i = 1; i <= MaxClients; i++)
 				if (IsValidClient(i) && i != client)
-					PrintToChat(i, "%t", "Connected2", WHITE, MOSSGREEN, s_clientName, WHITE, GREEN, s_Country);
+					PrintToChat(i, "%t", "Connected2", WHITE, LIMEGREEN, s_clientName, WHITE, GREEN, s_Country);
 		}
 	}
 }
@@ -1875,7 +1875,7 @@ public void OnPluginStart()
 	RegConsoleCmd("sm_goto", Client_GoTo, "[Surf Timer] teleports you to a selected player");
 	RegConsoleCmd("sm_sound", Client_QuakeSounds, "[Surf Timer] on/off quake sounds");
 	RegConsoleCmd("sm_surrender", Client_Surrender, "[Surf Timer] surrender your current challenge");
-	RegConsoleCmd("sm_help2", Client_RankingSystem, "[Surf Timer] Explanation of the Surf Timer ranking system");
+	//RegConsoleCmd("sm_help2", Client_RankingSystem, "[Surf Timer] Explanation of the Surf Timer ranking system");
 	RegConsoleCmd("sm_flashlight", Client_Flashlight, "[Surf Timer] on/off flashlight");
 	RegConsoleCmd("sm_maptop", Client_MapTop, "[Surf Timer] displays local map top for a given map");
 	RegConsoleCmd("sm_hidespecs", Client_HideSpecs, "[Surf Timer] hides spectators from menu/panel");
@@ -1942,10 +1942,10 @@ public void OnPluginStart()
 	RegConsoleCmd("sm_btier", Command_bTier, "[Surf Timer] Prints tier information on current map's bonuses");
 	RegConsoleCmd("sm_bonusinfo", Command_bTier, "[Surf Timer] Prints tier information on current map's bonuses");
 	RegConsoleCmd("sm_bi", Command_bTier, "[Surf Timer] Prints tier information on current map's bonuses");
-	RegConsoleCmd("sm_howto", Command_HowTo, "[Surf Timer] Displays a youtube video on how to surf");
+	//RegConsoleCmd("sm_howto", Command_HowTo, "[Surf Timer] Displays a youtube video on how to surf");
 	RegConsoleCmd("sm_ve", Command_VoteExtend, "[Surf Timer] Vote to extend the map");
 	RegConsoleCmd("sm_vmute", Command_MutePlayer, "[Surf Timer] Mute a player");
-	RegConsoleCmd("sm_stats", Command_ViewStats, "[Surf Timer] View surf statistics");
+	//RegConsoleCmd("sm_stats", Command_ViewStats, "[Surf Timer] View surf statistics");
 
 
 	// Teleport to the start of the stage

@@ -14,7 +14,7 @@ public Action Command_Vip(int client, int args)
 
 	if (!g_bflagTitles[client][0] && g_hFreeVipAtRank.IntValue < g_PlayerRank[client])
 	{
-		PrintToChat(client, "[%cSurf Timer%c] This command requires the VIP title.", MOSSGREEN, WHITE);
+		PrintToChat(client, "[%cSurf Timer%c] This command requires the VIP title.", LIMEGREEN, WHITE);
 		return Plugin_Handled;
 	}
 
@@ -87,14 +87,14 @@ public Action Command_MutePlayer (int client, int args)
 
 	if (!GetConVarBool(g_hAllowVipMute))
 	{
-		ReplyToCommand(client, "[%cSurf Timer%c] VIP muting has been disabled on this server.", MOSSGREEN, WHITE);
+		ReplyToCommand(client, "[%cSurf Timer%c] VIP muting has been disabled on this server.", LIMEGREEN, WHITE);
 		return Plugin_Handled;
 	}
 
 
 	if (!g_bflagTitles[client][0] && g_hFreeVipAtRank.IntValue < g_PlayerRank[client])
 	{
-		ReplyToCommand(client, "[%cSurf Timer%c] This command requires the VIP title.", MOSSGREEN, WHITE);
+		ReplyToCommand(client, "[%cSurf Timer%c] This command requires the VIP title.", LIMEGREEN, WHITE);
 		return Plugin_Handled;
 	}
 
@@ -110,18 +110,18 @@ public Action Command_MutePlayer (int client, int args)
 			if (BaseComm_IsClientMuted(target))
 			{
 				if (BaseComm_SetClientMute(target, false))
-					PrintToChatAll("[%cSurf Timer%c] %s was unmuted by a VIP.", MOSSGREEN, WHITE, szBuffer);
+					PrintToChatAll("[%cSurf Timer%c] %s was unmuted by a VIP.", LIMEGREEN, WHITE, szBuffer);
 			}
 			else
 			{
 				if (BaseComm_SetClientMute(target, true))
-					PrintToChatAll("[%cSurf Timer%c] %s was muted by a VIP.", MOSSGREEN, WHITE, szBuffer);
+					PrintToChatAll("[%cSurf Timer%c] %s was muted by a VIP.", LIMEGREEN, WHITE, szBuffer);
 			}
 			return Plugin_Handled;
 		}
 		else
 		{
-			PrintToChat(client, "[%cSurf Timer%c] Could not find a player with the name of %s.", MOSSGREEN, WHITE, szName);
+			PrintToChat(client, "[%cSurf Timer%c] Could not find a player with the name %s.", LIMEGREEN, WHITE, szName);
 			return Plugin_Handled;
 		}
 	}
@@ -150,7 +150,7 @@ public Action Command_MutePlayer (int client, int args)
 	}
 	if (count == 0)
 	{
-		ReplyToCommand(client, "[%cSurf Timer%c] No valid players found.", MOSSGREEN, WHITE);
+		ReplyToCommand(client, "[%cSurf Timer%c] No valid players found.", LIMEGREEN, WHITE);
 		CloseHandle(mMutePlayers);
 		return Plugin_Handled;
 	}
@@ -175,12 +175,12 @@ public int h_MutePlayers(Menu tMenu, MenuAction action, int client, int item)
 				if (BaseComm_IsClientMuted(clientID))
 				{
 					if (BaseComm_SetClientMute(clientID, false))
-						PrintToChatAll("[%cSurf Timer%c] %s was unmuted by a VIP.", MOSSGREEN, WHITE, szName);
+						PrintToChatAll("[%cSurf Timer%c] %s was unmuted by a VIP.", LIMEGREEN, WHITE, szName);
 				}
 				else
 				{
 					if (BaseComm_SetClientMute(clientID, true))
-						PrintToChatAll("[%cSurf Timer%c] %s was muted by a VIP.", MOSSGREEN, WHITE, szName);
+						PrintToChatAll("[%cSurf Timer%c] %s was muted by a VIP.", LIMEGREEN, WHITE, szName);
 
 				}
 			}
@@ -199,7 +199,7 @@ public Action Command_SetTitle(int client, int args)
 
 	if (!g_bHasTitle[client])
 	{
-		PrintToChat(client, "[%cSurf Timer%c] You don't have access to any custom titles.", MOSSGREEN, WHITE);
+		PrintToChat(client, "[%cSurf Timer%c] You don't have access to any custom titles.", LIMEGREEN, WHITE);
 		return Plugin_Handled;
 	}
 	Menu playersTitles = CreateMenu(H_PlayersTitles);
@@ -298,7 +298,7 @@ public void StartVoteExtend(int client)
 {
 	char szPlayerName[MAX_NAME_LENGTH];
 	GetClientName(client, szPlayerName, MAX_NAME_LENGTH);
-	CPrintToChatAll("[{olive}Surf Timer{default}] Vote to Extend started by {green}%s{default}", szPlayerName);
+	CPrintToChatAll("[{olive}Surf Timer{default}] Vote to Extend started by {LIMEGREEN}%s{default}", szPlayerName);
 
 	g_szUsedVoteExtend[g_VoteExtends] = g_szSteamID[client];	// Add the user's steam ID to the list
 	g_VoteExtends++;	// Increment the total number of vote extends so far
@@ -351,12 +351,12 @@ public void H_VoteExtendCallback(Menu menu, int num_votes, int num_clients, cons
 
 	if (votesYes > votesNo) // A tie is a failure
 	{
-		CPrintToChatAll("[{olive}Surf Timer{default}] Vote to Extend succeeded - Votes Yes: %i | Votes No: %i", votesYes, votesNo);
+		CPrintToChatAll("[{LIMEGREEN}Surf Timer{default}] Vote to Extend succeeded - Votes Yes: %i | Votes No: %i", votesYes, votesNo);
 		ExtendMapTimeLimit(RoundToFloor(GetConVarFloat(g_hVoteExtendTime)*60));
 	}
 	else
 	{
-		CPrintToChatAll("[{olive}Surf Timer{default}] Vote to Extend failed - Votes Yes: %i | Votes No: %i", votesYes, votesNo);
+		CPrintToChatAll("[{LIMEGREEN}Surf Timer{default}] Vote to Extend failed - Votes Yes: %i | Votes No: %i", votesYes, votesNo);
 	}
 }
 
@@ -369,7 +369,7 @@ public Action Command_normalMode(int client, int args)
 	g_bPracticeMode[client] = false;
 	Command_Restart(client, 1);
 
-	PrintToChat(client, "%t", "PracticeNormal", MOSSGREEN, WHITE, MOSSGREEN);
+	PrintToChat(client, "%t", "PracticeNormal", LIMEGREEN, WHITE, LIMEGREEN);
 	return Plugin_Handled;
 }
 
@@ -380,7 +380,7 @@ public Action Command_createPlayerCheckpoint(int client, int args)
 
 	if (g_iClientInZone[client][0] == 1 || g_iClientInZone[client][0] == 5)
 	{
-		PrintToChat(client, "%t", "PracticeInStartZone", MOSSGREEN, WHITE);
+		PrintToChat(client, "%t", "PracticeInStartZone", LIMEGREEN, WHITE);
 		return Plugin_Handled;
 	}
 
@@ -401,7 +401,7 @@ public Action Command_createPlayerCheckpoint(int client, int args)
 	GetClientEyeAngles(client, g_fCheckpointAngle[client]);
 
 
-	PrintToChat(client, "%t", "PracticePointCreated", MOSSGREEN, WHITE, MOSSGREEN, WHITE);
+	PrintToChat(client, "%t", "PracticePointCreated", LIMEGREEN, WHITE, LIMEGREEN, WHITE);
 
 	return Plugin_Handled;
 }
@@ -415,8 +415,8 @@ public Action Command_goToPlayerCheckpoint(int client, int args)
 	{
 		if (g_bPracticeMode[client] == false)
 		{
-			PrintToChat(client, "%t", "PracticeStarted", MOSSGREEN, WHITE, MOSSGREEN, WHITE, MOSSGREEN, WHITE);
-			PrintToChat(client, "%t", "PracticeStarted2", MOSSGREEN, WHITE, MOSSGREEN, WHITE, MOSSGREEN, WHITE);
+			PrintToChat(client, "%t", "PracticeStarted", LIMEGREEN, WHITE, LIMEGREEN, WHITE, LIMEGREEN, WHITE);
+			PrintToChat(client, "%t", "PracticeStarted2", LIMEGREEN, WHITE, LIMEGREEN, WHITE, LIMEGREEN, WHITE);
 			g_bPracticeMode[client] = true;
 		}
 
@@ -424,7 +424,7 @@ public Action Command_goToPlayerCheckpoint(int client, int args)
 		TeleportEntity(client, g_fCheckpointLocation[client], g_fCheckpointAngle[client], g_fCheckpointVelocity[client]);
 	}
 	else
-		PrintToChat(client, "%t", "PracticeStartError", MOSSGREEN, WHITE, MOSSGREEN);
+		PrintToChat(client, "%t", "PracticeStartError", LIMEGREEN, WHITE, LIMEGREEN);
 
 	return Plugin_Handled;
 }
@@ -453,10 +453,10 @@ public Action Command_undoPlayerCheckpoint(int client, int args)
 		Array_Copy(g_fCheckpointAngle[client], g_fCheckpointAngle_undo[client], 3);
 		Array_Copy(tempAngle, g_fCheckpointAngle[client], 3);
 
-		PrintToChat(client, "%t", "PracticeUndo", MOSSGREEN, WHITE);
+		PrintToChat(client, "%t", "PracticeUndo", LIMEGREEN, WHITE);
 	}
 	else
-		PrintToChat(client, "%t", "PracticeUndoError", MOSSGREEN, WHITE, MOSSGREEN);
+		PrintToChat(client, "%t", "PracticeUndoError", LIMEGREEN, WHITE, LIMEGREEN);
 
 	return Plugin_Handled;
 }
@@ -497,11 +497,13 @@ public Action Command_GoBack(int client, int args)
 	return Plugin_Handled;
 }
 
+/*
 public Action Command_HowTo(int client, int args)
 {
 	ShowMOTDPanel(client, "ckSurf - How To Surf", "http://2gcrew.space/motd.php?u=https://www.youtube.com/v/lYc52kwTNb8", MOTDPANEL_TYPE_URL);
 	return Plugin_Handled;
 }
+*/
 
 public Action Command_Zones(int client, int args)
 {
@@ -548,7 +550,7 @@ public void ListBonuses(int client, int type)
 	}
 	else
 	{
-		PrintToChat(client, "[%cSurf Timer%c] There are no bonuses in this map.", MOSSGREEN, WHITE);
+		PrintToChat(client, "[%cSurf Timer%c] There are no Bonus Zones on this map.", LIMEGREEN, WHITE);
 		return;
 	}
 
@@ -602,10 +604,10 @@ public Action Command_ToBonus(int client, int args)
 	// If not enough arguments, or there is more than one bonus
 	if (args < 1 && g_mapZoneGroupCount > 2) // Tell player to select specific bonus
 	{
-		/*PrintToChat(client, "[%cSurf Timer%c] Usage: !b <bonus number>", MOSSGREEN, WHITE);
+		/*PrintToChat(client, "[%cSurf Timer%c] Usage: !b <bonus number>", LIMEGREEN, WHITE);
 		if (g_mapZoneGroupCount > 1)
 		{
-			PrintToChat(client, "[%cSurf Timer%c] Available bonuses:", MOSSGREEN, WHITE);
+			PrintToChat(client, "[%cSurf Timer%c] Available bonuses:", LIMEGREEN, WHITE);
 			for (int i = 1; i < g_mapZoneGroupCount; i++)
 			{
 				PrintToChat(client, "[%c%i.%c] %s", YELLOW, i, WHITE, g_szZoneGroupName[i]);
@@ -651,7 +653,7 @@ public void ListStages(int client, int zonegroup)
 {
 	// Types: Start(1), End(2), Stage(3), Checkpoint(4), Speed(5), TeleToStart(6), Validator(7), Chekcer(8), Stop(0)
 	Menu sMenu = CreateMenu(MenuHandler_SelectStage);
-	SetMenuTitle(sMenu, "Stage selector");
+	SetMenuTitle(sMenu, "Select Stage");
 	int amount = 0;
 	char StageName[64], ZoneInfo[6];
 
@@ -688,7 +690,7 @@ public void ListStages(int client, int zonegroup)
 	}
 	else
 	{
-		AddMenuItem(sMenu, "", "No stages are available.", ITEMDRAW_DISABLED);
+		AddMenuItem(sMenu, "", "No stages available.", ITEMDRAW_DISABLED);
 	}
 
 	SetMenuExitButton(sMenu, true);
@@ -746,7 +748,7 @@ public Action Command_ToEnd(int client, int args)
 
 	if (!GetConVarBool(g_hCommandToEnd))
 	{
-		ReplyToCommand(client, "[%cSurf Timer%c] Teleportation to the end zone has been disabled on this server.", MOSSGREEN, WHITE);
+		ReplyToCommand(client, "[%cSurf Timer%c] Teleportation to the end zone has been disabled on this server.", LIMEGREEN, WHITE);
 		return Plugin_Handled;
 	}
 	teleportClient(client, g_iClientInZone[client][2], -1, true);
@@ -765,7 +767,7 @@ public Action Command_Restart(int client, int args)
 		{
 			g_fClientRestarting[client] = GetGameTime();
 			g_bClientRestarting[client] = true;
-			PrintToChat(client, "[%cSurf Timer%c] Are you sure you want to restart your run? Use %c!r%c again to restart.", MOSSGREEN, WHITE, GREEN, WHITE);
+			PrintToChat(client, "[%cSurf Timer%c] Are you sure you want to restart your run? Use %c!r%c again to restart.", LIMEGREEN, WHITE, LIMEGREEN, WHITE);
 			ClientCommand(client, "play ambient/misc/clank4");
 			return Plugin_Handled;
 		}
@@ -780,9 +782,9 @@ public Action Client_HideChat(int client, int args)
 {
 	HideChat(client);
 	if (g_bHideChat[client])
-		PrintToChat(client, "%t", "HideChat1", MOSSGREEN, WHITE);
+		PrintToChat(client, "%t", "HideChat1", LIMEGREEN, WHITE);
 	else
-		PrintToChat(client, "%t", "HideChat2", MOSSGREEN, WHITE);
+		PrintToChat(client, "%t", "HideChat2", LIMEGREEN, WHITE);
 	return Plugin_Handled;
 }
 
@@ -818,19 +820,19 @@ public Action ToggleCheckpoints(int client, int args)
 		g_bCheckpointsEnabled[client] = false;
 		if (g_bActivateCheckpointsOnStart[client])
 			g_bActivateCheckpointsOnStart[client] = false;
-		PrintToChat(client, "%t", "ToogleCheckpoints1", MOSSGREEN, WHITE);
+		PrintToChat(client, "%t", "ToogleCheckpoints1", LIMEGREEN, WHITE);
 	}
 	else
 	{
 		if (g_bTimeractivated[client])
 		{
-			PrintToChat(client, "%t", "ToggleCheckpoints3", MOSSGREEN, WHITE);
+			PrintToChat(client, "%t", "ToggleCheckpoints3", LIMEGREEN, WHITE);
 			g_bActivateCheckpointsOnStart[client] = true;
 		}
 		else
 		{
 			g_bCheckpointsEnabled[client] = true;
-			PrintToChat(client, "%t", "ToggleCheckpoints2", MOSSGREEN, WHITE);
+			PrintToChat(client, "%t", "ToggleCheckpoints2", LIMEGREEN, WHITE);
 		}
 	}
 	return Plugin_Handled;
@@ -840,9 +842,9 @@ public Action Client_HideWeapon(int client, int args)
 {
 	HideViewModel(client);
 	if (g_bViewModel[client])
-		PrintToChat(client, "%t", "HideViewModel2", MOSSGREEN, WHITE);
+		PrintToChat(client, "%t", "HideViewModel2", LIMEGREEN, WHITE);
 	else
-		PrintToChat(client, "%t", "HideViewModel1", MOSSGREEN, WHITE);
+		PrintToChat(client, "%t", "HideViewModel1", LIMEGREEN, WHITE);
 	return Plugin_Handled;
 }
 
@@ -875,7 +877,7 @@ public Action Client_Wr(int client, int args)
 	if (IsValidClient(client))
 	{
 		if (g_fRecordMapTime == 9999999.0)
-			PrintToChat(client, "%t", "NoRecordTop", MOSSGREEN, WHITE);
+			PrintToChat(client, "%t", "NoRecordTop", LIMEGREEN, WHITE);
 		else
 			PrintMapRecords(client);
 	}
@@ -894,7 +896,7 @@ public Action Command_bTier(int client, int args)
 	{
 		if (g_mapZoneGroupCount == 1)
 		{
-			PrintToChat(client, "[%cSurf Timer%c] There are no bonuses in this map.", MOSSGREEN, WHITE);
+			PrintToChat(client, "[%cSurf Timer%c] There are no Bonus Zones on this map.", LIMEGREEN, WHITE);
 			return;
 		}
 
@@ -910,7 +912,7 @@ public Action Command_bTier(int client, int args)
 
 		if (found == 0)
 		{
-			PrintToChat(client, "[%cSurf Timer%c] Bonus tiers have not been set on this map.", MOSSGREEN, WHITE);
+			PrintToChat(client, "[%cSurf Timer%c] Bonus tiers have not been set on this map.", LIMEGREEN, WHITE);
 		}
 	}
 }
@@ -926,7 +928,7 @@ public Action Client_Avg(int client, int args)
 	if (g_MapTimesCount == 0)
 		Format(szProTime, 32, "N/A");
 
-	PrintToChat(client, "%t", "AvgTime", MOSSGREEN, WHITE, GRAY, DARKBLUE, WHITE, szProTime, g_MapTimesCount);
+	PrintToChat(client, "%t", "AvgTime", LIMEGREEN, WHITE, LIMEGREEN, szProTime, WHITE, LIMEGREEN, g_MapTimesCount);
 
 	if (g_bhasBonus)
 	{
@@ -935,10 +937,9 @@ public Action Client_Avg(int client, int args)
 		for (int i = 1; i < g_mapZoneGroupCount; i++)
 		{
 			FormatTimeFloat(client, g_fAvg_BonusTime[i], 3, szBonusTime, sizeof(szBonusTime));
-
 			if (g_iBonusCount[i] == 0)
 				Format(szBonusTime, 32, "N/A");
-			PrintToChat(client, "%t", "AvgTimeBonus", MOSSGREEN, WHITE, GRAY, YELLOW, WHITE, szBonusTime, g_iBonusCount[i]);
+			PrintToChat(client, "%t", "AvgTimeBonus", LIMEGREEN, WHITE, LIMEGREEN, szBonusTime, WHITE, LIMEGREEN, g_iBonusCount[i]);
 		}
 	}
 
@@ -1020,7 +1021,7 @@ public int ChallengeMenuHandler2(Menu menu, MenuAction action, int param1, int p
 						g_Challenge_Bet[param1] = 0;
 		char szPlayerName[MAX_NAME_LENGTH];
 		Menu menu2 = CreateMenu(ChallengeMenuHandler3);
-		SetMenuTitle(menu2, "ckSurf - Challenge: Select your Opponent");
+		SetMenuTitle(menu2, "Surf Timer - Challenge: Select your Opponent");
 		int playerCount = 0;
 		for (int i = 1; i <= MaxClients; i++)
 		{
@@ -1038,7 +1039,7 @@ public int ChallengeMenuHandler2(Menu menu, MenuAction action, int param1, int p
 		}
 		else
 		{
-			PrintToChat(param1, "%t", "ChallengeFailed4", MOSSGREEN, WHITE);
+			PrintToChat(param1, "%t", "ChallengeFailed4", LIMEGREEN, WHITE);
 		}
 
 	}
@@ -1085,7 +1086,7 @@ public int ChallengeMenuHandler3(Menu menu, MenuAction action, int param1, int p
 							PrintToChat(param1, "%t", "Challenge1", RED, WHITE, YELLOW, szTargetName, value, cp);
 							//target msg
 							EmitSoundToClient(i, "buttons/button15.wav", i);
-							PrintToChat(i, "%t", "Challenge2", RED, WHITE, YELLOW, szPlayerName, GREEN, WHITE, value, cp);
+							PrintToChat(i, "%t", "Challenge2", RED, WHITE, YELLOW, szPlayerName, LIMEGREEN, WHITE, value, cp);
 							g_fChallenge_RequestTime[param1] = GetGameTime();
 							g_bChallenge_Request[param1] = true;
 						}
@@ -1118,7 +1119,7 @@ public Action Client_Abort(int client, int args)
 		else
 		{
 			g_bChallenge_Abort[client] = true;
-			PrintToChat(client, "[%cSurf Timer%c] You have agreed to abort the challenge. Waiting for your opponent..", RED, WHITE, GREEN);
+			PrintToChat(client, "[%cSurf Timer%c] You have agreed to abort the challenge. Waiting for your opponent..", RED, WHITE, LIMEGREEN);
 		}
 	}
 	return Plugin_Handled;
@@ -1166,7 +1167,7 @@ public Action Client_Accept(int client, int args)
 				else
 					Format(szCP, sizeof(szCP), "Forbidden");
 				int points = g_Challenge_Bet[i] * 2 * g_pr_PointUnit;
-				PrintToChatAll("[%cSurf Timer%c] Challenge: %c%s%c vs. %c%s%c", RED, WHITE, MOSSGREEN, szPlayer1, WHITE, MOSSGREEN, szPlayer2, WHITE);
+				PrintToChatAll("[%cSurf Timer%c] Challenge: %c%s%c vs. %c%s%c", RED, WHITE, LIMEGREEN, szPlayer1, WHITE, LIMEGREEN, szPlayer2, WHITE);
 				PrintToChatAll("[%cSurf Timer%c] Checkpoints: %c%s%c, Pot: %c%ip", RED, WHITE, GRAY, szCP, WHITE, GRAY, points);
 
 				int r1 = GetRandomInt(55, 255);
@@ -1297,7 +1298,7 @@ public Action Client_Surrender(int client, int args)
 					{
 						if (IsValidClient(j) && IsValidEntity(j))
 						{
-							PrintToChat(j, "%t", "Challenge4", RED, WHITE, MOSSGREEN, szNameOpponent, WHITE, MOSSGREEN, szName, WHITE);
+							PrintToChat(j, "%t", "Challenge4", RED, WHITE, LIMEGREEN, szNameOpponent, WHITE, LIMEGREEN, szName, WHITE);
 						}
 					}
 					//win ratio
@@ -1307,12 +1308,12 @@ public Action Client_Surrender(int client, int args)
 					if (g_Challenge_Bet[client] > 0)
 					{
 						g_pr_showmsg[i] = true;
-						PrintToChat(i, "%t", "Rc_PlayerRankStart", MOSSGREEN, WHITE, GRAY);
-						PrintToChat(client, "%t", "Rc_PlayerRankStart", MOSSGREEN, WHITE, GRAY);
+						PrintToChat(i, "%t", "Rc_PlayerRankStart", LIMEGREEN, WHITE, GRAY);
+						PrintToChat(client, "%t", "Rc_PlayerRankStart", LIMEGREEN, WHITE, GRAY);
 						int lostpoints = g_Challenge_Bet[client] * g_pr_PointUnit;
 						for (int j = 1; j <= MaxClients; j++)
 							if (IsValidClient(j) && IsValidEntity(j))
-								PrintToChat(j, "[%cSurf Timer%c] %c%s%c has lost %c%i %cpoints!", MOSSGREEN, WHITE, PURPLE, szName, GRAY, RED, lostpoints, GRAY);
+								PrintToChat(j, "[%cSurf Timer%c] %c%s%c has lost %c%i %cpoints!", LIMEGREEN, WHITE, PURPLE, szName, GRAY, RED, lostpoints, GRAY);
 					}
 					//db update
 					CreateTimer(0.0, UpdatePlayerProfile, i, TIMER_FLAG_NO_MAPCHANGE);
@@ -1373,7 +1374,7 @@ public Action Command_ckNoClip(int client, int args)
 
 	if(!IsPlayerAlive(client))
 	{
-		ReplyToCommand(client, "[%cSurf Timer%c] You cannot use NoClip while you are dead", MOSSGREEN, WHITE);
+		ReplyToCommand(client, "[%cSurf Timer%c] You cannot use NoClip while you are dead", LIMEGREEN, WHITE);
 	}
 	else
 	{
@@ -1428,8 +1429,8 @@ public Action Client_BonusTop(int client, int args)
 		{  // !btop
 			if (g_mapZoneGroupCount == 1)
 			{
-				PrintToChat(client, "[%cSurf Timer%c] No bonus found on this map.", MOSSGREEN, WHITE);
-				PrintToChat(client, "[%cSurf Timer%c] Usage: !btop <bonus id> <mapname>", MOSSGREEN, WHITE);
+				PrintToChat(client, "[%cSurf Timer%c] No Bonus Zones found on this map.", LIMEGREEN, WHITE);
+				PrintToChat(client, "[%cSurf Timer%c] Usage: !btop <bonus id> <mapname>", LIMEGREEN, WHITE);
 				return Plugin_Handled;
 			}
 			if (g_mapZoneGroupCount == 2)
@@ -1461,7 +1462,7 @@ public Action Client_BonusTop(int client, int args)
 				}
 				else
 				{
-					PrintToChat(client, "[%cSurf Timer%c] Invalid bonus ID %i.", MOSSGREEN, WHITE, zGrp);
+					PrintToChat(client, "[%cSurf Timer%c] Invalid bonus ID %i.", LIMEGREEN, WHITE, zGrp);
 					return Plugin_Handled;
 				}
 			}
@@ -1483,13 +1484,13 @@ public Action Client_BonusTop(int client, int args)
 
 			if (0 > zGrp || zGrp > MAXZONEGROUPS)
 			{
-				PrintToChat(client, "[%cSurf Timer%c] Invalid bonus ID %i.", MOSSGREEN, WHITE, zGrp);
+				PrintToChat(client, "[%cSurf Timer%c] Invalid bonus ID %i.", LIMEGREEN, WHITE, zGrp);
 				return Plugin_Handled;
 			}
 		}
 		default:
 		{
-			PrintToChat(client, "[%cSurf Timer%c] Usage: !btop <bonus id> <mapname>", MOSSGREEN, WHITE);
+			PrintToChat(client, "[%cSurf Timer%c] Usage: !btop <bonus id> <mapname>", LIMEGREEN, WHITE);
 			return Plugin_Handled;
 		}
 	}
@@ -1579,7 +1580,7 @@ public void SpecPlayer(int client, int args)
 			DisplayMenu(menu, client, MENU_TIME_FOREVER);
 		}
 		else
-			PrintToChat(client, "%t", "ChallengeFailed4", MOSSGREEN, WHITE);
+			PrintToChat(client, "%t", "ChallengeFailed4", LIMEGREEN, WHITE);
 
 	}
 	else
@@ -1612,7 +1613,7 @@ public void SpecPlayer(int client, int args)
 				}
 			}
 		}
-		PrintToChat(client, "%t", "PlayerNotFound", MOSSGREEN, WHITE, szOrgTargetName);
+		PrintToChat(client, "%t", "PlayerNotFound", LIMEGREEN, WHITE, szOrgTargetName);
 	}
 }
 
@@ -1642,7 +1643,7 @@ public int SpecMenuHandler(Menu menu, MenuAction action, int param1, int param2)
 				}
 			}
 			if (count == 0)
-				PrintToChat(param1, "%t", "NoPlayerTop", MOSSGREEN, WHITE);
+				PrintToChat(param1, "%t", "NoPlayerTop", LIMEGREEN, WHITE);
 			else
 			{
 				ChangeClientTeam(param1, 1);
@@ -1684,7 +1685,7 @@ public void CompareMenu(int client, int args)
 	{
 		Format(szPlayerName, MAX_NAME_LENGTH, "");
 		Menu menu = CreateMenu(CompareSelectMenuHandler);
-		SetMenuTitle(menu, "ckSurf - Compare menu");
+		SetMenuTitle(menu, "Surf Timer - Compare menu");
 		int playerCount = 0;
 		for (int i = 1; i <= MaxClients; i++)
 		{
@@ -1701,7 +1702,7 @@ public void CompareMenu(int client, int args)
 			DisplayMenu(menu, client, MENU_TIME_FOREVER);
 		}
 		else
-			PrintToChat(client, "[%cSurf Timer%c] No valid players found", MOSSGREEN, WHITE);
+			PrintToChat(client, "[%cSurf Timer%c] No valid players found", LIMEGREEN, WHITE);
 		return;
 	}
 	else
@@ -1897,9 +1898,9 @@ public Action Client_Hide(int client, int args)
 {
 	HideMethod(client);
 	if (!g_bHide[client])
-		PrintToChat(client, "%t", "Hide1", MOSSGREEN, WHITE);
+		PrintToChat(client, "%t", "Hide1", LIMEGREEN, WHITE);
 	else
-		PrintToChat(client, "%t", "Hide2", MOSSGREEN, WHITE);
+		PrintToChat(client, "%t", "Hide2", LIMEGREEN, WHITE);
 	return Plugin_Handled;
 }
 
@@ -1931,7 +1932,7 @@ public Action Client_Ranks(int client, int args)
 	if (IsValidClient(client))
 	{
 		char ChatLine[512];
-		Format(ChatLine, 512, "[%cSurf Timer%c] ", MOSSGREEN, WHITE);
+		Format(ChatLine, 512, "[%cSurf Timer%c] ", LIMEGREEN, WHITE);
 		int i, RankValue[SkillGroup];
 		for (i = 0; i < GetArraySize(g_hSkillGroups); i++)
 		{
@@ -1961,21 +1962,23 @@ public Action Client_Compare(int client, int args)
 	return Plugin_Handled;
 }
 
+/*
 public Action Client_RankingSystem(int client, int args)
 {
-	PrintToChat(client, "[%cSurf Timer%c]%c Loading html page.. (requires cl_disablehtmlmotd 0)", MOSSGREEN, WHITE, LIMEGREEN);
+	PrintToChat(client, "[%cSurf Timer%c]%c Loading html page.. (requires cl_disablehtmlmotd 0)", LIMEGREEN, WHITE, LIMEGREEN);
 	ShowMOTDPanel(client, "ckSurf - Ranking System", "http://koti.kapsi.fi/~mukavajoni/ranking/index.html", MOTDPANEL_TYPE_URL);
 	return Plugin_Handled;
 }
+*/
 
 public Action Client_Pause(int client, int args)
 {
 	if (GetClientTeam(client) == 1)return Plugin_Handled;
 	PauseMethod(client);
 	if (g_bPause[client] == false)
-		PrintToChat(client, "%t", "Pause2", MOSSGREEN, WHITE, RED, WHITE);
+		PrintToChat(client, "%t", "Pause2", LIMEGREEN, WHITE, RED, WHITE);
 	else
-		PrintToChat(client, "%t", "Pause3", MOSSGREEN, WHITE);
+		PrintToChat(client, "%t", "Pause3", LIMEGREEN, WHITE);
 	return Plugin_Handled;
 }
 
@@ -1989,7 +1992,7 @@ public void PauseMethod(int client)
 	{
 		if (GetConVarBool(g_hPauseServerside) == false && client != g_RecordBot)
 		{
-			PrintToChat(client, "%t", "Pause1", MOSSGREEN, WHITE, RED, WHITE);
+			PrintToChat(client, "%t", "Pause1", LIMEGREEN, WHITE, RED, WHITE);
 			return;
 		}
 		g_bPause[client] = true;
@@ -2026,9 +2029,9 @@ public Action Client_HideSpecs(int client, int args)
 {
 	HideSpecs(client);
 	if (g_bShowSpecs[client] == true)
-		PrintToChat(client, "%t", "HideSpecs1", MOSSGREEN, WHITE);
+		PrintToChat(client, "%t", "HideSpecs1", LIMEGREEN, WHITE);
 	else
-		PrintToChat(client, "%t", "HideSpecs2", MOSSGREEN, WHITE);
+		PrintToChat(client, "%t", "HideSpecs2", LIMEGREEN, WHITE);
 	return Plugin_Handled;
 }
 
@@ -2041,9 +2044,9 @@ public Action Client_Showtime(int client, int args)
 {
 	ShowTime(client);
 	if (g_bShowTime[client])
-		PrintToChat(client, "%t", "Showtime1", MOSSGREEN, WHITE);
+		PrintToChat(client, "%t", "Showtime1", LIMEGREEN, WHITE);
 	else
-		PrintToChat(client, "%t", "Showtime2", MOSSGREEN, WHITE);
+		PrintToChat(client, "%t", "Showtime2", LIMEGREEN, WHITE);
 	return Plugin_Handled;
 }
 
@@ -2072,7 +2075,7 @@ public int GoToMenuHandler(Menu menu, MenuAction action, int param1, int param2)
 				{
 					if (i == MaxClients)
 					{
-						PrintToChat(param1, "%t", "Goto4", MOSSGREEN, WHITE, szPlayerName);
+						PrintToChat(param1, "%t", "Goto4", LIMEGREEN, WHITE, szPlayerName);
 						Client_GoTo(param1, 0);
 					}
 				}
@@ -2126,18 +2129,18 @@ public void GotoMethod(int client, int target)
 				//TeleportEntity(client, position, angles, Float:{0.0,0.0,-100.0});
 				char szClientName[MAX_NAME_LENGTH];
 				GetClientName(client, szClientName, MAX_NAME_LENGTH);
-				PrintToChat(target, "%t", "Goto5", MOSSGREEN, WHITE, szClientName);
+				PrintToChat(target, "%t", "Goto5", LIMEGREEN, WHITE, szClientName);
 			}
 		}
 		else
 		{
-			PrintToChat(client, "%t", "Goto6", MOSSGREEN, WHITE, szTargetName);
+			PrintToChat(client, "%t", "Goto6", LIMEGREEN, WHITE, szTargetName);
 			Client_GoTo(client, 0);
 		}
 	}
 	else
 	{
-		PrintToChat(client, "%t", "Goto7", MOSSGREEN, WHITE, szTargetName);
+		PrintToChat(client, "%t", "Goto7", LIMEGREEN, WHITE, szTargetName);
 		Client_GoTo(client, 0);
 	}
 }
@@ -2147,13 +2150,13 @@ public void GotoMethod(int client, int target)
 public Action Client_GoTo(int client, int args)
 {
 	if (!GetConVarBool(g_hGoToServer))
-		PrintToChat(client, "%t", "Goto1", MOSSGREEN, WHITE, RED, WHITE);
+		PrintToChat(client, "%t", "Goto1", LIMEGREEN, WHITE, RED, WHITE);
 	else
 		if (!GetConVarBool(g_hCvarNoBlock))
-			PrintToChat(client, "%t", "Goto2", MOSSGREEN, WHITE);
+			PrintToChat(client, "%t", "Goto2", LIMEGREEN, WHITE);
 		else
 			if (g_bTimeractivated[client])
-				PrintToChat(client, "%t", "Goto3", MOSSGREEN, WHITE, GREEN, WHITE);
+				PrintToChat(client, "%t", "Goto3", LIMEGREEN, WHITE, LIMEGREEN, WHITE);
 			else
 			{
 				char szPlayerName[MAX_NAME_LENGTH];
@@ -2163,7 +2166,7 @@ public Action Client_GoTo(int client, int args)
 				if (args == 0)
 				{
 					Menu menu = CreateMenu(GoToMenuHandler);
-					SetMenuTitle(menu, "ckSurf - Goto menu");
+					SetMenuTitle(menu, "Surf Timer - GoTo menu");
 					int playerCount = 0;
 					for (int i = 1; i <= MaxClients; i++)
 					{
@@ -2182,7 +2185,7 @@ public Action Client_GoTo(int client, int args)
 					else
 					{
 						CloseHandle(menu);
-						PrintToChat(client, "%t", "ChallengeFailed4", MOSSGREEN, WHITE);
+						PrintToChat(client, "%t", "ChallengeFailed4", LIMEGREEN, WHITE);
 					}
 				}
 				else
@@ -2213,7 +2216,7 @@ public Action Client_GoTo(int client, int args)
 							}
 						}
 					}
-					PrintToChat(client, "%t", "PlayerNotFound", MOSSGREEN, WHITE, szOrgTargetName);
+					PrintToChat(client, "%t", "PlayerNotFound", LIMEGREEN, WHITE, szOrgTargetName);
 				}
 			}
 	return Plugin_Handled;
@@ -2223,9 +2226,9 @@ public Action Client_QuakeSounds(int client, int args)
 {
 	QuakeSounds(client);
 	if (g_bEnableQuakeSounds[client])
-		PrintToChat(client, "%t", "QuakeSounds1", MOSSGREEN, WHITE);
+		PrintToChat(client, "%t", "QuakeSounds1", LIMEGREEN, WHITE);
 	else
-		PrintToChat(client, "%t", "QuakeSounds2", MOSSGREEN, WHITE);
+		PrintToChat(client, "%t", "QuakeSounds2", LIMEGREEN, WHITE);
 	return Plugin_Handled;
 }
 
@@ -2314,7 +2317,7 @@ public void ckTopMenu(int client)
 	SetMenuTitle(cktopmenu, "Stats Menu");
 	if (GetConVarBool(g_hPointSystem))
 		AddMenuItem(cktopmenu, "Top 100 Players", "Top 100 Players");
-	AddMenuItem(cktopmenu, "Top 5 Challengers", "Top 5 Challengers");
+	//AddMenuItem(cktopmenu, "Top 5 Challengers", "Top 5 Challengers");
 	AddMenuItem(cktopmenu, "Map Top", "Map Top");
 
 	AddMenuItem(cktopmenu, "Bonus Top", "Bonus Top", !g_bhasBonus);
@@ -2364,7 +2367,7 @@ public void BonusTopMenu(int client)
 	{
 		char buffer[3];
 		Menu sMenu = new Menu(BonusTopMenuHandler);
-		sMenu.SetTitle("Bonus selector");
+		sMenu.SetTitle("Select Bonus");
 
 		if (g_mapZoneGroupCount > 1)
 		{
@@ -2376,7 +2379,7 @@ public void BonusTopMenu(int client)
 		}
 		else
 		{
-			PrintToChat(client, "[%cSurf Timer%c] There are no bonuses in this map.", MOSSGREEN, WHITE);
+			PrintToChat(client, "[%cSurf Timer%c] There are no Bonus Zones on this map.", LIMEGREEN, WHITE);
 			return;
 		}
 
@@ -2429,7 +2432,7 @@ public void HelpPanel(int client)
 	PrintConsoleInfo(client);
 	Handle panel = CreatePanel();
 	char title[64];
-	Format(title, 64, "Surf Timer Help (1/4) - v%s\nby Elzi", VERSION);
+	Format(title, 64, "Surf Timer Help (1/4)");
 	DrawPanelText(panel, title);
 	DrawPanelText(panel, " ");
 	DrawPanelText(panel, "!options - Player options menu");
@@ -2458,7 +2461,7 @@ public int HelpPanel2(int client)
 {
 	Handle panel = CreatePanel();
 	char szTmp[64];
-	Format(szTmp, 64, "Surf Timer Help (2/4) - v%s\nby Elzi", VERSION);
+	Format(szTmp, 64, "Surf Timer Help (2/4)");
 	DrawPanelText(panel, szTmp);
 	DrawPanelText(panel, " ");
 	DrawPanelText(panel, "!saveloc - Saves your current Location and Speed");
@@ -2493,7 +2496,7 @@ public void HelpPanel3(int client)
 {
 	Handle panel = CreatePanel();
 	char szTmp[64];
-	Format(szTmp, 64, "Surf Timer Help (3/4) - v%s\nby Elzi", VERSION);
+	Format(szTmp, 64, "Surf Timer Help (3/4");
 	DrawPanelText(panel, szTmp);
 	DrawPanelText(panel, " ");
 	DrawPanelText(panel, "!maptop [<mapname>] - displays map top for any given map");
@@ -2524,11 +2527,11 @@ public int HelpPanel3Handler(Menu menu, MenuAction action, int param1, int param
 	}
 }
 
-ppublic void HelpPanel4(int client)
+public void HelpPanel4(int client)
 {
 	Handle panel = CreatePanel();
 	char szTmp[64];
-	Format(szTmp, 64, "Surf Timer Help (4/4) - v%s\nby Elzi", VERSION);
+	Format(szTmp, 64, "Surf Timer Help (4/4)");
 	DrawPanelText(panel, szTmp);
 	DrawPanelText(panel, " ");
 	DrawPanelText(panel, "!cp - Deprecated (use saveloc)");
@@ -2552,7 +2555,7 @@ public int HelpPanel4Handler(Menu menu, MenuAction action, int param1, int param
 
 public void ShowSrvSettings(int client)
 {
-	PrintToConsole(client, " ");
+/*	PrintToConsole(client, " ");
 	PrintToConsole(client, "-----------------");
 	PrintToConsole(client, "ckSurf settings");
 	PrintToConsole(client, "-----------------");
@@ -2580,6 +2583,7 @@ public void ShowSrvSettings(int client)
 	PrintToConsole(client, "ck_replay_bot %b", GetConVarBool(g_hReplayBot));
 	PrintToConsole(client, "ck_restore %b", GetConVarBool(g_hcvarRestore));
 	PrintToConsole(client, "ck_use_radio %b", GetConVarBool(g_hRadioCommands));
+*/
 	PrintToConsole(client, "---------------");
 	PrintToConsole(client, "Server settings");
 	PrintToConsole(client, "---------------");
@@ -2620,13 +2624,13 @@ public void ShowSrvSettings(int client)
 	PrintToConsole(client, "sv_staminajumpcost %.2f", flStamJump);
 	PrintToConsole(client, "sv_wateraccelerate %.1f", flWaterA);
 	PrintToConsole(client, "-------------------------------------");
-	PrintToChat(client, "[%cSurf Timer%c] See console for output!", MOSSGREEN, WHITE);
+	PrintToChat(client, "[%cSurf Timer%c] See console for output!", LIMEGREEN, WHITE);
 }
 
 public void OptionMenu(int client)
 {
 	Menu optionmenu = CreateMenu(OptionMenuHandler);
-	SetMenuTitle(optionmenu, "Surf Timer - Options Menu")
+	SetMenuTitle(optionmenu, "Surf Timer - Options Menu");
 	// #0
 	if (g_bHide[client])
 		AddMenuItem(optionmenu, "Hide Players  -  Enabled", "Hide other players  -  Enabled");
@@ -2734,9 +2738,9 @@ public Action Client_DisableGoTo(int client, int args)
 {
 	DisableGoTo(client);
 	if (g_bGoToClient[client])
-		PrintToChat(client, "%t", "DisableGoto1", MOSSGREEN, WHITE);
+		PrintToChat(client, "%t", "DisableGoto1", LIMEGREEN, WHITE);
 	else
-		PrintToChat(client, "%t", "DisableGoto2", MOSSGREEN, WHITE);
+		PrintToChat(client, "%t", "DisableGoto2", LIMEGREEN, WHITE);
 	return Plugin_Handled;
 }
 
@@ -2750,9 +2754,9 @@ public Action Client_InfoPanel(int client, int args)
 {
 	InfoPanel(client);
 	if (g_bInfoPanel[client] == true)
-		PrintToChat(client, "%t", "Info1", MOSSGREEN, WHITE);
+		PrintToChat(client, "%t", "Info1", LIMEGREEN, WHITE);
 	else
-		PrintToChat(client, "%t", "Info2", MOSSGREEN, WHITE);
+		PrintToChat(client, "%t", "Info2", LIMEGREEN, WHITE);
 	return Plugin_Handled;
 }
 
@@ -2762,11 +2766,12 @@ public void InfoPanel(int client)
 }
 
 
-
+/*
 public Action Command_ViewStats(int client, int args)
 {
 	ShowMOTDPanel(client, "Surf statistics", "http://2gcrew.space/motd.php?u=http://2gcrew.space/surf_stats/", MOTDPANEL_TYPE_URL);
 }
+*/
 
 public Action Command_saveLoc(int client, int args)
 {
@@ -2775,7 +2780,7 @@ public Action Command_saveLoc(int client, int args)
 	// Check if we reached the limit of savelocs
 	if (id >= MAX_SAVELOCS)
 	{
-		PrintToChat(client, "[%cSurf Timer%c] We reached the limit of saved locations for this map.", MOSSGREEN, WHITE);
+		PrintToChat(client, "[%cSurf Timer%c] We reached the limit of saved locations for this map.", LIMEGREEN, WHITE);
 		return Plugin_Handled;
 	}
 
@@ -2809,7 +2814,7 @@ public Action Command_saveLoc(int client, int args)
 
 
 	// Print saveloc's info to chat
-	PrintToChat(client, "[%cSurf Timer%c] Your location was saved with the ID: %c#%d%c type %c!loadloc %d %cto teleport to the location.", MOSSGREEN, WHITE, GREEN, id, WHITE, GREEN, id, WHITE);
+	PrintToChat(client, "[%cSurf Timer%c] Your location was saved with the ID: %c#%d%c type %c!loadloc %d %cto teleport to the location.", LIMEGREEN, WHITE, LIMEGREEN, id, WHITE, LIMEGREEN, id, WHITE);
 
 	return Plugin_Handled;
 }
@@ -2833,7 +2838,7 @@ public Action Command_loadLoc(int client, int args)
 		}
 		else
 		{
-			PrintToChat(client, "[%cSurf Timer%c] Usage: %c!loadloc <id>", MOSSGREEN, WHITE, GREEN);
+			PrintToChat(client, "[%cSurf Timer%c] Usage: %c!loadloc <id>", LIMEGREEN, WHITE, LIMEGREEN);
 			return Plugin_Handled;
 		}
 	}
@@ -2848,7 +2853,7 @@ public Action Command_loadLoc(int client, int args)
 	// Make sure the saveloc id exists and is not from the past map
 	if (g_SavedLocationsCount < id)
 	{
-		PrintToChat(client, "[%cSurf Timer%c] No location was found with the id %c#%d", MOSSGREEN, WHITE, GREEN, id);
+		PrintToChat(client, "[%cSurf Timer%c] No location was found with id %c#%d", LIMEGREEN, WHITE, LIMEGREEN, id);
 		return Plugin_Handled;
 	}
 
@@ -2879,7 +2884,7 @@ public Action Command_loadLoc(int client, int args)
 		FormatTimeFloat(client, g_SavedLocations[id][slRunTime], 3, sTime, sizeof(sTime));
 
 		// Print message to chat
-		PrintToChat(client, "[%cSurf Timer%c] Loaded location %c#%d %ccreated by: %c%s %c[Player: %c%s %c| Time: %c%s%c]", MOSSGREEN, WHITE, GREEN, id, WHITE, GREEN, g_SavedLocations[id][slCreator], WHITE, GREEN, g_SavedLocations[id][slPlayer], WHITE, GREEN, sTime, WHITE);
+		PrintToChat(client, "[%cSurf Timer%c] Loaded location %c#%d %ccreated by: %c%s %c[Player: %c%s %c| Time: %c%s%c]", LIMEGREEN, WHITE, LIMEGREEN, id, WHITE, LIMEGREEN, g_SavedLocations[id][slCreator], WHITE, LIMEGREEN, g_SavedLocations[id][slPlayer], WHITE, LIMEGREEN, sTime, WHITE);
 	}
 
 	// Store the id
@@ -2893,7 +2898,7 @@ public Action Command_Replay(int client, int args)
 {
 	if (!g_RecordBot)
 	{
-		PrintToChat(client, "[%cSurf Timer%c] No replay bots available.", MOSSGREEN, WHITE);
+		PrintToChat(client, "[%cSurf Timer%c] No replay bots available.", LIMEGREEN, WHITE);
 		return Plugin_Handled;
 	}
 
@@ -2907,7 +2912,7 @@ public Action Command_Replay(int client, int args)
 	{
 		if (g_bIsPlayingReplay)
 		{
-			PrintToChat(client, "[%cSurf Timer%c] The replay bot is currently busy. Wait for the current replay to finish.", MOSSGREEN, WHITE);
+			PrintToChat(client, "[%cSurf Timer%c] The replay bot is currently busy. Wait for the current replay to finish.", LIMEGREEN, WHITE);
 			return Plugin_Handled;
 		}
 
@@ -2915,7 +2920,7 @@ public Action Command_Replay(int client, int args)
 		float requestDelay = GetGameTime() - g_fLastReplayRequested[client];
 		if (requestDelay < 15.0)
 		{
-			PrintToChat(client, "[%cSurf Timer%c] Please wait %d seconds before requesting a new replay", MOSSGREEN, WHITE, RoundToCeil(15.0 - requestDelay));
+			PrintToChat(client, "[%cSurf Timer%c] Please wait %d seconds before requesting a new replay", LIMEGREEN, WHITE, RoundToCeil(15.0 - requestDelay));
 			return Plugin_Handled;
 		}
 	}
@@ -3064,25 +3069,25 @@ public int ReplayMenu_Confirm_Handler(Menu menu, MenuAction action, int client, 
 public Action Command_Repeat(int client, int args) {
 	if (g_RepeatStage[client] != -1) {
 		g_RepeatStage[client] = -1;
-		PrintToChat(client, "[%cSurf Timer%c] Repeat mode is now disabled.", MOSSGREEN, WHITE);
+		PrintToChat(client, "[%cSurf Timer%c] Repeat mode is now disabled.", LIMEGREEN, WHITE);
 		return Plugin_Handled;
 	}
 
 	// Check if player is in a bonus
 	if (g_iClientInZone[client][2] != 0) {
-		PrintToChat(client, "[%cSurf Timer%c] This command is not available in bonus.", MOSSGREEN, WHITE);
+		PrintToChat(client, "[%cSurf Timer%c] This command is not available in bonus zones.", LIMEGREEN, WHITE);
 		return Plugin_Handled;
 	}
 
 	// Check if its not a staged map
 	if (!g_bhasStages) {
-		PrintToChat(client, "[%cSurf Timer%c] This command is not available in linear maps.", MOSSGREEN, WHITE);
+		PrintToChat(client, "[%cSurf Timer%c] This command is not available on linear maps.", LIMEGREEN, WHITE);
 		return Plugin_Handled;
 	}
 
 
 	g_RepeatStage[client] = g_Stage[0][client];
-	PrintToChat(client, "[%cSurf Timer%c] Repeating mode is now enabled, repeating stage %d", MOSSGREEN, WHITE, g_RepeatStage[client]);
+	PrintToChat(client, "[%cSurf Timer%c] Repeat mode is now enabled, repeating stage %d", LIMEGREEN, WHITE, g_RepeatStage[client]);
 	return Plugin_Handled;
 }
 
@@ -3114,7 +3119,7 @@ public Action Command_StageMaxVelocity(int args)
 	// Check if the stage is valid
 	if (stage == 0 || stage >= CPLIMIT)
 	{
-		LogError("[Surf Timer] sm_stagemaxvelocity: Invalid stage (%s).", szStage);
+		LogError("[Surf Timer] sm_stagemaxvelocity: Invalid stage %s.", szStage);
 		return Plugin_Handled;
 	}
 	
@@ -3220,5 +3225,5 @@ public Action Command_ShowZones(int client, int args)
 {	
 	g_bShowZones[client] = !g_bShowZones[client];
 
-	PrintToChat(client, "[%cSurf Timer%c] Zone display is now %s.", MOSSGREEN, WHITE, (g_bShowZones[client] ? "enabled" : "disabled"));
+	PrintToChat(client, "[%cSurf Timer%c] Zone display is now %s.", LIMEGREEN, WHITE, (g_bShowZones[client] ? "enabled" : "disabled"));
 }
