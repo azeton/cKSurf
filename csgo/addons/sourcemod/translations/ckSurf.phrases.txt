@@ -93,32 +93,32 @@
 	"StageNotFound"
 	{
 		"#format"	"{1:c},{2:c}{3:i}"
-		"en"		"[{1}Surf Timer{2}] Could not find stage {3}."
+		"en"		"[{1}Surf Timer{2}] Could not find stage {3}"
 	}
 	"StartNotFound"
 	{
 		"#format"	"{1:c},{2:c}"
-		"en"		"[{1}Surf Timer{2}] No startzone found! Contact an admin, please."
+		"en"		"[{1}Surf Timer{2}] No startzone found"
 	}
 	"ZoneVisAll"
 	{
 		"#format"	"{1:c},{2:c}"
-		"en"		"[{1}Surf Timer{2}] The zone is visible for ALL."
+		"en"		"[{1}Surf Timer{2}] The zone is visible for ALL"
 	}
 	"ZoneVisT"
 	{
 		"#format"	"{1:c},{2:c}"
-		"en"		"[{1}Surf Timer{2}] The zone is visible for Terrorists."
+		"en"		"[{1}Surf Timer{2}] The zone is visible for Terrorists"
 	}
 	"ZoneVisCT"
 	{
 		"#format"	"{1:c},{2:c}"
-		"en"		"[{1}Surf Timer{2}] The zone is visible for Counter-Terrorists."
+		"en"		"[{1}Surf Timer{2}] The zone is visible for Counter-Terrorists"
 	}
 	"ZoneVisInv"
 	{
 		"#format"	"{1:c},{2:c}"
-		"en"		"[{1}Surf Timer{2}] The zone is invisible."
+		"en"		"[{1}Surf Timer{2}] The zone is invisible"
 	}
 	"AvgTime"
 	{
@@ -127,7 +127,7 @@
 	}
 	"AvgTimeBonus"
 	{
-		"#format"   "{1:c},{2:c},{3:c},{4:s},{5:c},{6:i},{7:i}"
+		"#format"   "{1:c},{2:c},{3:c},{4:s},{5:c},{6:c},{7:i}"
 		"en"        "[{1}Surf Timer{2}] Average Bonus time: {3}{4}{5} Completions: {6}{7}"
 	}
 	"TimeleftCounter"
