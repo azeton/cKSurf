@@ -363,18 +363,18 @@
 	}
 	"ReplayFinishingMsg"
 	{
-		"#format"   "{1:c},{2:c},{3:c},{4:s},{5:c},{6:c},{7:s},{8:c}"
+		"#format"   "{1:c},{2:c},{3:c},{4:s},{5:c},{6:c},{7:s}"
 		"en"        "[{1}Surf Timer{2}] {3}{4}{5} finished with a time of {6}{7}"
 	}
 	"ReplayFinishingMsgBonus"
 	{
-		"#format"   "{1:c},{2:c},{3:c},{4:s},{5:c},{6:c},{7:s},{8:c},{9:c},{10:s},{11:c}"
+		"#format"   "{1:c},{2:c},{3:c},{4:s},{5:c},{6:c},{7:s},{8:c},{9:c},{10:s}"
 		"en"        "[{1}Surf Timer{2}] {3}{4}{5} finished the {6}{7}{8} with a time of {9}{10}"
 	}
 	"MapFinished1"
 	{				 
 		"#format"   "{1:c},{2:c},{3:c},{4:s},{5:c},{6:c},{7:s},{8:c},{9:c},{10:i},{11:c},{12:i},{13:s}"
-		"en"		"[{1}Surf Timer{2}] {3}{4}{5} finished in {6}{7}{8} | Rank: {9}{10}{11}/{12} | SR: {13}
+		"en"		"[{1}Surf Timer{2}] {3}{4}{5} finished in {6}{7}{8} | Rank: {9}{10}{11}/{12} | SR: {13}"
 	}
 	"MapFinished3"
 	{

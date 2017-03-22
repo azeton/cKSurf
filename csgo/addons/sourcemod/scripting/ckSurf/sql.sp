@@ -7020,7 +7020,7 @@ public void SQL_updateStageRankCallback(Handle owner, Handle hndl, const char[] 
 
 		// Check if the player improved his time
 		if (rank != -1 && rank < g_StagePlayerRank[client][stage])
-			PrintToChat(client, "[%cSurf Timer%c] %cYou improved your time, your rank is now %c%d/%d", LIMEGREEN, WHITE, YELLOW, LIMEGREEN, rank, g_StageRecords[stage][srCompletions]);
+			PrintToChat(client, "[%cSurf Timer%c] You improved your time, your rank is now %c%d%c/%d", LIMEGREEN, WHITE, LIMEGREEN, rank, WHITE, g_StageRecords[stage][srCompletions]);
 			
 		g_StagePlayerRank[client][stage] = rank;
 
