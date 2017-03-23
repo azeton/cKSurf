@@ -780,6 +780,11 @@ float g_fPlayerStageRecStartSpeed[MAXPLAYERS+1][CPLIMIT];
 float g_fPlayerCurrentStartSpeed[MAXPLAYERS+1][CPLIMIT];
 
 
+/*--------- Web Stats ------------------*/
+char g_cWebStatsUrl_Base[256];
+char g_cWebStatsUrl_Profile[256];
+
+
 /*=========================================
 =            Predefined arrays            =
 =========================================*/
@@ -2115,6 +2120,25 @@ public void OnPluginStart()
 	Format(szPINK, 12, "%c", PINK);
 	Format(szLIGHTRED, 12, "%c", LIGHTRED);
 	Format(szORANGE, 12, "%c", ORANGE);
+
+	
+ 	KeyValues kv = new KeyValues("SurfTimer");
+ 	char cfgPath[PLATFORM_MAX_PATH];
+ 	BuildPath(Path_SM, cfgPath, sizeof(cfgPath), "configs/ckSurf/surftimer.txt");
+ 	kv.ImportFromFile(cfgPath);
+ 
+ 	if (kv.JumpToKey("webstats"))
+ 	{
+ 		kv.GetString("base", g_cWebStatsUrl_Base, sizeof(g_cWebStatsUrl_Base));
+ 		kv.GetString("profile", g_cWebStatsUrl_Profile, sizeof(g_cWebStatsUrl_Profile));
+ 	}
+ 	else
+ 	{
+ 		Format(g_cWebStatsUrl_Base, sizeof(g_cWebStatsUrl_Base), "http://marcowmadeira.com/surf/notsupported.html");
+ 		Format(g_cWebStatsUrl_Profile, sizeof(g_cWebStatsUrl_Profile), "http://marcowmadeira.com/surf/notsupported.html");
+ 	}
+ 
+	delete kv;
 }
 
 /*=====  End of Events  ======*/
