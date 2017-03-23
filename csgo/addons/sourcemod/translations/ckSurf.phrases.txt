@@ -423,59 +423,58 @@
 	}
 	"Checkpoint1"
 	{
-		"#format"	"{1:c},{2:c},{3:c},{4:c},{5:s},{6:c},{7:s}"
-		"en"		"[{1}Surf Timer{2}] {3}CP1{4} PR: {5}{6} | {7}"
+		"#format"	"{1:c},{2:c},{3:c},{4:s},{5:c},{6:s},{7:c},{8:s}"
+		"en"		"[{1}Surf Timer{2}] CP[{3}{4}{5}] | PR: {6}{7} | SR: {8}"
 	}
 	"Checkpoint1-spec"
 	{
 		"#format"	"{1:c},{2:c},{3:c},{4:s},{5:c},{6:s},{7:c},{8:s}"
-		"en"		"[{1}Surf Timer{2}] {3}{4}-CP1{5} PR: {6}{7} | {8}"
+		"en"		"[{1}Surf Timer{2}] SPEC-CP[{3}{4}{5}] | PR: {6}{7} | SR: {8}"	
 	}
 	"Checkpoint2"
 	{
-		"#format"	"{1:c},{2:c},{3:c},{4:c},{5:s},{6:c},{7:s}"
-		"en"		"[{1}Surf Timer{2}] {3}CP2{4} PR: {5}{6} | {7}"
+		"#format"	"{1:c},{2:c},{3:c},{4:s},{5:c},{6:s},{7:c},{8:s},{9:c},{10:s}"
+		"en"		"[{1}Surf Timer{2}] CP[{3}{4}{5}] | PR: {6}{7} | SR: {8}{9} | {10}"
 	}
 	"Checkpoint2-spec"
 	{
-		"#format"	"{1:c},{2:c},{3:c},{4:s},{5:c},{6:s},{7:c},{8:s}"
-		"en"		"[{1}Surf Timer{2}] {3}{4}-CP2{5} PR: {6}{7} | {8}"
+		"#format"	"{1:c},{2:c},{3:c},{4:s},{5:c},{6:s},{7:c},{8:s},{9:c},{10:s}"
+		"en"		"[{1}Surf Timer{2}] SPEC-CP[{3}{4}{5}] | PR: {6}{7} | SR: {8}{9} | {10}"
 	}
 	"Checkpoint3"
 	{
-		"#format" 	"{1:c},{2:c},{3:c},{4:c},{5:c},{6:s},{7:c},{8:s}"
-		"en"		"[{1}Surf Timer{2}] {3}CP3{4} Time: {5}{6}{7} | {8}"
+		"#format" 	"{1:c},{2:c},{3:c},{4:s},{5:c},{6:s},{7:c},{8:s}"
+		"en"		"[{1}Surf Timer{2}] CP[{3}{4}{5}] reached in {6}{7} | SR: {8}"
 	}
 	"Checkpoint3-spec"
 	{
-		"#format" 	"{1:c},{2:c},{3:c},{4:s},{5:c},{6:s}"
-		"en"		"[{1}Surf Timer{2}] {3}{4}-CP3{5} {6}"
+		"#format" 	"{1:c},{2:c},{3:c},{4:s},{5:c},{6:s},{7:c},{8:s}"
+		"en"		"[{1}Surf Timer{2}] SPEC-CP[{3}{4}{5}] reached in {6}{7} | SR: {8}"
 	}
 	"Checkpoint4"
 	{
 		"#format" 	"{1:c},{2:c},{3:c},{4:i}"
-		"en"	  	"[{1}Surf Timer{2}] Reached CP:{3} {4}"
+		"en"	  	"[{1}Surf Timer{2}] Reached CP[{3}{4}]"
 	}
 	"Checkpoint4-spec"
 	{
-		"#format" 	"{1:c},{2:c},{3:c},{4:s}{5:c},{6:c},{7:i}"
-		"en"	  	"[{1}Surf Timer{2}] {3}{4}{5} reached CP:{6} {7}"
+		"en"	  	"[{1}Surf Timer{2}] Reached SPEC-CP[{3}{4}]"
 	}
 	"GrewCheckpoint"
 	{
-		"en"		"Grew lead by"
+		"en"		"Diff:"
 	}
 	"LostCheckpoint"
 	{
-		"en"		"Lost lead by"
+		"en"		"Diff:"
 	}
 	"CaughtCheckpoint"
 	{
-		"en"		"Caught up by"
+		"en"		"Diff:"
 	}
 	"FellCheckpoint"
 	{
-		"en"		"Fell behind by"
+		"en"		"Diff:"
 	}
 	"NoClipUnlocked"
 	{

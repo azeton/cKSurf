@@ -1,0 +1,8 @@
++"SurfTimer"
+ +{
+ +	"webstats"
+ +	{
+ +		"base"	"http://azeton.de/csgo/stats"
+ +		"profile"	"http://azeton.de/csgo/stats"
+ +	}
+ +}
