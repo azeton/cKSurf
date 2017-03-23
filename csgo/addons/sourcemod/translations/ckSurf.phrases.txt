@@ -453,13 +453,13 @@
 	}
 	"Checkpoint4"
 	{
-		"#format" 	"{1:c},{2:c},{3:c},{4:i}"
-		"en"	  	"[{1}Surf Timer{2}] Reached CP[{3}{4}]"
+		"#format" 	"{1:c},{2:c},{3:c},{4:i},{5:c}"
+		"en"	  	"[{1}Surf Timer{2}] Reached CP[{3}{4}{5}]]"
 	}
 	"Checkpoint4-spec"
 	{
-		"#format" 	"{1:c},{2:c},{3:c},{4:i}"
-		"en"	  	"[{1}Surf Timer{2}] Reached SPEC-CP[{3}{4}]"
+		"#format" 	"{1:c},{2:c},{3:c},{4:i},{5:c}"
+		"en"	  	"[{1}Surf Timer{2}] Reached SPEC-CP[{3}{4}{5}]"
 	}
 	"GrewCheckpoint"
 	{

@@ -499,7 +499,7 @@ public Action Command_GoBack(int client, int args)
 
 public Action Command_HowTo(int client, int args)
 {
-	OpenMOTD(client, "https://www.youtube.com/embed/lYc52kwTNb8")
+	OpenMOTD(client, "https://www.youtube.com/embed/lYc52kwTNb8");
 	return Plugin_Handled;
 }
 

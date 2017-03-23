@@ -3454,8 +3454,8 @@ public void Checkpoint(int client, int zone, int zonegroup)
 		else
 		{
 			if (g_bCheckpointsEnabled[client])
-				PrintToChat(client, "%t", "Checkpoint4", LIMEGREEN, WHITE, LIMEGREEN, (1 + zone));
-			Format(szSpecMessage, sizeof(szSpecMessage), "%t", "Checkpoint4-spec", LIMEGREEN, WHITE, LIMEGREEN, (1 + zone));
+				PrintToChat(client, "%t", "Checkpoint4", LIMEGREEN, WHITE, LIMEGREEN, (1 + zone), WHITE);
+			Format(szSpecMessage, sizeof(szSpecMessage), "%t", "Checkpoint4-spec", LIMEGREEN, WHITE, LIMEGREEN, (1 + zone), WHITE);
 			CheckpointToSpec(client, szSpecMessage);
 		}
 }

@@ -118,13 +118,13 @@ public void CL_OnStartTimerPress(int client)
 
 		for (int i = 1; i <= MaxClients; i++)
 		{
-		if (!IsClientInGame(i))
- +				continue;
- 
+			if (!IsClientInGame(i))
+				continue;
+
 			if (GetClientTeam(i) != CS_TEAM_SPECTATOR)
 				continue;
-			
-				int ObserverMode = GetEntProp(i, Prop_Send, "m_iObserverMode");
+
+			int ObserverMode = GetEntProp(i, Prop_Send, "m_iObserverMode");
 			if (ObserverMode != 4 && ObserverMode != 5)
 				continue;
 
