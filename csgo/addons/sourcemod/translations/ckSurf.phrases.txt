@@ -458,6 +458,7 @@
 	}
 	"Checkpoint4-spec"
 	{
+		"#format" 	"{1:c},{2:c},{3:c},{4:i}"
 		"en"	  	"[{1}Surf Timer{2}] Reached SPEC-CP[{3}{4}]"
 	}
 	"GrewCheckpoint"
