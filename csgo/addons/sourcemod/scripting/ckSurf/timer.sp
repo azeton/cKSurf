@@ -23,12 +23,12 @@ public Action reloadRank(Handle timer, any client)
 	return Plugin_Handled;
 }
 
-public Action reloadConsoleInfo(Handle timer, any client)
+/* public Action reloadConsoleInfo(Handle timer, any client)
 {
 	if (IsValidClient(client))
 		PrintConsoleInfo(client);
 	return Plugin_Handled;
-}
+} */
 
 
 public Action AnnounceMap(Handle timer, any client)
@@ -195,14 +195,14 @@ public Action CKTimer2(Handle timer)
 			GetMapTimeLeft(timeleft);
 			switch (timeleft)
 			{
-				case 1800:PrintToChatAll("%t", "TimeleftMinutes", LIMEGREEN, WHITE, timeleft / 60);
-				case 1200:PrintToChatAll("%t", "TimeleftMinutes", LIMEGREEN, WHITE, timeleft / 60);
-				case 600:PrintToChatAll("%t", "TimeleftMinutes", LIMEGREEN, WHITE, timeleft / 60);
-				case 300:PrintToChatAll("%t", "TimeleftMinutes", LIMEGREEN, WHITE, timeleft / 60);
-				case 120:PrintToChatAll("%t", "TimeleftMinutes", LIMEGREEN, WHITE, timeleft / 60);
-				case 60:PrintToChatAll("%t", "TimeleftSeconds", LIMEGREEN, WHITE, timeleft);
-				case 30:PrintToChatAll("%t", "TimeleftSeconds", LIMEGREEN, WHITE, timeleft);
-				case 15:PrintToChatAll("%t", "TimeleftSeconds", LIMEGREEN, WHITE, timeleft);
+				case 1800:PrintToChatAll("%t", "TimeleftMinutes", LIMEGREEN, WHITE, LIMEGREEN, timeleft / 60, WHITE);
+				case 1200:PrintToChatAll("%t", "TimeleftMinutes", LIMEGREEN, WHITE, LIMEGREEN, timeleft / 60, WHITE);
+				case 600:PrintToChatAll("%t", "TimeleftMinutes", LIMEGREEN, WHITE, LIMEGREEN, timeleft / 60, WHITE);
+				case 300:PrintToChatAll("%t", "TimeleftMinutes", LIMEGREEN, WHITE, LIMEGREEN, timeleft / 60, WHITE);
+				case 120:PrintToChatAll("%t", "TimeleftMinutes", LIMEGREEN, WHITE, LIMEGREEN, timeleft / 60, WHITE);
+				case 60:PrintToChatAll("%t", "TimeleftSeconds", LIMEGREEN, WHITE, LIMEGREEN, timeleft, WHITE);
+				case 30:PrintToChatAll("%t", "TimeleftSeconds", LIMEGREEN, WHITE, LIMEGREEN, timeleft, WHITE);
+				case 15:PrintToChatAll("%t", "TimeleftSeconds", LIMEGREEN, WHITE, LIMEGREEN, timeleft, WHITE);
 				case  - 1:PrintToChatAll("%t", "TimeleftCounter", LIMEGREEN, WHITE, LIMEGREEN, 3);
 				case  - 2:PrintToChatAll("%t", "TimeleftCounter", LIMEGREEN, WHITE, LIMEGREEN, 2);
 				case  - 3:
@@ -211,7 +211,7 @@ public Action CKTimer2(Handle timer)
 					{
 						g_bRoundEnd = true;
 						ServerCommand("mp_ignore_round_win_conditions 0");
-						PrintToChatAll("%t", "TimeleftCounter", LIMEGREEN, WHITE, 1);
+						PrintToChatAll("%t", "TimeleftCounter", LIMEGREEN, WHITE, LIMEGREEN, 1);
 						CreateTimer(1.0, TerminateRoundTimer, INVALID_HANDLE, TIMER_FLAG_NO_MAPCHANGE);
 					}
 				}

@@ -139,14 +139,14 @@
 	"TimeleftMinutes"
 	{
 
-		"#format"   "{1:c},{2:c},{3:i}"
-		"en"        "[{1}Surf Timer{2}] {3} minutes remaining on the map"
+		"#format"   "{1:c},{2:c},{3:c},{4:i},{5:c}"
+		"en"        "[{1}Surf Timer{2}] {3}{4}{5} minutes remaining on the map"
 	}
 	"TimeleftSeconds"
 	{
 
-		"#format"   "{1:c},{2:c},{3:i}"
-		"en"        "[{1}Surf Timer{2}] {3} seconds remaining on the map"
+		"#format"   "{1:c},{2:c},{3:c},{4:i},{5:c}"
+		"en"        "[{1}Surf Timer{2}] {3}{4}{5} seconds remaining on the map"
 	}
 	"TimerStopped"
 	{
@@ -156,8 +156,8 @@
 	}
 	"MissedMapBest"
 	{
-		"#format"   "{1:c},{2:c},{3:c},{4:c},{5:s},{6:c}"
-		"en"       "[{1}Surf Timer{2}] You have missed your PR of {4}{5}"
+		"#format"   "{1:c},{2:c},{3:c},{4:s}"
+		"en"       "[{1}Surf Timer{2}] You have missed your PR of {3}{4}"
 	}
 	"KickMsg"
 	{
@@ -454,7 +454,7 @@
 	"Checkpoint4"
 	{
 		"#format" 	"{1:c},{2:c},{3:c},{4:i},{5:c}"
-		"en"	  	"[{1}Surf Timer{2}] Reached CP[{3}{4}{5}]]"
+		"en"	  	"[{1}Surf Timer{2}] Reached CP[{3}{4}{5}]"
 	}
 	"Checkpoint4-spec"
 	{

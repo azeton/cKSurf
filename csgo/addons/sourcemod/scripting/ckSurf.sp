@@ -1157,7 +1157,7 @@ public void OnClientPutInServer(int client)
 		db_selectLastRun(client);
 
 	//console info
-	PrintConsoleInfo(client);
+	/* PrintConsoleInfo(client); */
 
 	if (g_bLateLoaded && IsPlayerAlive(client))
 		PlayerSpawn(client);

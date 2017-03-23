@@ -298,7 +298,7 @@ public void StartVoteExtend(int client)
 {
 	char szPlayerName[MAX_NAME_LENGTH];
 	GetClientName(client, szPlayerName, MAX_NAME_LENGTH);
-	CPrintToChatAll("[{olive}Surf Timer{default}] Vote to Extend started by {LIMEGREEN}%s{default}", szPlayerName);
+	CPrintToChatAll("[Surf Timer] Vote to Extend started by %s", szPlayerName);
 
 	g_szUsedVoteExtend[g_VoteExtends] = g_szSteamID[client];	// Add the user's steam ID to the list
 	g_VoteExtends++;	// Increment the total number of vote extends so far
@@ -351,12 +351,12 @@ public void H_VoteExtendCallback(Menu menu, int num_votes, int num_clients, cons
 
 	if (votesYes > votesNo) // A tie is a failure
 	{
-		CPrintToChatAll("[{LIMEGREEN}Surf Timer{default}] Vote to Extend succeeded - Votes Yes: %i | Votes No: %i", votesYes, votesNo);
+		CPrintToChatAll("[Surf Timer] Vote to Extend succeeded - Votes Yes: %i | Votes No: %i", votesYes, votesNo);
 		ExtendMapTimeLimit(RoundToFloor(GetConVarFloat(g_hVoteExtendTime)*60));
 	}
 	else
 	{
-		CPrintToChatAll("[{LIMEGREEN}Surf Timer{default}] Vote to Extend failed - Votes Yes: %i | Votes No: %i", votesYes, votesNo);
+		CPrintToChatAll("[Surf Timer] Vote to Extend failed - Votes Yes: %i | Votes No: %i", votesYes, votesNo);
 	}
 }
 
@@ -2427,7 +2427,7 @@ public int StageTopMenuHandler(Menu menu, MenuAction action, int param1, int par
 
 public void HelpPanel(int client)
 {
-	PrintConsoleInfo(client);
+	/* PrintConsoleInfo(client); */
 	Handle panel = CreatePanel();
 	char title[64];
 	Format(title, 64, "Surf Timer Help (1/4)");

@@ -1039,7 +1039,7 @@ public void SetServerTags()
 		CloseHandle(CvarHandle);
 }
 
-public void PrintConsoleInfo(int client)
+/* public void PrintConsoleInfo(int client)
 {
 
 	if (g_hSkillGroups == null)
@@ -1114,7 +1114,8 @@ public void PrintConsoleInfo(int client)
 	PrintToConsole(client, "-----------------------------------------------------------------------------------------------------------");
 	PrintToConsole(client, " ");
 	return;
-}
+} */
+
 stock void FakePrecacheSound(const char[] szPath)
 {
 	AddToStringTable(FindStringTable("soundprecache"), szPath);
