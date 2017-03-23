@@ -3422,7 +3422,7 @@ public void Checkpoint(int client, int zone, int zonegroup)
 			//"#format"	"{1:c},{2:c},{3:c},{4:s},{5:c},{6:s},{7:c},{8:c},{9:s},{10:c},{11:s}"
 			//"en"		"[{1}CK{2}] {3}CP: {4} {5}compared to your PB. {6} {7}({8}{9}{10}).{11}"
 			if (g_bCheckpointsEnabled[client])
-				PrintToChat(client, "%t", "Checkpoint2", LIMEGREEN, WHITE, YELLOW, szDiff, YELLOW, szCatchUp, YELLOW, WHITE, szPercnt, YELLOW, sz_srDiff);
+				PrintToChat(client, "%t", "Checkpoint2", LIMEGREEN, WHITE, LIMEGREEN, szPercnt, WHITE, szDiff, WHITE, sz_srDiff, WHITE, szCatchUp);
 			Format(szSpecMessage, sizeof(szSpecMessage), "%t", "Checkpoint2-spec", LIMEGREEN, WHITE, LIMEGREEN, szPercnt, WHITE, szDiff, WHITE, sz_srDiff, WHITE, szCatchUp);
 			CheckpointToSpec(client, szSpecMessage);
 		}
