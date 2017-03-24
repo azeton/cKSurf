@@ -424,32 +424,32 @@
 	"Checkpoint1"
 	{
 		"#format"	"{1:c},{2:c},{3:c},{4:s},{5:c},{6:s},{7:c},{8:s}"
-		"en"		"[{1}Surf Timer{2}] CP[{3}{4}{5}] | PR: {6}{7} | SR: {8}"
+		"en"		"[{1}Surf Timer{2}] CP[{3}{4}{5}] | PR: {6}{7} | {8}"
 	}
 	"Checkpoint1-spec"
 	{
 		"#format"	"{1:c},{2:c},{3:c},{4:s},{5:c},{6:s},{7:c},{8:s}"
-		"en"		"[{1}Surf Timer{2}] SPEC-CP[{3}{4}{5}] | PR: {6}{7} | SR: {8}"	
+		"en"		"[{1}Surf Timer{2}] SPEC-CP[{3}{4}{5}] | PR: {6}{7} | {8}"	
 	}
 	"Checkpoint2"
 	{
 		"#format"	"{1:c},{2:c},{3:c},{4:s},{5:c},{6:s},{7:c},{8:s},{9:c},{10:s}"
-		"en"		"[{1}Surf Timer{2}] CP[{3}{4}{5}] | PR: {6}{7} | SR: {8}{9} | {10}"
+		"en"		"[{1}Surf Timer{2}] CP[{3}{4}{5}] | PR: {6}{7} | {8}{9} | {10}"
 	}
 	"Checkpoint2-spec"
 	{
 		"#format"	"{1:c},{2:c},{3:c},{4:s},{5:c},{6:s},{7:c},{8:s},{9:c},{10:s}"
-		"en"		"[{1}Surf Timer{2}] SPEC-CP[{3}{4}{5}] | PR: {6}{7} | SR: {8}{9} | {10}"
+		"en"		"[{1}Surf Timer{2}] SPEC-CP[{3}{4}{5}] | PR: {6}{7} | {8}{9} | {10}"
 	}
 	"Checkpoint3"
 	{
 		"#format" 	"{1:c},{2:c},{3:c},{4:s},{5:c},{6:s},{7:c},{8:s}"
-		"en"		"[{1}Surf Timer{2}] CP[{3}{4}{5}] reached in {6}{7} | SR: {8}"
+		"en"		"[{1}Surf Timer{2}] CP[{3}{4}{5}] reached in {6}{7} | {8}"
 	}
 	"Checkpoint3-spec"
 	{
 		"#format" 	"{1:c},{2:c},{3:c},{4:s},{5:c},{6:s},{7:c},{8:s}"
-		"en"		"[{1}Surf Timer{2}] SPEC-CP[{3}{4}{5}] reached in {6}{7} | SR: {8}"
+		"en"		"[{1}Surf Timer{2}] SPEC-CP[{3}{4}{5}] reached in {6}{7} | {8}"
 	}
 	"Checkpoint4"
 	{
