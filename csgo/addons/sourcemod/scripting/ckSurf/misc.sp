@@ -1832,27 +1832,27 @@ stock void MapFinishedMsgs(int client, int rankThisRun = 0)
 					if (g_bMapFirstRecord[client]) // 1st time finishing
 					{
 						PrintToChat(i, "%t", "MapFinished1", LIMEGREEN, WHITE, LIMEGREEN, szName, WHITE, LIMEGREEN, g_szFinalTime[client], WHITE, LIMEGREEN, g_MapRank[client], WHITE, count, g_szSRTimeDifference[client]);
-						PrintToConsole(i, "%s finished in %s | Rank #%i/%i | SR: %s", szName, g_szFinalTime[client], g_MapRank[client], count, g_szSRTimeDifference[client]);
+						//PrintToConsole(i, "%s finished in %s | Rank #%i/%i | SR: %s", szName, g_szFinalTime[client], g_MapRank[client], count, g_szSRTimeDifference[client]);
 					}
 					else
 						if (g_bMapPBRecord[client]) // Own record
 						{
-							PlayUnstoppableSound(client);
+							//PlayUnstoppableSound(client);
 							PrintToChat(i, "%t", "MapFinished3", LIMEGREEN, WHITE, LIMEGREEN, szName, WHITE, LIMEGREEN, g_szFinalTime[client], WHITE, LIMEGREEN, g_MapRank[client], WHITE, count, LIMEGREEN, g_szTimeDifference[client], WHITE, g_szSRTimeDifference[client]);
-							PrintToConsole(i, "%s finished the map with a time of (%s). Improving their best time by (%s).  [Rank #%i/%i | SR: %s]", szName, g_szFinalTime[client], g_szTimeDifference[client], g_MapRank[client], count, g_szSRTimeDifference[client]);
+							//PrintToConsole(i, "%s finished the map with a time of (%s). Improving their best time by (%s).  [Rank #%i/%i | SR: %s]", szName, g_szFinalTime[client], g_szTimeDifference[client], g_MapRank[client], count, g_szSRTimeDifference[client]);
 						}
 						else
 							if (!g_bMapSRVRecord[client] && !g_bMapFirstRecord[client] && !g_bMapPBRecord[client])
 							{
 								PrintToChat(i, "%t", "MapFinished5", LIMEGREEN, WHITE, LIMEGREEN, szName, WHITE, LIMEGREEN, g_szFinalTime[client], WHITE, LIMEGREEN, g_MapRank[client], WHITE, count, RED, g_szTimeDifference[client], WHITE, RED, g_szSRTimeDifference[client]);
-								PrintToConsole(i, "%s finished the map with a time of (%s). Missing their best time by (%s).  [Rank #%i/%i | SR: %s]", szName, g_szFinalTime[client], g_szTimeDifference[client], g_MapRank[client], count, g_szSRTimeDifference[client]);
+								//PrintToConsole(i, "%s finished the map with a time of (%s). Missing their best time by (%s).  [Rank #%i/%i | SR: %s]", szName, g_szFinalTime[client], g_szTimeDifference[client], g_MapRank[client], count, g_szSRTimeDifference[client]);
 							}
 
 					if (g_bMapSRVRecord[client])
 					{
-						PlayRecordSound(2);
+						//PlayRecordSound(2);
 						PrintToChat(i, "%t", "NewMapRecord", LIMEGREEN, WHITE, LIMEGREEN, szName, WHITE, LIMEGREEN);
-						PrintToConsole(i, "[Surf Timer] %s scored a new Server Record", szName);
+						PrintToConsole(i, "[Surf Timer] %s broke the Server Record", szName);
 					}
 				}
 			}
@@ -1933,7 +1933,7 @@ stock void PrintChatBonus (int client, int zGroup, int rank = 0)
 	{
 		if (g_bBonusSRVRecord[client])
 		{
-			PlayRecordSound(1);
+			//PlayRecordSound(1);
 
 			RecordDiff = g_fOldBonusRecordTime[zGroup] - g_fFinalTime[client];
 			FormatTimeFloat(client, RecordDiff, 3, szRecordDiff, 54);
@@ -1970,7 +1970,7 @@ stock void PrintChatBonus (int client, int zGroup, int rank = 0)
 	{
 		if (g_bBonusSRVRecord[client])
 		{
-			PlayRecordSound(1);
+			//PlayRecordSound(1);
 			RecordDiff = g_fOldBonusRecordTime[zGroup] - g_fFinalTime[client];
 			FormatTimeFloat(client, RecordDiff, 3, szRecordDiff, 54);
 			Format(szRecordDiff, 54, "-%s", szRecordDiff);
