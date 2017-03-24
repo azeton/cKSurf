@@ -444,12 +444,12 @@
 	"Checkpoint3"
 	{
 		"#format" 	"{1:c},{2:c},{3:c},{4:s},{5:c},{6:s},{7:c},{8:s}"
-		"en"		"[{1}Surf Timer{2}] CP[{3}{4}{5}] reached in {6}{7} | {8}"
+		"en"		"[{1}Surf Timer{2}] CP[{3}{4}{5}] reached in {6}{7} {8}"
 	}
 	"Checkpoint3-spec"
 	{
 		"#format" 	"{1:c},{2:c},{3:c},{4:s},{5:c},{6:s},{7:c},{8:s}"
-		"en"		"[{1}Surf Timer{2}] SPEC-CP[{3}{4}{5}] reached in {6}{7} | {8}"
+		"en"		"[{1}Surf Timer{2}] SPEC-CP[{3}{4}{5}] reached in {6}{7} {8}"
 	}
 	"Checkpoint4"
 	{

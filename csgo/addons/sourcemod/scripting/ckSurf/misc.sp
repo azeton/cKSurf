@@ -3326,13 +3326,13 @@ public void Checkpoint(int client, int zone, int zonegroup)
 		if (f_srDiff > 0)
 		{
 			Format(sz_srDiff_colorless, 128, "-%s", sz_srDiff);
-			Format(sz_srDiff, 128, " %cSR: %c-%s%c", WHITE, LIMEGREEN, sz_srDiff, WHITE);
+			Format(sz_srDiff, 128, "| %cSR: %c-%s%c", WHITE, LIMEGREEN, sz_srDiff, WHITE);
 			Format(g_szLastSRDifference[client], 64, "<font color='#00CC00'>%s</font>", sz_srDiff_colorless);
 		}
 		else
 		{
 			Format(sz_srDiff_colorless, 128, "+%s", sz_srDiff);
-			Format(sz_srDiff, 128, " %cSR: %c+%s%c", WHITE, RED, sz_srDiff, WHITE);
+			Format(sz_srDiff, 128, "| %cSR: %c+%s%c", WHITE, RED, sz_srDiff, WHITE);
 			Format(g_szLastSRDifference[client], 64, "<font color='#FF0000'>%s</font>", sz_srDiff_colorless);
 		}
 		g_fLastDifferenceTime[client] = GetGameTime();
