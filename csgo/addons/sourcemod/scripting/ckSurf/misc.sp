@@ -1192,7 +1192,7 @@ stock void StripAllWeapons(int client)
 			RemoveEdict(iEnt);
 		}
 	}
-	if (GetPlayerWeaponSlot(client, 2) == -1)
+	if (GetPlayerWeaponSlot(client, 2) == -1 && CheckHideBotWeapon(client))
 		GivePlayerItem(client, "weapon_knife");
 }
 
@@ -1606,12 +1606,7 @@ public void SetClientDefaults(int client)
 	g_bPracticeMode[client] = false;
 
 	// client options
-	g_bInfoPanel[client] = true;
-	g_bShowNames[client] = true;
-	g_bGoToClient[client] = true;
-	g_bShowTime[client] = false;
 	g_bHide[client] = false;
-	g_bStartWithUsp[client] = false;
 	g_bShowSpecs[client] = true;
 	g_bHideChat[client] = false;
 	g_bHideLeftHud[client] = false;
@@ -2777,7 +2772,7 @@ public void SpecListMenuDead(int client) // What Spectators see
 					}
 				}
 
-				if (!g_bShowTime[client] && g_bShowSpecs[client])
+				if (g_bShowSpecs[client])
 				{
 					if (ObservedUser != g_RecordBot)
 						Format(g_szPlayerPanelText[client], 512, "%Specs (%i):\n%s\n \n%s\nRecord: %s\n\nStage: %s\n", count, sSpecs, szPlayerRank, szProBest, szStage);
@@ -2793,7 +2788,7 @@ public void SpecListMenuDead(int client) // What Spectators see
 
 					}
 				}
-				if (!g_bShowTime[client] && !g_bShowSpecs[client])
+				else
 				{
 					if (ObservedUser != g_RecordBot)
 						Format(g_szPlayerPanelText[client], 512, "%s\nRecord: %s\n\nStage: %s\n", szPlayerRank, szProBest, szStage);
@@ -2983,7 +2978,7 @@ public void CenterHudDead(int client)
 		//keys
 		char sResult[256];
 		int Buttons;
-		if (g_bInfoPanel[client] && IsValidClient(ObservedUser))
+		if (IsValidClient(ObservedUser))
 		{
 			Buttons = g_LastButton[ObservedUser];
 			if (Buttons & IN_MOVELEFT)
@@ -3043,10 +3038,6 @@ public void CenterHudAlive(int client)
 
 	// Check if its a valid client
 	if (!IsValidClient(client))
-		return;
-
-	// Check if client hud is disabled
-	if (!g_bInfoPanel[client])
 		return;
 
 	// Variables
@@ -3522,3 +3513,11 @@ void OpenMOTD(int client, const char[] url)
  	ShowMOTDPanel(client, "Surf Timer", urlJs, MOTDPANEL_TYPE_URL);
  	PrintToConsole(client, urlJs);
 }
+
+//Used on misc.StripAllWeapons() to check if the bot should have a knife.
+public bool CheckHideBotWeapon(int client) {
+	if (GetConVarInt(g_hReplayBotWeapons) == 0 && IsFakeClient(client)) { 
+		return true;
+	}
+	return false;
+} 

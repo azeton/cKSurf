@@ -471,6 +471,7 @@ ConVar g_hReplayBotColor = null; 								// Replay bot color
 int g_ReplayBotColor[3];
 ConVar g_hRecordBotTrail = null; 								// Record bot trail?
 ConVar g_hReplayBotTrailColor = null; 							// Replay bot trail color
+ConVar g_hReplayBotWeapons = null; 								// Hides bot weapons if set on 0
 int g_ReplayBotTrailColor[4];
 ConVar g_hDoubleRestartCommand;									// Double !r restart
 ConVar g_hStartPreSpeed = null; 								// Start zone speed cap
@@ -514,6 +515,7 @@ bool g_bNoclipped[MAXPLAYERS + 1];
 // org variables track the original setting status, on disconnect, check if changed, if so, update new settings to database
 bool g_bHideChat[MAXPLAYERS + 1];								// Hides chat
 bool g_bHideLeftHud[MAXPLAYERS + 1];
+bool g_borg_HideLeftHud[MAXPLAYERS + 1];
 bool g_borg_HideChat[MAXPLAYERS + 1];
 bool g_bViewModel[MAXPLAYERS + 1]; 								// Hides viewmodel
 bool g_borg_ViewModel[MAXPLAYERS + 1];
@@ -522,20 +524,10 @@ bool g_borg_CheckpointsEnabled[MAXPLAYERS + 1];
 bool g_bActivateCheckpointsOnStart[MAXPLAYERS + 1]; 			// Did client enable checkpoints? Then start using them again on the next run
 bool g_bEnableQuakeSounds[MAXPLAYERS + 1]; 						// Enable quake sounds?
 bool g_borg_EnableQuakeSounds[MAXPLAYERS + 1];
-bool g_bShowNames[MAXPLAYERS + 1]; // TODO: remove
-bool g_borg_ShowNames[MAXPLAYERS + 1];
-bool g_bStartWithUsp[MAXPLAYERS + 1]; // TODO: Remove
-bool g_borg_StartWithUsp[MAXPLAYERS + 1];
-bool g_bShowTime[MAXPLAYERS + 1]; // TODO: Remove
-bool g_borg_ShowTime[MAXPLAYERS + 1];
 bool g_bHide[MAXPLAYERS + 1]; 									// Hide other players?
 bool g_borg_Hide[MAXPLAYERS + 1];
 bool g_bShowSpecs[MAXPLAYERS + 1];								// Show spectator list?
 bool g_borg_ShowSpecs[MAXPLAYERS + 1];
-bool g_bGoToClient[MAXPLAYERS + 1]; 							// Allow !goto
-bool g_borg_GoToClient[MAXPLAYERS + 1];
-bool g_bInfoPanel[MAXPLAYERS + 1]; 								// Client is showing the info panel
-bool g_borg_InfoPanel[MAXPLAYERS + 1];
 
 /*----------  Run Variables  ----------*/
 float g_fPersonalRecord[MAXPLAYERS + 1];						// Clients personal record in map
@@ -1770,6 +1762,8 @@ public void OnPluginStart()
 	GetRGBColor(0, szRBotColor);
 
 	g_hReplayBotTrailColor = CreateConVar("ck_replay_bot_trail_color", "52 91 248", "The trail color for the replay bot - Format: \"red green blue\" from 0 - 255.", FCVAR_NOTIFY);
+	g_hReplayBotWeapons = CreateConVar("ck_replay_bot_weapons", "1", "Hides bot weapons if set on 0.", FCVAR_NOTIFY);
+	
 	HookConVarChange(g_hReplayBotTrailColor, OnSettingChanged);
 	char szTrailColor[24];
 	GetConVarString(g_hReplayBotTrailColor, szTrailColor, 24);
@@ -1911,7 +1905,6 @@ public void OnPluginStart()
 	RegConsoleCmd("sm_pause", Client_Pause, "[Surf Timer] on/off pause (timer on hold and movement frozen)");
 	RegConsoleCmd("sm_showsettings", Client_Showsettings, "[Surf Timer] shows Surf Timer server settings");
 	RegConsoleCmd("sm_latest", Client_Latest, "[Surf Timer] shows latest map records");
-	RegConsoleCmd("sm_showtime", Client_Showtime, "[Surf Timer] on/off - timer text in panel/menu");
 	RegConsoleCmd("sm_hide", Client_Hide, "[Surf Timer] on/off - hides other players");
 	RegConsoleCmd("sm_togglecheckpoints", ToggleCheckpoints, "[Surf Timer] on/off - Enable player checkpoints");
 	RegConsoleCmd("+noclip", NoClip, "[Surf Timer] Player noclip on");
